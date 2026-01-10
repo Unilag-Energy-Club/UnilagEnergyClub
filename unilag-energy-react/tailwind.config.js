@@ -49,10 +49,15 @@ export default {
           '0%': { transform: 'translateX(-100%)', opacity: '0' },
           '100%': { transform: 'translateX(0)', opacity: '1' },
         },
+        float: {
+          '0%, 100%': { transform: 'translateY(0px)' },
+          '50%': { transform: 'translateY(-20px)' },
+        },
       },
       animation: {
         'arrow': 'arrowAnimation 0.6s cubic-bezier(0.65, 0, 0.35, 1) forwards',
         'arrow-enter': 'arrowEnter 0.3s ease-in-out forwards',
+        'float': 'float 3s ease-in-out infinite',
       },
     },
   },
