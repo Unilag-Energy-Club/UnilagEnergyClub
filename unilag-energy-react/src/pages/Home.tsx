@@ -23,7 +23,7 @@ const Home = () => {
               >
                 University Of Lagos Energy Club
               </h1>
-              <div className="mx-auto" data-aos="fade-down" data-aos-delay="400">
+              <div className="w-11/12 md:w-8/12 lg:w-7/12 mx-auto" data-aos="fade-down" data-aos-delay="400">
                 <span className="text-subtext leading-relaxed">
                   A multidisciplinary student community dedicated to fostering learning, collaboration, and innovation in the energy sector through research, industry exposure, and real-world engagement.
                 </span>
