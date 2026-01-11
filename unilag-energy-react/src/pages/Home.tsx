@@ -5,28 +5,30 @@ const Home = () => {
   return (
     <Layout activePage="home">
       {/* Hero Section */}
-      <section className="bg-sectionBg2 relative py-16 md:py-20" id="v-hero">
-        <div className="container mx-auto px-4">
-          <div className="relative min-h-[500px] md:min-h-[600px] flex flex-col justify-center">
-            <div className="max-w-6xl mx-auto flex flex-col text-center gap-6 relative mb-16 md:mb-20">
+      <section className="bg-sectionBg2 flex flex-col" id="v-hero">
+        <div className="container-fluid px-4">
+          <div className="flex flex-col flex-grow items-center justify-center overflow-hidden pt-20">
+            {/* Hero Content */}
+            <div className="w-10/12 sm:w-10/12 md:w-8/12 lg:w-7/12 xl:w-6/12 mx-auto flex flex-col text-center flex-grow gap-3 relative mb-5">
               <div className="mx-auto" data-aos="fade-down">
                 <a className="text-subtext hover:text-primary transition-colors" href="https://forms.gle/HZBmQg3Z77fv9bNR6">
                   Join Us
                 </a>
               </div>
               <h1 
-                className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-mainText leading-tight" 
+                className="text-[5vw] font-bold text-mainText"
+                style={{ display: 'ruby' }}
                 data-aos="fade-down" 
                 data-aos-delay="300"
               >
                 University Of Lagos Energy Club
               </h1>
-              <div className="max-w-3xl mx-auto" data-aos="fade-down" data-aos-delay="400">
-                <span className="text-subtext text-base md:text-lg leading-relaxed">
+              <div className="w-11/12 md:w-8/12 lg:w-7/12 mx-auto" data-aos="fade-down" data-aos-delay="400">
+                <span className="text-subtext">
                   A multidisciplinary student community dedicated to fostering learning, collaboration, and innovation in the energy sector through research, industry exposure, and real-world engagement.
                 </span>
               </div>
-              <div className="mx-auto mt-6" data-aos="fade-up" data-aos-delay="300">
+              <div className="mx-auto mt-3" data-aos="fade-up" data-aos-delay="300">
                 <ActionButton href="https://forms.gle/muTqzYtFmuNhdvhu5">
                   Join Us
                 </ActionButton>
@@ -36,82 +38,90 @@ const Home = () => {
               <figure 
                 data-aos="fade-up-right" 
                 data-aos-delay="500" 
-                className="hidden lg:block absolute -top-10 -left-20 max-w-[120px] animate-[float_60s_ease-in-out_infinite]"
+                className="hidden lg:flex absolute animate-[float_60s_ease-in-out_infinite]"
+                style={{ top: '28%', left: '-27%' }}
               >
                 <img src="/assets/media/images/float_1.png" alt="" className="w-full" />
               </figure>
               <figure 
                 data-aos="fade-down-left" 
                 data-aos-delay="500" 
-                className="hidden lg:block absolute top-0 -right-10 max-w-[100px] animate-[float_30s_ease-in-out_infinite]"
+                className="hidden lg:flex absolute animate-[float_30s_ease-in-out_infinite]"
+                style={{ top: '15%', right: '-30%' }}
               >
                 <img src="/assets/media/images/float_2.png" alt="" className="w-full" />
               </figure>
               <figure 
                 data-aos="fade-up-left" 
                 data-aos-delay="500" 
-                className="hidden lg:block absolute -bottom-10 -right-20 max-w-[110px] animate-[float_40s_ease-in-out_infinite]"
+                className="hidden lg:flex absolute animate-[float_40s_ease-in-out_infinite]"
+                style={{ top: '65%', right: '-17%' }}
               >
                 <img src="/assets/media/images/float_3.png" alt="" className="w-full" />
               </figure>
             </div>
 
             {/* Board Presentation */}
-            <div className="mx-auto mb-12 max-w-4xl">
-              <h5 
-                className="text-primary text-center text-xl md:text-2xl" 
-                data-aos="fade-down"
-              >
-                We learn, we lead, and <br className="md:hidden" /> we shape the future of energy together.
-              </h5>
+            <div 
+              className="min-h-[300px] w-full flex justify-center items-end bg-no-repeat bg-center"
+              style={{ backgroundImage: 'url(/assets/media/images/bg-theme.png)' }}
+            >
+              <div className="mx-auto mb-5 max-w-4xl">
+                <h5 
+                  className="text-primary text-center text-xl md:text-2xl mb-3" 
+                  data-aos="fade-down"
+                >
+                  We learn, we lead, and <br /> we shape the future of energy together.
+                </h5>
 
-              <ul className="flex items-center justify-center gap-4 mt-3">
-                <li data-aos="fade-up">
-                  <a 
-                    href="https://www.instagram.com/unilagenergyclub/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-12 h-12 bg-white rounded-full flex items-center justify-center text-socialIconLinkClr hover:bg-primary hover:text-white transition-all shadow-md"
-                  >
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 48 48" className="w-6 h-6">
-                      <g fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="4">
-                        <path d="M34 6H14a8 8 0 0 0-8 8v20a8 8 0 0 0 8 8h20a8 8 0 0 0 8-8V14a8 8 0 0 0-8-8z" />
-                        <path d="M24 32a8 8 0 1 0 0-16 8 8 0 0 0 0 16z" />
-                        <path d="M35 13h.01" />
-                      </g>
-                    </svg>
-                  </a>
-                </li>
-                <li data-aos="fade-up" data-aos-delay="300">
-                  <a 
-                    href="https://www.linkedin.com/company/unilag-energy-club/?viewAsMember=true"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-12 h-12 bg-white rounded-full flex items-center justify-center text-socialIconLinkClr hover:bg-primary hover:text-white transition-all shadow-md"
-                  >
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" className="w-6 h-6">
-                      <g fill="currentColor">
-                        <path fillRule="evenodd" d="M12.51 8.796v1.697a3.74 3.74 0 0 1 3.288-1.684c3.455 0 4.202 2.16 4.202 4.97V19.5h-3.2v-5.072c0-1.21-.244-2.766-2.128-2.766c-1.827 0-2.139 1.317-2.139 2.676V19.5h-3.19V8.796h3.168ZM7.2 6.106a1.61 1.61 0 0 1-.988 1.483a1.595 1.595 0 0 1-1.743-.348A1.607 1.607 0 0 1 5.6 4.5a1.6 1.6 0 0 1 1.6 1.606" clipRule="evenodd" />
-                        <path d="M7.2 8.809H4V19.5h3.2z" />
-                      </g>
-                    </svg>
-                  </a>
-                </li>
-                <li data-aos="fade-up" data-aos-delay="400">
-                  <a 
-                    href="https://x.com/uecunilag"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-12 h-12 bg-white rounded-full flex items-center justify-center text-socialIconLinkClr hover:bg-primary hover:text-white transition-all shadow-md"
-                  >
-                    <svg width="20" height="20" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M41 10C41 10 34 18 24 18C14 18 7 10 7 10" stroke="currentColor" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"/>
-                      <path d="M7 10C7 10 14 28 24 28C34 28 41 10 41 10" stroke="currentColor" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"/>
-                      <path d="M14 41C14 41 21 23 24 23C27 23 34 41 34 41" stroke="currentColor" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"/>
-                    </svg>
-                  </a>
-                </li>
-              </ul>
+                <ul className="flex items-center justify-center gap-4 mt-3">
+                  <li data-aos="fade-up">
+                    <a 
+                      href="https://www.instagram.com/unilagenergyclub/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-12 h-12 bg-white rounded-full flex items-center justify-center text-socialIconLinkClr hover:bg-primary hover:text-white transition-all shadow-md"
+                    >
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 48 48" className="w-6 h-6">
+                        <g fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="4">
+                          <path d="M34 6H14a8 8 0 0 0-8 8v20a8 8 0 0 0 8 8h20a8 8 0 0 0 8-8V14a8 8 0 0 0-8-8z" />
+                          <path d="M24 32a8 8 0 1 0 0-16 8 8 0 0 0 0 16z" />
+                          <path d="M35 13h.01" />
+                        </g>
+                      </svg>
+                    </a>
+                  </li>
+                  <li data-aos="fade-up" data-aos-delay="300">
+                    <a 
+                      href="https://www.linkedin.com/company/unilag-energy-club/?viewAsMember=true"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-12 h-12 bg-white rounded-full flex items-center justify-center text-socialIconLinkClr hover:bg-primary hover:text-white transition-all shadow-md"
+                    >
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" className="w-6 h-6">
+                        <g fill="currentColor">
+                          <path fillRule="evenodd" d="M12.51 8.796v1.697a3.74 3.74 0 0 1 3.288-1.684c3.455 0 4.202 2.16 4.202 4.97V19.5h-3.2v-5.072c0-1.21-.244-2.766-2.128-2.766c-1.827 0-2.139 1.317-2.139 2.676V19.5h-3.19V8.796h3.168ZM7.2 6.106a1.61 1.61 0 0 1-.988 1.483a1.595 1.595 0 0 1-1.743-.348A1.607 1.607 0 0 1 5.6 4.5a1.6 1.6 0 0 1 1.6 1.606" clipRule="evenodd" />
+                          <path d="M7.2 8.809H4V19.5h3.2z" />
+                        </g>
+                      </svg>
+                    </a>
+                  </li>
+                  <li data-aos="fade-up" data-aos-delay="400">
+                    <a 
+                      href="https://x.com/uecunilag"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-12 h-12 bg-white rounded-full flex items-center justify-center text-socialIconLinkClr hover:bg-primary hover:text-white transition-all shadow-md"
+                    >
+                      <svg width="20" height="20" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M41 10C41 10 34 18 24 18C14 18 7 10 7 10" stroke="currentColor" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"/>
+                        <path d="M7 10C7 10 14 28 24 28C34 28 41 10 41 10" stroke="currentColor" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"/>
+                        <path d="M14 41C14 41 21 23 24 23C27 23 34 41 34 41" stroke="currentColor" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"/>
+                      </svg>
+                    </a>
+                  </li>
+                </ul>
+              </div>
             </div>
           </div>
         </div>
