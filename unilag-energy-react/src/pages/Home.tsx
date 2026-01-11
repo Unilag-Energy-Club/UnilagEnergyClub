@@ -7,9 +7,9 @@ const Home = () => {
       {/* Hero Section */}
       <section className="bg-sectionBg2 flex flex-col" id="v-hero">
         <div className="container-fluid px-4">
-          <div className="flex flex-col flex-grow items-center justify-center overflow-hidden pt-20">
+          <div className="flex flex-col flex-grow items-center justify-center overflow-hidden pt-20 pb-8">
             {/* Hero Content */}
-            <div className="w-10/12 sm:w-10/12 md:w-8/12 lg:w-7/12 xl:w-6/12 mx-auto flex flex-col text-center flex-grow gap-3 relative mb-5">
+            <div className="w-10/12 sm:w-10/12 md:w-8/12 lg:w-7/12 xl:w-6/12 mx-auto flex flex-col text-center flex-grow gap-4 relative mb-8 z-10">
               <div className="mx-auto" data-aos="fade-down">
                 <a className="text-subtext hover:text-primary transition-colors" href="https://forms.gle/HZBmQg3Z77fv9bNR6">
                   Join Us
@@ -24,11 +24,11 @@ const Home = () => {
                 University Of Lagos Energy Club
               </h1>
               <div className="w-11/12 md:w-8/12 lg:w-7/12 mx-auto" data-aos="fade-down" data-aos-delay="400">
-                <span className="text-subtext">
+                <span className="text-subtext leading-relaxed">
                   A multidisciplinary student community dedicated to fostering learning, collaboration, and innovation in the energy sector through research, industry exposure, and real-world engagement.
                 </span>
               </div>
-              <div className="mx-auto mt-3" data-aos="fade-up" data-aos-delay="300">
+              <div className="mx-auto mt-4" data-aos="fade-up" data-aos-delay="300">
                 <ActionButton href="https://forms.gle/muTqzYtFmuNhdvhu5">
                   Join Us
                 </ActionButton>
@@ -38,7 +38,7 @@ const Home = () => {
               <figure 
                 data-aos="fade-up-right" 
                 data-aos-delay="500" 
-                className="hidden lg:flex absolute animate-[float_60s_ease-in-out_infinite]"
+                className="hidden lg:flex absolute animate-[float_60s_ease-in-out_infinite] z-0"
                 style={{ top: '28%', left: '-27%' }}
               >
                 <img src="/assets/media/images/float_1.png" alt="" className="w-full" />

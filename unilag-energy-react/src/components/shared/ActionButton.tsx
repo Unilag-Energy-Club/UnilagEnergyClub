@@ -14,8 +14,8 @@ const ActionButton = ({
   className = '' 
 }: ActionButtonProps) => {
   const variants = {
-    primary: 'bg-secondary text-primary',
-    secondary: 'bg-primary text-white',
+    primary: 'bg-primary text-white',
+    secondary: 'bg-secondary text-primary',
     white: 'bg-white text-primary',
   };
 
