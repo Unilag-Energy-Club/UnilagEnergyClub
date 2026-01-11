@@ -5,9 +5,9 @@ const Home = () => {
   return (
     <Layout activePage="home">
       {/* Hero Section */}
-      <section className="bg-sectionBg2 flex flex-col" id="v-hero">
-        <div className="container-fluid px-4">
-          <div className="flex flex-col flex-grow items-center justify-center overflow-hidden pt-20 pb-8">
+      <section className="bg-sectionBg2 flex flex-col overflow-hidden" id="v-hero">
+        <div className="w-full px-4">
+          <div className="flex flex-col flex-grow items-center justify-center pt-20 pb-8 relative">
             {/* Hero Content */}
             <div className="w-10/12 sm:w-10/12 md:w-8/12 lg:w-7/12 xl:w-6/12 mx-auto flex flex-col text-center items-center flex-grow gap-4 relative mb-8 z-10">
               <div data-aos="fade-down">
@@ -128,29 +128,39 @@ const Home = () => {
       </section>
 
       {/* Membership Section */}
-      <section className="bg-sectionBg2 py-16" id="v-our-member">
-        <div className="container mx-auto px-4 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+      <section className="bg-sectionBg2" id="v-our-member">
+        <div className="container mx-auto px-4 lg:px-8 my-16">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-5 items-stretch">
+            {/* Research and Development Card */}
             <div className="lg:col-span-4">
-              <div className="flex flex-col gap-2 relative h-full" data-aos="fade-right">
+              <div 
+                className="flex flex-col gap-2 relative h-full p-8 lg:p-16 rounded-3xl bg-cover bg-bottom bg-no-repeat"
+                style={{ 
+                  backgroundColor: 'rgba(233, 194, 2, 1)',
+                  backgroundImage: 'url(/assets/media/shapes/bg.png)'
+                }}
+                data-aos="fade-right"
+              >
                 <span className="text-subtext">Let's promote</span>
-                <h2 className="text-mainText text-3xl md:text-4xl font-bold lg:max-w-[70%]">
+                <h2 className="text-white text-3xl md:text-4xl font-bold lg:max-w-[70%]">
                   Research and development
                 </h2>
                 <span className="text-subtext">In energy technologies...</span>
 
-                <figure className="absolute bottom-0 right-0 max-w-[115px] rounded-br-3xl overflow-hidden" data-aos="fade-down" data-aos-delay="500">
+                <figure className="absolute bottom-0 right-0 max-w-[115px] w-full" data-aos="fade-down" data-aos-delay="500">
                   <img src="/assets/media/avatars/profile.png" alt="" className="w-full rounded-br-3xl" />
                 </figure>
               </div>
             </div>
+
+            {/* Membership Card */}
             <div className="lg:col-span-8" id="membership">
-              <div className="bg-bg1 p-8 lg:p-14 rounded-3xl" data-aos="fade-left" data-aos-delay="300">
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
+              <div className="h-full p-8 lg:p-14 rounded-3xl" style={{ backgroundColor: 'rgb(248, 248, 248)' }} data-aos="fade-left" data-aos-delay="300">
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center h-full">
                   <div className="lg:col-span-4">
                     <div className="flex flex-col items-center lg:items-center">
                       <h1 className="text-4xl font-bold text-mainText text-center mb-3">Membership</h1>
-                      <p className="text-subtext text-center text-sm">
+                      <p className="text-subtext text-center text-sm lg:text-base">
                         Open to all students, faculty, and staff of the University of Lagos passionate about energy, sustainability, and making a real difference.
                       </p>
                     </div>
@@ -174,6 +184,7 @@ const Home = () => {
                       <div>
                         <ActionButton 
                           href="https://forms.gle/muTqzYtFmuNhdvhu5"
+                          variant="secondary"
                           className="shadow-custom"
                         >
                           Join Us
@@ -189,7 +200,7 @@ const Home = () => {
       </section>
 
       {/* About & Mission Section */}
-      <div className="bg-sectionBg1 rounded-t-[50px]">
+      <div className="bg-sectionBg1 rounded-[30px] mt-16">
         {/* About Section */}
         <section className="py-20" id="v-about">
           <div className="container mx-auto px-4 lg:px-8 xl:px-0 max-w-7xl">

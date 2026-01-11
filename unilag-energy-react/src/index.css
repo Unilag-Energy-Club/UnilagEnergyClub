@@ -58,9 +58,12 @@
 }
 
 /* Base Styles */
-* {
+*,
+*::before,
+*::after {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
   letter-spacing: 0.2px;
   outline: none;
   image-rendering: optimizequality;
@@ -68,10 +71,20 @@
   -webkit-font-smoothing: antialiased;
 }
 
+html, body {
+  width: 100%;
+  overflow-x: hidden;
+}
+
 body {
   margin: 0;
+  padding: 0;
   font-family: 'MayoClinicSansRegular', 'Helvetica', 'Arial', sans-serif;
   min-height: 100vh;
+}
+
+#root {
+  width: 100%;
 }
 
 h1, h2, h3, h4, h5, h6 {
