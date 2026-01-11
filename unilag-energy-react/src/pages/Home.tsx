@@ -5,28 +5,28 @@ const Home = () => {
   return (
     <Layout activePage="home">
       {/* Hero Section */}
-      <section className="bg-sectionBg2 relative" id="v-hero">
+      <section className="bg-sectionBg2 relative py-16 md:py-20" id="v-hero">
         <div className="container mx-auto px-4">
-          <div className="relative">
-            <div className="max-w-6xl mx-auto flex flex-col text-center flex-grow gap-3 relative mb-5 pt-8 md:pt-12">
+          <div className="relative min-h-[500px] md:min-h-[600px] flex flex-col justify-center">
+            <div className="max-w-6xl mx-auto flex flex-col text-center gap-6 relative mb-16 md:mb-20">
               <div className="mx-auto" data-aos="fade-down">
                 <a className="text-subtext hover:text-primary transition-colors" href="https://forms.gle/HZBmQg3Z77fv9bNR6">
                   Join Us
                 </a>
               </div>
               <h1 
-                className="text-4xl md:text-5xl lg:text-6xl font-bold text-mainText" 
+                className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-mainText leading-tight" 
                 data-aos="fade-down" 
                 data-aos-delay="300"
               >
                 University Of Lagos Energy Club
               </h1>
               <div className="max-w-3xl mx-auto" data-aos="fade-down" data-aos-delay="400">
-                <span className="text-subtext text-lg">
+                <span className="text-subtext text-base md:text-lg leading-relaxed">
                   A multidisciplinary student community dedicated to fostering learning, collaboration, and innovation in the energy sector through research, industry exposure, and real-world engagement.
                 </span>
               </div>
-              <div className="mx-auto mt-3" data-aos="fade-up" data-aos-delay="300">
+              <div className="mx-auto mt-6" data-aos="fade-up" data-aos-delay="300">
                 <ActionButton href="https://forms.gle/muTqzYtFmuNhdvhu5">
                   Join Us
                 </ActionButton>
@@ -36,28 +36,28 @@ const Home = () => {
               <figure 
                 data-aos="fade-up-right" 
                 data-aos-delay="500" 
-                className="hidden lg:block absolute top-0 left-0 max-w-[120px] animate-[float_60s_ease-in-out_infinite]"
+                className="hidden lg:block absolute -top-10 -left-20 max-w-[120px] animate-[float_60s_ease-in-out_infinite]"
               >
                 <img src="/assets/media/images/float_1.png" alt="" className="w-full" />
               </figure>
               <figure 
                 data-aos="fade-down-left" 
                 data-aos-delay="500" 
-                className="hidden lg:block absolute top-10 right-10 max-w-[100px] animate-[float_30s_ease-in-out_infinite]"
+                className="hidden lg:block absolute top-0 -right-10 max-w-[100px] animate-[float_30s_ease-in-out_infinite]"
               >
                 <img src="/assets/media/images/float_2.png" alt="" className="w-full" />
               </figure>
               <figure 
                 data-aos="fade-up-left" 
                 data-aos-delay="500" 
-                className="hidden lg:block absolute bottom-20 right-0 max-w-[110px] animate-[float_40s_ease-in-out_infinite]"
+                className="hidden lg:block absolute -bottom-10 -right-20 max-w-[110px] animate-[float_40s_ease-in-out_infinite]"
               >
                 <img src="/assets/media/images/float_3.png" alt="" className="w-full" />
               </figure>
             </div>
 
             {/* Board Presentation */}
-            <div className="mx-auto mb-5 max-w-4xl">
+            <div className="mx-auto mb-12 max-w-4xl">
               <h5 
                 className="text-primary text-center text-xl md:text-2xl" 
                 data-aos="fade-down"
