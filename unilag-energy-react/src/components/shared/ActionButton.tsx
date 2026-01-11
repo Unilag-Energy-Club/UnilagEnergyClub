@@ -24,7 +24,7 @@ const ActionButton = ({
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      className={`inline-flex items-center gap-2 py-2.5 px-10 rounded-[30px] font-bold transition-all duration-200 hover:shadow-custom ${variants[variant]} ${className}`}
+      className={`inline-flex items-center gap-2 py-3 px-10 rounded-[30px] font-bold transition-all duration-200 hover:shadow-custom ${variants[variant]} ${className}`}
     >
       <span>{children}</span>
       <span className="v-icon">
