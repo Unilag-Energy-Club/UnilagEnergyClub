@@ -240,7 +240,7 @@ const About = () => {
       </section>
       {/* Latest Stories Section */}
       <section className="py-16 bg-white" id="blog">
-        <div className="container mx-auto px-4 lg:px-8 xl:px-0 max-w-7xl">
+        <div className="container mx-auto px-6 lg:px-16 xl:px-16 max-w-7xl">
           <div className="flex flex-col items-center mb-12 text-center">
             <span className="text-secondary text-xl font-bold mb-2" data-aos="fade-down">Our Blog</span>
             <h1 className="text-3xl md:text-4xl font-bold text-mainText" data-aos="fade-down" data-aos-delay="200">
