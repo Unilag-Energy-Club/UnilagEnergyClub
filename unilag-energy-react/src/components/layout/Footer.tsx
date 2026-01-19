@@ -1,158 +1,119 @@
 const Footer = () => {
   return (
-    <footer className="bg-[rgba(239,239,239,1)]" id="v-page-footer">
-      <div className="container mx-auto px-4 lg:px-8 py-20">
-        {/* Banner Section */}
-        <div className="bg-primary rounded-custom min-h-[400px] -mt-48 overflow-hidden p-8 relative">
-          <div className="flex flex-col gap-4 relative z-10">
-            <h2 className="text-3xl lg:text-5xl font-bold text-white text-balance">
-              Join the Energy Revolution at Unilag!
+    <footer className="bg-[#efefef] pb-10 mt-[12rem] relative">
+      <div className="container mx-auto px-4 lg:px-20">
+
+        {/* Yellow Banner Section */}
+        <div className="relative bg-[#ebc000] rounded-[40px] min-h-[400px] p-10 lg:p-16 flex items-center overflow-hidden -translate-y-1/3 shadow-xl z-20">
+          <div className="relative z-10 max-w-2xl">
+            <h2 className="text-white text-4xl lg:text-6xl mb-6 leading-tight">
+              Join University Of <br /> Lagos Energy Club
             </h2>
-            <p className="text-white text-lg max-w-2xl">
-              Be part of a community that's shaping the future of energy in Nigeria and beyond.
+            <p className="text-white text-lg font-medium mb-10 leading-loose opacity-95 max-w-xl">
+              The club aims to serve as a platform for discussion, innovation, and collaboration on energy, sustainability, and the environment.
             </p>
-            <div className="mt-4">
-              <a
-                href="https://forms.gle/muTqzYtFmuNhdvhu5"
-                className="inline-flex items-center gap-2 bg-white text-primary px-8 py-3 rounded-xl font-bold transition-all duration-200 hover:shadow-lg"
-              >
-                <span>Join Us Today</span>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  className="w-6 h-6"
-                >
-                  <path
-                    fill="none"
-                    stroke="currentColor"
-                    d="M16 5c0 .742.733 1.85 1.475 2.78c.954 1.2 2.094 2.247 3.401 3.046C21.856 11.425 23.044 12 24 12m0 0c-.956 0-2.145.575-3.124 1.174c-1.307.8-2.447 1.847-3.401 3.045C16.733 17.15 16 18.26 16 19m8-7H0"
-                    strokeWidth="1.4"
-                  />
-                </svg>
-              </a>
-            </div>
+            <a
+              href="#"
+              className="inline-flex items-center gap-3 bg-white text-[#ebc000] px-8 py-4 rounded-full font-bold text-lg hover:bg-gray-50 hover:scale-105 transition-all duration-300 shadow-md"
+            >
+              Register Now
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </a>
+          </div>
+
+          {/* Large Lightbulb Graphic (Right Side) */}
+          <div className="absolute right-[-2%] top-1/2 -translate-y-1/2 opacity-30 lg:opacity-100 pointer-events-none">
+            <svg width="450" height="450" viewBox="0 0 200 200" className="text-white/30 fill-white/20">
+              {/* Simplified bulb shape matching the image style */}
+              <path d="M100 20 C70 20 45 45 45 75 C45 100 60 115 65 125 L65 150 L135 150 L135 125 C140 115 155 100 155 75 C155 45 130 20 100 20Z" fill="white" fillOpacity="0.2" />
+              {/* Base of bulb */}
+              <rect x="75" y="155" width="50" height="8" rx="4" fill="white" fillOpacity="0.3" />
+              <rect x="80" y="165" width="40" height="8" rx="4" fill="white" fillOpacity="0.3" />
+              <rect x="90" y="175" width="20" height="8" rx="4" fill="white" fillOpacity="0.3" />
+              {/* Inner icons (Hardhat/Gear representation) */}
+              <circle cx="100" cy="75" r="30" stroke="white" strokeWidth="4" fill="none" />
+              <path d="M85 70 L115 70 L110 55 C110 55 100 50 90 55 Z" fill="white" />
+              {/* Rays */}
+              {[0, 45, 90, 135, 180, 225, 270, 315].map((deg) => (
+                <line key={deg} x1="100" y1="10" x2="100" y2="0" stroke="white" strokeWidth="5" strokeLinecap="round" transform={`rotate(${deg} 100 100)`} />
+              ))}
+            </svg>
           </div>
         </div>
 
-        {/* Footer Content */}
-        <div className="mt-16">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {/* About Section */}
-            <div>
-              <figure className="max-w-16 w-full mb-4">
-                <img
-                  src="/assets/media/logos/unilogo.png"
-                  alt="Unilag Energy Club"
-                  className="w-full h-auto"
-                />
-              </figure>
-              <p className="text-subtext text-sm">
-                A multidisciplinary student community dedicated to fostering learning, collaboration, 
-                and innovation in the energy sector.
-              </p>
-            </div>
+        {/* Footer Navigation Section */}
+        {/* Adjusted top margin to account for the banner's negative translate */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 -mt-10 pb-12">
 
-            {/* Quick Links */}
-            <div>
-              <h3 className="font-bold text-mainText mb-4">Quick Links</h3>
-              <ul className="space-y-2">
-                <li>
-                  <a href="/" className="text-subtext hover:text-primary transition-colors">
-                    Home
-                  </a>
-                </li>
-                <li>
-                  <a href="/about" className="text-subtext hover:text-primary transition-colors">
-                    About Us
-                  </a>
-                </li>
-                <li>
-                  <a href="/gallery" className="text-subtext hover:text-primary transition-colors">
-                    Gallery
-                  </a>
-                </li>
-                <li>
-                  <a href="/contact" className="text-subtext hover:text-primary transition-colors">
-                    Contact
-                  </a>
-                </li>
-              </ul>
-            </div>
-
-            {/* Contact Info */}
-            <div>
-              <h3 className="font-bold text-mainText mb-4">Contact</h3>
-              <ul className="space-y-2 text-subtext text-sm">
-                <li>University of Lagos</li>
-                <li>Akoka, Yaba</li>
-                <li>Lagos, Nigeria</li>
-                <li>
-                  <a href="mailto:info@unilagenergyclub.com" className="hover:text-primary transition-colors">
-                    info@unilagenergyclub.com
-                  </a>
-                </li>
-              </ul>
-            </div>
-
-            {/* Social Links */}
-            <div>
-              <h3 className="font-bold text-mainText mb-4">Follow Us</h3>
-              <div className="flex gap-4">
-                <a
-                  href="https://www.instagram.com/unilagenergyclub/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-10 h-10 bg-white rounded-full flex items-center justify-center text-socialIconLinkClr hover:bg-primary hover:text-white transition-all"
-                >
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 48 48" className="w-5 h-5">
-                    <g fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="4">
-                      <path d="M34 6H14a8 8 0 0 0-8 8v20a8 8 0 0 0 8 8h20a8 8 0 0 0 8-8V14a8 8 0 0 0-8-8z" />
-                      <path d="M24 32a8 8 0 1 0 0-16 8 8 0 0 0 0 16z" />
-                      <path d="M35 13h.01" />
-                    </g>
-                  </svg>
-                </a>
-                <a
-                  href="https://www.linkedin.com/company/unilag-energy-club/?viewAsMember=true"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-10 h-10 bg-white rounded-full flex items-center justify-center text-socialIconLinkClr hover:bg-primary hover:text-white transition-all"
-                >
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" className="w-5 h-5">
-                    <g fill="currentColor">
-                      <path
-                        fillRule="evenodd"
-                        d="M12.51 8.796v1.697a3.74 3.74 0 0 1 3.288-1.684c3.455 0 4.202 2.16 4.202 4.97V19.5h-3.2v-5.072c0-1.21-.244-2.766-2.128-2.766c-1.827 0-2.139 1.317-2.139 2.676V19.5h-3.19V8.796h3.168ZM7.2 6.106a1.61 1.61 0 0 1-.988 1.483a1.595 1.595 0 0 1-1.743-.348A1.607 1.607 0 0 1 5.6 4.5a1.6 1.6 0 0 1 1.6 1.606"
-                        clipRule="evenodd"
-                      />
-                      <path d="M7.2 8.809H4V19.5h3.2z" />
-                    </g>
-                  </svg>
-                </a>
-                <a
-                  href="https://x.com/uecunilag"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-10 h-10 bg-white rounded-full flex items-center justify-center text-socialIconLinkClr hover:bg-primary hover:text-white transition-all"
-                >
-                  <svg width="20" height="20" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M41 10C41 10 34 18 24 18C14 18 7 10 7 10" stroke="currentColor" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"/>
-                    <path d="M7 10C7 10 14 28 24 28C34 28 41 10 41 10" stroke="currentColor" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"/>
-                    <path d="M14 41C14 41 21 23 24 23C27 23 34 41 34 41" stroke="currentColor" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"/>
-                  </svg>
-                </a>
-              </div>
-            </div>
-          </div>
-
-          {/* Copyright */}
-          <div className="mt-12 pt-8 border-t border-border text-center">
-            <p className="text-subtext text-sm">
-              © {new Date().getFullYear()} University of Lagos Energy Club. All rights reserved.
+          {/* Column 1: Intro */}
+          <div className="space-y-6">
+            <h3 className="text-xl text-gray-800">Unilag Energy Club</h3>
+            <p className="text-gray-500 leading-loose text-sm pr-4">
+              Members must register with the club and agree to its code of conduct and objectives.
+              Each membership term is for one academic session.
             </p>
+            <div className="flex gap-4 text-gray-800">
+              {/* Instagram */}
+              <a href="#" className="hover:text-[#ebc000] hover:-translate-y-1 transition-transform"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg></a>
+              {/* WhatsApp */}
+              <a href="#" className="hover:text-[#ebc000] hover:-translate-y-1 transition-transform"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 1 1-7.6-11.7 8.38 8.38 0 0 1 3.8.9L21 3z"></path></svg></a>
+              {/* Youtube */}
+              <a href="#" className="hover:text-[#ebc000] hover:-translate-y-1 transition-transform"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon></svg></a>
+              {/* LinkedIn */}
+              <a href="#" className="hover:text-[#ebc000] hover:-translate-y-1 transition-transform"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg></a>
+              {/* X/Twitter */}
+              <a href="#" className="hover:text-[#ebc000] hover:-translate-y-1 transition-transform"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path></svg></a>
+            </div>
           </div>
+
+          {/* Column 2: Home */}
+          <div className="lg:pl-8">
+            <h3 className="text-xl text-gray-800 mb-6">Home</h3>
+            <ul className="space-y-4 font-medium text-gray-600 leading-loose">
+              <li><a href="#" className="hover:text-[#ebc000] transition-colors">Membership</a></li>
+              <li><a href="#" className="hover:text-[#ebc000] transition-colors">Our Mission</a></li>
+              <li><a href="#" className="hover:text-[#ebc000] transition-colors">Testimonials</a></li>
+            </ul>
+          </div>
+
+          {/* Column 3: About */}
+          <div>
+            <h3 className="text-xl text-gray-800 mb-6">About</h3>
+            <ul className="space-y-4 font-medium text-gray-600 leading-loose">
+              <li><a href="#" className="hover:text-[#ebc000] transition-colors">What we do</a></li>
+              <li><a href="#" className="hover:text-[#ebc000] transition-colors">Recent Projects</a></li>
+              <li><a href="#" className="hover:text-[#ebc000] transition-colors">Board of Directors</a></li>
+            </ul>
+          </div>
+
+          {/* Column 4: Contact */}
+          <div>
+            <h3 className="text-xl text-gray-800 mb-6">Contact</h3>
+            <ul className="space-y-4 text-gray-600 font-medium text-sm leading-loose">
+              <li className="flex items-center gap-3">
+                <div className="w-8 h-8 rounded-full bg-[#f4f4f4] flex items-center justify-center text-[#ebc000] shrink-0">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" /></svg>
+                </div>
+                <span className="break-all">info@unilagenergyclub.com</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <div className="w-8 h-8 rounded-full bg-[#f4f4f4] flex items-center justify-center text-[#ebc000] shrink-0 mt-0.5">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" /></svg>
+                </div>
+                <span>University Of Lagos</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        {/* Bottom Bar */}
+        <div className="border-t border-gray-300 py-8 flex justify-center">
+          <p className="text-gray-500 text-sm font-medium">
+            © {new Date().getFullYear()} Information Technology Team. All rights reserved.
+          </p>
         </div>
       </div>
     </footer>

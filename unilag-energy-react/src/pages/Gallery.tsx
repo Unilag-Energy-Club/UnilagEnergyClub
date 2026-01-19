@@ -1,122 +1,110 @@
+import { useState } from 'react';
 import Layout from '../components/layout/Layout';
 
 const Gallery = () => {
-  const UploadIcon = () => (
-    <svg
-      width="38"
-      height="38"
-      viewBox="0 0 38 38"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <path
-        opacity="0.4"
-        d="M14.2499 15.8333C15.9988 15.8333 17.4166 14.4156 17.4166 12.6667C17.4166 10.9178 15.9988 9.5 14.2499 9.5C12.501 9.5 11.0833 10.9178 11.0833 12.6667C11.0833 14.4156 12.501 15.8333 14.2499 15.8333Z"
-        stroke="#292D32"
-        strokeWidth="1.5"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-      <path
-        d="M20.5834 3.16675H14.2501C6.33341 3.16675 3.16675 6.33341 3.16675 14.2501V23.7501C3.16675 31.6667 6.33341 34.8334 14.2501 34.8334H23.7501C31.6667 34.8334 34.8334 31.6667 34.8334 23.7501V15.8334"
-        stroke="#292D32"
-        strokeWidth="1.5"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-      <g opacity="0.4">
-        <path
-          d="M28.5 12.6667V3.16675L31.6667 6.33341"
-          stroke="#292D32"
-          strokeWidth="1.5"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-        <path
-          d="M28.4999 3.16675L25.3333 6.33341"
-          stroke="#292D32"
-          strokeWidth="1.5"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-      </g>
-      <path
-        opacity="0.4"
-        d="M4.22754 30.0042L12.0334 24.7634C13.2842 23.9242 15.0892 24.0192 16.2134 24.9851L16.7359 25.4442C17.9709 26.5051 19.9659 26.5051 21.2009 25.4442L27.7875 19.7917C29.0225 18.7309 31.0175 18.7309 32.2525 19.7917L34.8334 22.0084"
-        stroke="#292D32"
-        strokeWidth="1.5"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
-  );
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
-  const UploadBox = ({ aosDelay, fullHeight = false }: { aosDelay: string; fullHeight?: boolean }) => (
-    <div 
-      className={`bg-white border border-border rounded-xl p-8 flex flex-col items-center justify-center gap-4 transition-all duration-300 hover:shadow-lg ${fullHeight ? 'h-full' : ''}`}
-      data-aos="fade-down"
+  const milestone1Images = [
+    '/assets/media/gallery/1741281393475.jpeg',
+    '/assets/media/gallery/1741281405421.jpeg',
+    '/assets/media/gallery/1741281405496.jpeg',
+    '/assets/media/gallery/1741281405536.jpeg',
+    '/assets/media/gallery/1741281407878.jpeg',
+  ];
+
+  const milestone2Images = [
+    '/assets/media/gallery/PXL_20250902_170706140.PORTRAIT.ORIGINAL.jpg',
+    '/assets/media/gallery/PXL_20250902_170827366.PORTRAIT.jpg',
+    '/assets/media/gallery/PXL_20250902_171015838.PORTRAIT.jpg',
+    '/assets/media/gallery/Snapchat-459063225 (1).jpg',
+  ];
+
+  const ImageCard = ({ src, aosDelay, fullHeight = false }: { src: string; aosDelay: string; fullHeight?: boolean }) => (
+    <div
+      className={`rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 group cursor-pointer ${fullHeight ? 'h-full min-h-[300px]' : 'h-64'}`}
+      data-aos="fade-up"
       data-aos-delay={aosDelay}
+      onClick={() => setSelectedImage(src)}
     >
-      <div className="text-secondary">
-        <UploadIcon />
-      </div>
-      <span className="text-secondary font-medium text-lg">Upload photo</span>
-      <span className="text-subtext text-sm">accepted formats: jpeg, pdf, png</span>
+      <img
+        src={src}
+        alt="Gallery"
+        className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
+      />
     </div>
   );
 
-  const MilestoneSection = ({ title, aosDelay }: { title: string; aosDelay: string }) => (
-    <section className="py-8">
-      <div className="container mx-auto px-4">
-        <h5 
-          className="text-2xl font-semibold text-mainText mb-6" 
-          data-aos="fade-right" 
+  const MilestoneSection = ({ title, images, aosDelay }: { title: string; images: string[]; aosDelay: string }) => (
+    <section className="py-16">
+      <div className="container mx-auto px-4 lg:px-8">
+        <h5
+          className="text-2xl font-bold text-mainText mb-8 border-l-4 border-primary pl-4"
+          data-aos="fade-right"
           data-aos-delay={aosDelay}
         >
           {title}
         </h5>
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           <div className="lg:col-span-2">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-              <UploadBox aosDelay="400" />
-              <UploadBox aosDelay="500" />
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+              {images[0] && <ImageCard src={images[0]} aosDelay="100" />}
+              {images[1] && <ImageCard src={images[1]} aosDelay="200" />}
             </div>
-            <UploadBox aosDelay="600" />
+            {images[2] && <ImageCard src={images[2]} aosDelay="300" />}
           </div>
           <div className="lg:col-span-1">
-            <UploadBox aosDelay="500" fullHeight />
+            {images[3] && <ImageCard src={images[3]} aosDelay="400" fullHeight />}
           </div>
         </div>
+        {/* Remaining images for this milestone if any */}
+        {images.length > 4 && (
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
+            {images.slice(4).map((img, idx) => (
+              <ImageCard key={idx} src={img} aosDelay="500" />
+            ))}
+          </div>
+        )}
       </div>
     </section>
   );
 
   return (
     <Layout activePage="gallery">
-      {/* Back Link */}
-      <section className="bg-sectionBg2 py-5">
+      {/* Header / Breadcrumb */}
+      <section className="bg-sectionBg2 py-10">
         <div className="container mx-auto px-4 lg:px-8">
-          <a href="#" className="inline-flex items-center gap-4 text-mainText hover:text-primary transition-colors">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="16"
-              height="16"
-              viewBox="0 0 16 16"
-            >
-              <path
-                fill="currentColor"
-                fillRule="evenodd"
-                d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8"
-              />
-            </svg>
-            <span className="text-xl font-semibold">Projects</span>
-          </a>
+          <h1 className="text-4xl font-bold text-mainText mb-2" data-aos="fade-down">Our Events</h1>
+          <p className="text-subtext" data-aos="fade-up">Capturing memories from our journey.</p>
         </div>
       </section>
 
       {/* Milestone Sections */}
-      <MilestoneSection title="Milestone 1" aosDelay="300" />
-      <MilestoneSection title="Milestone 2" aosDelay="300" />
+      <MilestoneSection title="Club Activities & Workshops" images={milestone1Images} aosDelay="300" />
+      <MilestoneSection title="Community & Outreach" images={milestone2Images} aosDelay="300" />
+
+      {/* Lightbox Modal */}
+      {selectedImage && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 p-4 animate-in fade-in duration-200"
+          onClick={() => setSelectedImage(null)}
+        >
+          <button
+            className="absolute top-4 right-4 text-white hover:text-primary transition-colors z-50"
+            onClick={() => setSelectedImage(null)}
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <line x1="18" y1="6" x2="6" y2="18"></line>
+              <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+          </button>
+          <img
+            src={selectedImage}
+            alt="Full view"
+            className="max-w-full max-h-[90vh] object-contain rounded-lg shadow-2xl"
+            onClick={(e) => e.stopPropagation()}
+          />
+        </div>
+      )}
     </Layout>
   );
 };

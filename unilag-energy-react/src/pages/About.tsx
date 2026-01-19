@@ -1,5 +1,6 @@
 import Layout from '../components/layout/Layout';
 import ActionButton from '../components/shared/ActionButton';
+import BlogGrid from '../components/shared/BlogGrid';
 
 const About = () => {
   const clubFeatures = [
@@ -51,9 +52,9 @@ const About = () => {
               <div className="mx-auto" data-aos="fade-down">
                 <span className="text-subtext">Welcome to</span>
               </div>
-              <h1 
-                className="text-4xl md:text-5xl lg:text-6xl font-bold text-mainText" 
-                data-aos="fade-down" 
+              <h1
+                className="text-4xl md:text-5xl lg:text-6xl font-bold text-mainText"
+                data-aos="fade-down"
                 data-aos-delay="300"
               >
                 University Of Lagos Energy Club
@@ -71,10 +72,10 @@ const About = () => {
                 { src: '/assets/media/images/float-6.png', className: 'bottom-20 left-10', delay: '500' },
                 { src: '/assets/media/images/float-4.png', className: 'bottom-20 right-0', delay: '500' },
               ].map((float, index) => (
-                <figure 
+                <figure
                   key={index}
-                  data-aos="fade-down-left" 
-                  data-aos-delay={float.delay} 
+                  data-aos="fade-down-left"
+                  data-aos-delay={float.delay}
                   className={`hidden md:block absolute ${float.className} max-w-[100px] animate-float`}
                 >
                   <img src={float.src} alt="" className="w-full" />
@@ -84,39 +85,13 @@ const About = () => {
 
             <div className="mx-auto mt-8">
               <figure>
-                <img src="/assets/media/images/about-hero.png" alt="About Hero" className="w-full" />
+                <img src="/assets/media/images/about-over.jpg" alt="About Hero" className="w-full h-96 object-cover rounded-lg size-full" />
               </figure>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Platforms Section */}
-      <section className="py-16" id="v-platform">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto flex flex-col text-center gap-4 mb-8">
-            <h5 className="text-2xl font-medium text-secondary" data-aos="fade-up">
-              Club Platforms
-            </h5>
-            <div className="flex items-center justify-center gap-8 md:gap-12">
-              {[
-                { src: '/assets/media/images/microsoft.png', delay: '300' },
-                { src: '/assets/media/images/google-meet.png', delay: '400' },
-                { src: '/assets/media/images/zoom.png', delay: '500' },
-              ].map((platform, index) => (
-                <div 
-                  key={index} 
-                  className="w-24 md:w-32" 
-                  data-aos="fade-down" 
-                  data-aos-delay={platform.delay}
-                >
-                  <img src={platform.src} alt="Platform" className="w-full" />
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* Reason Section */}
       <section className="py-16" id="v-reason">
@@ -125,11 +100,11 @@ const About = () => {
             <div className="flex flex-col items-center lg:items-start gap-6">
               <div className="text-center lg:text-left" data-aos="fade-right">
                 <span className="text-[rgba(167,171,182,1)] font-medium">
-                  Who can get into Unilag Energy Club?
+                  Energy Club, Trusted Programs, and 100% Guaranteed
                 </span>
               </div>
               <h1 className="text-3xl md:text-4xl font-bold text-mainText text-center lg:text-left lg:max-w-[90%]" data-aos="fade-right" data-aos-delay="300">
-                Energy Club, Trusted Programs, and 100% Guaranteed
+                Who can get into Unilag Energy Club?
               </h1>
               <div className="text-center lg:text-left lg:max-w-[90%]" data-aos="fade-right" data-aos-delay="1100">
                 <span className="text-[rgba(167,171,182,1)] font-semibold">
@@ -171,8 +146,8 @@ const About = () => {
             <div>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {clubFeatures.map((feature, index) => (
-                  <div 
-                    key={index} 
+                  <div
+                    key={index}
                     className="bg-white p-6 rounded-xl border border-border flex flex-col gap-3 transition-all duration-300 hover:shadow-lg"
                     data-aos="fade-down"
                     data-aos-delay={300 * (index + 1)}
@@ -198,7 +173,7 @@ const About = () => {
         <div className="container mx-auto px-4 lg:px-8 xl:px-0 max-w-7xl">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 justify-between items-center">
             <div data-aos="fade-right">
-              <img src="/assets/media/images/vission.png" alt="Vision" className="w-full" />
+              <img src="/assets/media/images/1741281405536.jpeg" alt="Vision" className="w-full h-full object-cover rounded-lg" />
             </div>
             <div className="flex flex-col gap-12">
               <div className="flex flex-col items-center lg:items-start gap-4">
@@ -233,6 +208,18 @@ const About = () => {
               </div>
             </div>
           </div>
+        </div>
+      </section>
+      {/* Latest Stories Section */}
+      <section className="py-16 bg-white" id="v-stories">
+        <div className="container mx-auto px-4 lg:px-8 xl:px-0 max-w-7xl">
+          <div className="flex flex-col items-center mb-12 text-center">
+            <span className="text-secondary text-xl font-bold mb-2" data-aos="fade-down">Our Blog</span>
+            <h1 className="text-3xl md:text-4xl font-bold text-mainText" data-aos="fade-down" data-aos-delay="200">
+              Latest Stories
+            </h1>
+          </div>
+          <BlogGrid limit={3} />
         </div>
       </section>
     </Layout>

@@ -28,20 +28,48 @@
   --animate-arrowEnter: arrowEnter 300ms ease-in-out forwards;
 
   @keyframes float {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-10px); }
+
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+
+    50% {
+      transform: translateY(-10px);
+    }
   }
 
   @keyframes arrowAnimation {
-    0% { opacity: 1; }
-    50% { transform: translateX(20px) translateY(-20px); opacity: 0; }
-    51% { transform: translateX(-20px) translateY(20px); opacity: 0; }
-    100% { transform: translateX(0); opacity: 1; }
+    0% {
+      opacity: 1;
+    }
+
+    50% {
+      transform: translateX(20px) translateY(-20px);
+      opacity: 0;
+    }
+
+    51% {
+      transform: translateX(-20px) translateY(20px);
+      opacity: 0;
+    }
+
+    100% {
+      transform: translateX(0);
+      opacity: 1;
+    }
   }
 
   @keyframes arrowEnter {
-    0% { transform: translateX(-100%); opacity: 0; }
-    100% { transform: translateX(0); opacity: 1; }
+    0% {
+      transform: translateX(-100%);
+      opacity: 0;
+    }
+
+    100% {
+      transform: translateX(0);
+      opacity: 1;
+    }
   }
 }
 
@@ -61,8 +89,8 @@
 *,
 *::before,
 *::after {
-  margin: 0;
-  padding: 0;
+  /* margin: 0; */
+  /* padding: 0; */
   box-sizing: border-box;
   letter-spacing: 0.2px;
   outline: none;
@@ -71,7 +99,8 @@
   -webkit-font-smoothing: antialiased;
 }
 
-html, body {
+html,
+body {
   width: 100%;
   overflow-x: hidden;
 }
@@ -87,12 +116,19 @@ body {
   width: 100%;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: 'MayoClinicSansBold', 'Helvetica', 'Arial', sans-serif;
   margin: 0;
 }
 
-ul, li, p {
+ul,
+li,
+p {
   margin: 0;
   padding: 0;
   list-style-type: none;
