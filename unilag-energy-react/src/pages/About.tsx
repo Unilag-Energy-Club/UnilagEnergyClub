@@ -45,48 +45,58 @@ const About = () => {
   return (
     <Layout activePage="about">
       {/* Hero Section */}
-      <section className="bg-sectionBg2 relative py-12" id="v-hero">
-        <div className="container mx-auto px-4">
-          <div className="relative">
-            <div className="max-w-4xl mx-auto flex flex-col text-center gap-3 relative mb-4">
-              <div className="mx-auto" data-aos="fade-down">
-                <span className="text-subtext">Welcome to</span>
+      <section className="bg-sectionBg2 relative py-20 lg:py-28 overflow-hidden" id="v-hero">
+        <div className="container mx-auto px-6 lg:px-16 max-w-7xl">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div className="flex flex-col gap-6 relative z-10">
+              <div data-aos="fade-down">
+                <span className="text-secondary font-bold tracking-wider uppercase text-sm">Welcome to</span>
               </div>
               <h1
-                className="text-4xl md:text-5xl lg:text-6xl font-bold text-mainText"
+                className="text-4xl md:text-5xl lg:text-7xl font-bold text-mainText leading-tight"
+                data-aos="fade-down"
+                data-aos-delay="200"
+              >
+                University Of Lagos <span className="text-secondary">Energy Club</span>
+              </h1>
+              <p
+                className="text-lg text-subtext leading-relaxed max-w-xl"
                 data-aos="fade-down"
                 data-aos-delay="300"
               >
-                University Of Lagos Energy Club
-              </h1>
-              <div className="max-w-3xl mx-auto" data-aos="fade-down" data-aos-delay="400">
-                <span className="text-secondary">
-                  A student organisation dedicated to fostering an understanding and appreciation of the energy sector and energy-related issues among the University of Lagos community
-                </span>
-              </div>
+                A student organisation dedicated to fostering an understanding and appreciation of the energy sector and energy-related issues among the University of Lagos community.
+              </p>
 
-              {/* Floating Images */}
-              {[
-                { src: '/assets/media/images/float-4.png', className: 'top-0 left-0', delay: '500' },
-                { src: '/assets/media/images/float-5.png', className: 'top-10 right-10', delay: '500' },
-                { src: '/assets/media/images/float-6.png', className: 'bottom-20 left-10', delay: '500' },
-                { src: '/assets/media/images/float-4.png', className: 'bottom-20 right-0', delay: '500' },
-              ].map((float, index) => (
-                <figure
-                  key={index}
-                  data-aos="fade-down-left"
-                  data-aos-delay={float.delay}
-                  className={`hidden md:block absolute ${float.className} max-w-[100px] animate-float`}
-                >
-                  <img src={float.src} alt="" className="w-full" />
-                </figure>
-              ))}
+              <div className="flex gap-4 mt-4" data-aos="fade-down" data-aos-delay="400">
+                <div className="flex -space-x-4">
+                  <img className="w-12 h-12 rounded-full border-2 border-white object-cover" src="/assets/media/gallery/PXL_20250902_170706140.PORTRAIT.ORIGINAL.jpg" alt="Member" />
+                  <img className="w-12 h-12 rounded-full border-2 border-white object-cover" src="/assets/media/gallery/PXL_20250902_170827366.PORTRAIT.jpg" alt="Member" />
+                  <img className="w-12 h-12 rounded-full border-2 border-white object-cover" src="/assets/media/gallery/PXL_20250902_171015838.PORTRAIT.jpg" alt="Member" />
+                  <div className="w-12 h-12 rounded-full border-2 border-white bg-secondary text-primary flex items-center justify-center font-bold text-xs">+100</div>
+                </div>
+                <div className="flex flex-col justify-center">
+                  <span className="font-bold text-mainText">Join our Community</span>
+                  <span className="text-xs text-subtext">Students & Professionals</span>
+                </div>
+              </div>
             </div>
 
-            <div className="mx-auto mt-8">
-              <figure>
-                <img src="/assets/media/images/about-over.jpg" alt="About Hero" className="w-full h-96 object-cover rounded-lg size-full" />
-              </figure>
+            <div className="relative" data-aos="fade-left" data-aos-delay="500">
+              <div className="relative rounded-[2.5rem] overflow-hidden shadow-2xl rotate-3 hover:rotate-0 transition-all duration-500">
+                <img
+                  src="/assets/media/gallery/1741281405536.jpeg"
+                  alt="About Hero"
+                  className="w-full h-[500px] object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                <div className="absolute bottom-8 left-8 text-white">
+                  <p className="font-bold text-xl">Building Future Leaders</p>
+                  <p className="text-sm opacity-90">In Energy & Sustainability</p>
+                </div>
+              </div>
+              {/* Decorative elements */}
+              <div className="absolute -top-10 -right-10 w-40 h-40 bg-secondary/20 rounded-full blur-3xl -z-10"></div>
+              <div className="absolute -bottom-10 -left-10 w-40 h-40 bg-primary/20 rounded-full blur-3xl -z-10"></div>
             </div>
           </div>
         </div>
@@ -94,124 +104,142 @@ const About = () => {
 
 
       {/* Reason Section */}
-      <section className="py-16" id="v-reason">
-        <div className="container mx-auto px-4 lg:px-8 xl:px-0 max-w-7xl">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 justify-between items-center">
-            <div className="flex flex-col items-center lg:items-start gap-6">
+      <section className="py-20" id="v-reason">
+        <div className="container mx-auto px-6 lg:px-16 max-w-7xl">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+            <div className="flex flex-col items-center lg:items-start gap-8">
               <div className="text-center lg:text-left" data-aos="fade-right">
-                <span className="text-[rgba(167,171,182,1)] font-medium">
-                  Energy Club, Trusted Programs, and 100% Guaranteed
+                <span className="text-secondary font-bold tracking-wider uppercase text-sm">
+                  Membership
                 </span>
               </div>
-              <h1 className="text-3xl md:text-4xl font-bold text-mainText text-center lg:text-left lg:max-w-[90%]" data-aos="fade-right" data-aos-delay="300">
+              <h2 className="text-3xl md:text-5xl font-bold text-mainText text-center lg:text-left leading-tight" data-aos="fade-right" data-aos-delay="200">
                 Who can get into Unilag Energy Club?
-              </h1>
-              <div className="text-center lg:text-left lg:max-w-[90%]" data-aos="fade-right" data-aos-delay="1100">
-                <span className="text-[rgba(167,171,182,1)] font-semibold">
-                  Open to all students, faculty, and staff of the University of Lagos interested in energy matters. Members must register with the club and agree to its code of conduct and objectives
-                </span>
+              </h2>
+              <div className="text-center lg:text-left space-y-6" data-aos="fade-right" data-aos-delay="300">
+                <p className="text-subtext text-lg leading-relaxed">
+                  We are open to all students, faculty, and staff of the University of Lagos who are passionate about energy matters. Whether you are in engineering, law, finance, or sciences, there is a place for you here.
+                </p>
+                <div className="flex items-center gap-4 text-mainText font-medium">
+                  <div className="flex items-center gap-2">
+                    <svg className="w-5 h-5 text-secondary" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" /></svg>
+                    <span>Register with the club</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <svg className="w-5 h-5 text-secondary" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" /></svg>
+                    <span>Agree to code of conduct</span>
+                  </div>
+                </div>
               </div>
-              <div data-aos="fade-down">
+              <div data-aos="fade-up" data-aos-delay="400">
                 <ActionButton href="https://forms.gle/muTqzYtFmuNhdvhu5">
-                  Join Us
+                  Join Us Today
                 </ActionButton>
               </div>
             </div>
-            <div data-aos="fade-left">
-              <img src="/assets/media/images/reason.png" alt="Reason" className="w-full" />
+
+            <div className="relative" data-aos="fade-left">
+              <img
+                src="/assets/media/gallery/PXL_20250902_170827366.PORTRAIT.jpg"
+                alt="Club Members"
+                className="w-full h-[600px] object-cover rounded-2xl shadow-xl"
+              />
+              {/* Floating Card */}
+              <div className="absolute bottom-8 -left-8 bg-white p-6 rounded-xl shadow-xl max-w-xs hidden md:block">
+                <div className="flex items-center gap-3 mb-2">
+                  <div className="w-3 h-3 rounded-full bg-green-500"></div>
+                  <span className="font-bold text-sm">Open for Registration</span>
+                </div>
+                <p className="text-xs text-subtext">Be part of the next generation of energy leaders.</p>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
       {/* Club Features Section */}
-      <section className="py-16" id="energy-club">
-        <div className="container mx-auto px-4 lg:px-8 xl:px-0 max-w-7xl">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 justify-between items-center">
-            <div className="flex flex-col items-center lg:items-start gap-6">
-              <h1 className="text-3xl md:text-4xl font-bold text-mainText text-center lg:text-left lg:max-w-[90%]" data-aos="fade-right">
-                About Energy Club
-              </h1>
-              <div className="text-center lg:text-left lg:max-w-[90%]" data-aos="fade-right" data-aos-delay="300">
-                <span className="text-[rgba(167,171,182,1)]">
-                  The club aims to serve as a platform for discussion, innovation, and collaboration on energy, sustainability, and the environment.
-                </span>
-              </div>
-              <div data-aos="fade-down" data-aos-delay="500">
-                <a href="#" className="inline-block bg-secondary text-primary px-10 py-3 rounded-[30px] font-bold transition-all duration-200 hover:shadow-lg">
-                  About Us
-                </a>
-              </div>
+      <section className="py-20 bg-sectionBg2" id="energy-club">
+        <div className="container mx-auto px-6 lg:px-16 max-w-7xl">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+            <div className="flex flex-col gap-6 sticky top-24">
+              <span className="text-secondary font-bold tracking-wider uppercase text-sm">What we do</span>
+              <h2 className="text-3xl md:text-5xl font-bold text-mainText leading-tight" data-aos="fade-right">
+                More than just a<br />student club.
+              </h2>
+              <p className="text-subtext text-lg leading-relaxed" data-aos="fade-right" data-aos-delay="200">
+                The club aims to serve as a platform for discussion, innovation, and collaboration on energy, sustainability, and the environment. We connect ambitious students with industry realities.
+              </p>
             </div>
-            <div>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                {clubFeatures.map((feature, index) => (
-                  <div
-                    key={index}
-                    className="bg-white p-6 rounded-xl border border-border flex flex-col gap-3 transition-all duration-300 hover:shadow-lg"
-                    data-aos="fade-down"
-                    data-aos-delay={300 * (index + 1)}
-                  >
-                    <div className="w-8 h-8 text-mainText">
-                      {feature.icon}
-                    </div>
-                    <h5 className="text-lg font-bold text-mainText">{feature.title}</h5>
-                    <p className="text-subtext text-sm">{feature.description}</p>
-                    <button className="text-sm font-medium text-mainText hover:text-primary transition-colors">
-                      More details
-                    </button>
+
+            <div className="grid grid-cols-1 gap-6">
+              {clubFeatures.map((feature, index) => (
+                <div
+                  key={index}
+                  className="bg-white p-8 rounded-2xl border border-transparent hover:border-border shadow-sm hover:shadow-xl transition-all duration-300 group"
+                  data-aos="fade-up"
+                  data-aos-delay={100 * (index + 1)}
+                >
+                  <div className="w-12 h-12 rounded-full bg-sectionBg2 flex items-center justify-center text-mainText mb-4 group-hover:bg-secondary group-hover:text-white transition-colors duration-300">
+                    {feature.icon}
                   </div>
-                ))}
-              </div>
+                  <h3 className="text-xl font-bold text-mainText mb-3">{feature.title}</h3>
+                  <p className="text-subtext leading-relaxed mb-4">{feature.description}</p>
+                </div>
+              ))}
             </div>
           </div>
         </div>
       </section>
 
       {/* Mission & Vision Section */}
-      <section className="py-16" id="our-mission">
+      <section className="py-20" id="our-mission">
         <div className="container mx-auto px-4 lg:px-8 xl:px-0 max-w-7xl">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 justify-between items-center">
-            <div data-aos="fade-right">
-              <img src="/assets/media/images/1741281405536.jpeg" alt="Vision" className="w-full h-full object-cover rounded-lg" />
-            </div>
-            <div className="flex flex-col gap-12">
-              <div className="flex flex-col items-center lg:items-start gap-4">
-                <div className="text-center lg:text-left" data-aos="fade-left">
-                  <span className="text-[rgba(85,85,85,1)] font-semibold text-lg">
-                    Club's Vision
-                  </span>
+          <div className="bg-black rounded-[3rem] p-8 md:p-16 relative overflow-hidden text-white">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center relative z-10">
+              <div data-aos="fade-right">
+                <img
+                  src="/assets/media/gallery/1741281393475.jpeg"
+                  alt="Vision"
+                  className="w-full h-[500px] object-cover rounded-2xl border border-white/10 shadow-2xl"
+                />
+              </div>
+              <div className="flex flex-col gap-12">
+                <div data-aos="fade-left">
+                  <div className="flex items-center gap-4 mb-4">
+                    <span className="w-12 h-[2px] bg-secondary"></span>
+                    <span className="text-secondary font-bold uppercase tracking-wider text-sm">Our Mission</span>
+                  </div>
+                  <h3 className="text-2xl md:text-3xl font-bold mb-4 leading-tight">
+                    To bridge the University of Lagos and the global energy sector.
+                  </h3>
+                  <p className="text-gray-400 leading-relaxed">
+                    We develop knowledgeable, innovative, and principled future energy leaders who understand renewable energy systems, power generation, energy markets, and sustainability as tools for change.
+                  </p>
                 </div>
-                <h1 className="text-3xl md:text-4xl font-bold text-mainText text-center lg:text-left" data-aos="fade-left" data-aos-delay="300">
-                  Our Mission
-                </h1>
-                <div className="text-center lg:text-left lg:max-w-[90%]" data-aos="fade-left" data-aos-delay="500">
-                  <span className="text-[rgba(167,171,182,1)] font-black">
-                    To bridge the University of Lagos and the global energy sector by developing knowledgeable, innovative, and principled future energy leaders who understand renewable energy systems, power generation, energy markets, and sustainability as tools for change.
-                  </span>
+
+                <div data-aos="fade-left" data-aos-delay="200">
+                  <div className="flex items-center gap-4 mb-4">
+                    <span className="w-12 h-[2px] bg-secondary"></span>
+                    <span className="text-secondary font-bold uppercase tracking-wider text-sm">Our Vision</span>
+                  </div>
+                  <h3 className="text-2xl md:text-3xl font-bold mb-4 leading-tight">
+                    To become the premier student-led energy organization.
+                  </h3>
+                  <p className="text-gray-400 leading-relaxed">
+                    Fostering energy literacy and innovation across the University of Lagos and beyond, inspiring the next generation of energy professionals and change-makers.
+                  </p>
                 </div>
               </div>
-              <div className="flex flex-col items-center lg:items-start gap-4">
-                <div className="text-center lg:text-left" data-aos="fade-left" data-aos-delay="700">
-                  <span className="text-[rgba(85,85,85,1)] font-semibold text-lg">
-                    Club's Vision
-                  </span>
-                </div>
-                <h1 className="text-3xl md:text-4xl font-bold text-mainText text-center lg:text-left" data-aos="fade-left" data-aos-delay="900">
-                  Our Vision
-                </h1>
-                <div className="text-center lg:text-left lg:max-w-[90%]" data-aos="fade-left" data-aos-delay="1100">
-                  <span className="text-[rgba(167,171,182,1)] font-black">
-                    To become the premier student-led organization fostering energy literacy and innovation across the University of Lagos and beyond, inspiring the next generation of energy professionals and change-makers.
-                  </span>
-                </div>
-              </div>
             </div>
+
+            {/* Background Decorations */}
+            <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-white/5 rounded-full blur-[100px] pointer-events-none -mr-32 -mt-32"></div>
+            <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-secondary/10 rounded-full blur-[100px] pointer-events-none -ml-32 -mb-32"></div>
           </div>
         </div>
       </section>
       {/* Latest Stories Section */}
-      <section className="py-16 bg-white" id="v-stories">
+      <section className="py-16 bg-white" id="blog">
         <div className="container mx-auto px-4 lg:px-8 xl:px-0 max-w-7xl">
           <div className="flex flex-col items-center mb-12 text-center">
             <span className="text-secondary text-xl font-bold mb-2" data-aos="fade-down">Our Blog</span>

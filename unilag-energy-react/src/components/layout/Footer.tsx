@@ -13,7 +13,9 @@ const Footer = () => {
               The club aims to serve as a platform for discussion, innovation, and collaboration on energy, sustainability, and the environment.
             </p>
             <a
-              href="#"
+              href="https://forms.gle/muTqzYtFmuNhdvhu5"
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center gap-3 bg-white text-[#ebc000] px-8 py-4 rounded-full font-bold text-lg hover:bg-gray-50 hover:scale-105 transition-all duration-300 shadow-md"
             >
               Register Now
@@ -57,15 +59,11 @@ const Footer = () => {
             </p>
             <div className="flex gap-4 text-gray-800">
               {/* Instagram */}
-              <a href="#" className="hover:text-[#ebc000] hover:-translate-y-1 transition-transform"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg></a>
-              {/* WhatsApp */}
-              <a href="#" className="hover:text-[#ebc000] hover:-translate-y-1 transition-transform"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 1 1-7.6-11.7 8.38 8.38 0 0 1 3.8.9L21 3z"></path></svg></a>
-              {/* Youtube */}
-              <a href="#" className="hover:text-[#ebc000] hover:-translate-y-1 transition-transform"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon></svg></a>
+              <a href="https://www.instagram.com/unilagenergyclub/" className="hover:text-[#ebc000] hover:-translate-y-1 transition-transform"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg></a>
               {/* LinkedIn */}
-              <a href="#" className="hover:text-[#ebc000] hover:-translate-y-1 transition-transform"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg></a>
+              <a href="https://www.linkedin.com/company/unilag-energy-club/" className="hover:text-[#ebc000] hover:-translate-y-1 transition-transform"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg></a>
               {/* X/Twitter */}
-              <a href="#" className="hover:text-[#ebc000] hover:-translate-y-1 transition-transform"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path></svg></a>
+              <a href="https://x.com/uecunilag" className="hover:text-[#ebc000] hover:-translate-y-1 transition-transform"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path></svg></a>
             </div>
           </div>
 
@@ -73,9 +71,9 @@ const Footer = () => {
           <div className="lg:pl-8">
             <h3 className="text-xl text-gray-800 mb-6">Home</h3>
             <ul className="space-y-4 font-medium text-gray-600 leading-loose">
-              <li><a href="#" className="hover:text-[#ebc000] transition-colors">Membership</a></li>
-              <li><a href="#" className="hover:text-[#ebc000] transition-colors">Our Mission</a></li>
-              <li><a href="#" className="hover:text-[#ebc000] transition-colors">Testimonials</a></li>
+              <li><a href="/#v-our-member" className="hover:text-[#ebc000] transition-colors">Membership</a></li>
+              <li><a href="/about#our-mission" className="hover:text-[#ebc000] transition-colors">Our Mission</a></li>
+              <li><a href="/#testimonials" className="hover:text-[#ebc000] transition-colors">Testimonials</a></li>
             </ul>
           </div>
 
@@ -83,9 +81,10 @@ const Footer = () => {
           <div>
             <h3 className="text-xl text-gray-800 mb-6">About</h3>
             <ul className="space-y-4 font-medium text-gray-600 leading-loose">
-              <li><a href="#" className="hover:text-[#ebc000] transition-colors">What we do</a></li>
-              <li><a href="#" className="hover:text-[#ebc000] transition-colors">Recent Projects</a></li>
-              <li><a href="#" className="hover:text-[#ebc000] transition-colors">Board of Directors</a></li>
+              <li><a href="/about#v-reason" className="hover:text-[#ebc000] transition-colors">For Who?</a></li>
+              <li><a href="/blog" className="hover:text-[#ebc000] transition-colors">Blog</a></li>
+              {/* TODO: Add board of directors page */}
+              {/* <li><a href="/about#board-of-directors" className="hover:text-[#ebc000] transition-colors">Board of Directors</a></li> */}
             </ul>
           </div>
 
@@ -97,7 +96,7 @@ const Footer = () => {
                 <div className="w-8 h-8 rounded-full bg-[#f4f4f4] flex items-center justify-center text-[#ebc000] shrink-0">
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" /></svg>
                 </div>
-                <span className="break-all">info@unilagenergyclub.com</span>
+                <span className="break-all">unilagenergyclub@gmail.com</span>
               </li>
               <li className="flex items-start gap-3">
                 <div className="w-8 h-8 rounded-full bg-[#f4f4f4] flex items-center justify-center text-[#ebc000] shrink-0 mt-0.5">

@@ -67,7 +67,7 @@ const HeroBackground = () => {
           onLoadedData={() => setVideoLoaded(true)}
           className={`absolute inset-0 w-full h-full object-cover z-0 transition-opacity duration-1000 ${videoLoaded ? 'opacity-100' : 'opacity-0'}`}
         >
-          <source src="/assets/media/video/uec videos.mp4" type="video/mp4" />
+          <source src="/assets/media/video/uec_videos.mp4" type="video/mp4" />
         </video>
       )}
     </div>
@@ -214,10 +214,10 @@ const Home = () => {
                   <h2 className="text-white text-3xl md:text-4xl font-bold lg:max-w-[70%]">
                     Research and development
                   </h2>
-                  <span className="text-subtext">In energy technologies...</span>
+                  <span className="text-subtext">In <strong className="font-bold text-xl">energy</strong> technologies...</span>
 
                   <figure className="absolute bottom-0 right-0 max-w-[115px] w-full" data-aos="fade-down" data-aos-delay="500">
-                    <img src="/assets/media/avatars/profile.png" alt="" className="w-full rounded-br-3xl" />
+                    <img src="/assets/media/svgs/badge.svg" alt="" className="w-full rounded-br-3xl" />
                   </figure>
                 </div>
               </div>
@@ -238,7 +238,9 @@ const Home = () => {
                       <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 w-full mt-4 lg:mt-0">
                         {/* Technology Division */}
                         <div className="flex flex-col items-center gap-2 p-4">
-                          <span className="text-3xl">💻</span>
+                          <div className="w-12 h-12 rounded-full bg-secondary/10 flex items-center justify-center text-secondary mb-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="18" height="18" x="3" y="3" rx="2" /><path d="M9 3v18" /><path d="m14 9 3 3-3 3" /><path d="m9 12 5-3" /><path d="m9 12 5 3" /></svg>
+                          </div>
                           <h3 className="font-bold text-mainText">Technology</h3>
                           <span className="text-[rgba(167,171,182,1)] text-xs text-center">
                             Innovation & R&D
@@ -247,7 +249,9 @@ const Home = () => {
 
                         {/* Finance Division */}
                         <div className="flex flex-col items-center gap-2 p-4">
-                          <span className="text-3xl">📊</span>
+                          <div className="w-12 h-12 rounded-full bg-secondary/10 flex items-center justify-center text-secondary mb-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="12" y1="20" x2="12" y2="10" /><line x1="18" y1="20" x2="18" y2="4" /><line x1="6" y1="20" x2="6" y2="16" /></svg>
+                          </div>
                           <h3 className="font-bold text-mainText">Finance</h3>
                           <span className="text-[rgba(167,171,182,1)] text-xs text-center">
                             Markets & Investment
@@ -256,7 +260,9 @@ const Home = () => {
 
                         {/* Legal Division */}
                         <div className="flex flex-col items-center gap-2 p-4">
-                          <span className="text-3xl">⚖️</span>
+                          <div className="w-12 h-12 rounded-full bg-secondary/10 flex items-center justify-center text-secondary mb-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m16 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z" /><path d="m2 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z" /><path d="M7 21h10" /><path d="M12 3v18" /><path d="M3 7h2c2 0 5-1 7-2 2 1 5 2 7 2h2" /></svg>
+                          </div>
                           <h3 className="font-bold text-mainText">Legal</h3>
                           <span className="text-[rgba(167,171,182,1)] text-xs text-center">
                             Policy & Regulation
@@ -315,7 +321,7 @@ const Home = () => {
           {/* Mission Section */}
           <section className="py-20 bg-sectionBg2" id="v-mission">
             <div className="container mx-auto px-4 lg:px-8 xl:px-0 max-w-7xl">
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 justify-between items-center px-12">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 justify-between items-center lg:px-12 px-0">
                 <div className="order-2 lg:order-1">
                   <div className="grid grid-cols-1 gap-3 w-full">
 
@@ -323,13 +329,11 @@ const Home = () => {
                     <div
                       data-aos="fade-down"
                       data-aos-delay="300"
-                      className="rounded-lg shadow-md"
+                      className="rounded-lg shadow-md w-full aspect-[2/1]"
                       style={{
                         backgroundImage: 'url(/assets/media/images/1.png)',
                         backgroundSize: '100% 200%', // 100% width, 200% height to show only top half
                         backgroundPosition: 'top center',
-                        height: '250px',
-                        width: '100%',
                         backgroundRepeat: 'no-repeat'
                       }}
                     >
@@ -342,13 +346,11 @@ const Home = () => {
                       <div
                         data-aos="fade-up"
                         data-aos-delay="300"
-                        className="rounded-lg shadow-md"
+                        className="rounded-lg shadow-md w-full aspect-square"
                         style={{
                           backgroundImage: 'url(/assets/media/images/1.png)',
                           backgroundSize: '200% 200%', // 200% width (since container is 50%), 200% height
                           backgroundPosition: 'left bottom',
-                          height: '250px',
-                          width: '100%',
                           backgroundRepeat: 'no-repeat'
                         }}
                       >
@@ -358,13 +360,11 @@ const Home = () => {
                       <div
                         data-aos="fade-up"
                         data-aos-delay="400"
-                        className="rounded-lg shadow-md"
+                        className="rounded-lg shadow-md w-full aspect-square"
                         style={{
                           backgroundImage: 'url(/assets/media/images/1.png)',
                           backgroundSize: '200% 200%', // 200% width, 200% height
                           backgroundPosition: 'right bottom',
-                          height: '250px',
-                          width: '100%',
                           backgroundRepeat: 'no-repeat'
                         }}
                       >
@@ -431,7 +431,7 @@ const Home = () => {
 
 
         {/* Latest News Section */}
-        <section className="py-16 bg-white" id="v-news">
+        <section className="py-16 px-12 bg-white" id="v-news">
           <div className="container mx-auto px-4 lg:px-8 xl:px-0 max-w-7xl">
             <div className="flex flex-col items-center mb-12 text-center">
               <span className="text-secondary text-xl font-bold mb-2" data-aos="fade-down">Our Blog</span>
@@ -560,6 +560,60 @@ const Home = () => {
               </figure>
             </div>
           </div>
+        </section>
+
+        {/* Newsletter Section */}
+        <section className="py-20 bg-sectionBg2 relative overflow-hidden" id="newsletter">
+          <div className="container mx-auto px-4 lg:px-8 xl:px-0 max-w-7xl">
+            <div className="py-20 bg-black p-8 md:p-16 relative overflow-hidden text-white">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative z-10">
+
+                {/* Text Content */}
+                <div className="text-center lg:text-left">
+                  <span className="text-secondary font-bold text-white tracking-wider uppercase text-sm mb-4 block" data-aos="fade-down">
+                    Stay Connected
+                  </span>
+                  <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 leading-tight b" data-aos="fade-up">
+                    Join our community of energy innovators
+                  </h2>
+                  <p className="text-gray-400 text-lg mb-8 leading-relaxed max-w-xl mx-auto lg:mx-0" data-aos="fade-up" data-aos-delay="100">
+                    Subscribe to the Unilag Energy Club newsletter for exclusive updates, industry insights, and event announcements delivered straight to your inbox.
+                  </p>
+
+                  {/* Optional: Social Proof or Tagline */}
+                  <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 text-sm text-gray-400" data-aos="fade-up" data-aos-delay="200">
+                    <div className="flex -space-x-2">
+                      <div className="w-8 h-8 rounded-full bg-gray-600 border-2 border-black flex items-center justify-center text-xs text-white">CN</div>
+                      <div className="w-8 h-8 rounded-full bg-gray-500 border-2 border-black flex items-center justify-center text-xs text-white">JD</div>
+                      <div className="w-8 h-8 rounded-full bg-gray-400 border-2 border-black flex items-center justify-center text-xs text-white">AS</div>
+                    </div>
+                    <p>Join hundreds of students & professionals</p>
+                  </div>
+                </div>
+
+                {/* Substack Embed */}
+                <div className="w-full max-w-md mx-auto lg:mr-0" data-aos="fade-left" data-aos-delay="300">
+                  <div className="bg-white rounded-2xl overflow-hidden shadow-2xl transform transition-transform hover:scale-[1.02] duration-300">
+                    <iframe
+                      src="https://unilagenergyclub.substack.com/embed"
+                      width="100%"
+                      height="320"
+                      style={{ border: 'none', background: 'white' }}
+                      title="Unilag Energy Club Newsletter"
+                      scrolling="no"
+                    ></iframe>
+                  </div>
+                </div>
+              </div>
+
+              {/* Decorative Gradients inside card */}
+              <div className="absolute top-0 right-0 -mr-20 -mt-20 w-96 h-96 bg-primary/20 rounded-full blur-[100px] pointer-events-none"></div>
+              <div className="absolute bottom-0 left-0 -ml-20 -mb-20 w-80 h-80 bg-secondary/10 rounded-full blur-[80px] pointer-events-none"></div>
+            </div>
+          </div>
+
+          {/* External Decorative Elements */}
+          <div className="absolute top-0 left-0 w-full h-full bg-[url('/assets/media/patterns/noise.png')] opacity-5 pointer-events-none"></div>
         </section>
 
       </div >
