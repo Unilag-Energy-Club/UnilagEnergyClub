@@ -27,17 +27,38 @@ const BlogPost = () => {
     // Rich Text Rendering Options
     const renderOptions = {
         renderNode: {
-            [BLOCKS.PARAGRAPH]: (node: any, children: any) => <p className="mb-6 text-lg text-gray-700 leading-relaxed">{children}</p>,
-            [BLOCKS.HEADING_1]: (node: any, children: any) => <h1 className="text-4xl font-bold text-mainText mt-10 mb-4">{children}</h1>,
-            [BLOCKS.HEADING_2]: (node: any, children: any) => <h2 className="text-3xl font-bold text-mainText mt-10 mb-4">{children}</h2>,
-            [BLOCKS.HEADING_3]: (node: any, children: any) => <h3 className="text-2xl font-bold text-mainText mt-8 mb-3">{children}</h3>,
-            [BLOCKS.QUOTE]: (node: any, children: any) => (
-                <blockquote className="border-l-4 border-primary pl-4 italic text-xl text-gray-600 my-8 bg-gray-50 p-4 rounded-r-lg">
-                    {children}
-                </blockquote>
-            ),
-            [BLOCKS.UL_LIST]: (node: any, children: any) => <ul className="list-disc ml-6 mb-6 space-y-2 text-lg text-gray-700">{children}</ul>,
-            [BLOCKS.OL_LIST]: (node: any, children: any) => <ol className="list-decimal ml-6 mb-6 space-y-2 text-lg text-gray-700">{children}</ol>,
+            [BLOCKS.PARAGRAPH]: (node: any, children: any) => {
+                void node;
+                return <p className="mb-6 text-lg text-gray-700 leading-relaxed">{children}</p>;
+            },
+            [BLOCKS.HEADING_1]: (node: any, children: any) => {
+                void node;
+                return <h1 className="text-4xl font-bold text-mainText mt-10 mb-4">{children}</h1>;
+            },
+            [BLOCKS.HEADING_2]: (node: any, children: any) => {
+                void node;
+                return <h2 className="text-3xl font-bold text-mainText mt-10 mb-4">{children}</h2>;
+            },
+            [BLOCKS.HEADING_3]: (node: any, children: any) => {
+                void node;
+                return <h3 className="text-2xl font-bold text-mainText mt-8 mb-3">{children}</h3>;
+            },
+            [BLOCKS.QUOTE]: (node: any, children: any) => {
+                void node;
+                return (
+                    <blockquote className="border-l-4 border-primary pl-4 italic text-xl text-gray-600 my-8 bg-gray-50 p-4 rounded-r-lg">
+                        {children}
+                    </blockquote>
+                );
+            },
+            [BLOCKS.UL_LIST]: (node: any, children: any) => {
+                void node;
+                return <ul className="list-disc ml-6 mb-6 space-y-2 text-lg text-gray-700">{children}</ul>;
+            },
+            [BLOCKS.OL_LIST]: (node: any, children: any) => {
+                void node;
+                return <ol className="list-decimal ml-6 mb-6 space-y-2 text-lg text-gray-700">{children}</ol>;
+            },
             [BLOCKS.EMBEDDED_ASSET]: (node: any) => {
                 const { file, title } = node.data.target.fields;
                 return (
