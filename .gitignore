@@ -24,4 +24,6 @@ dist-ssr
 *.sw?
 
 CONTENTFUL_SETUP.md
+
 .env
+README_PROJECT.md
