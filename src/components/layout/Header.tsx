@@ -7,6 +7,7 @@ interface HeaderProps {
 const Header = ({ activePage = 'home' }: HeaderProps) => {
   const navLinks = [
     { href: '/', label: 'Home', page: 'home' },
+    { href: '/et360', label: 'ET360°', page: 'et360' },
     { href: '/about', label: 'About Us', page: 'about' },
     { href: '/gallery', label: 'Gallery', page: 'gallery' },
     { href: '/blog', label: 'Blog', page: 'blog' },

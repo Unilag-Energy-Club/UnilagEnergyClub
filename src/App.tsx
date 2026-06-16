@@ -5,6 +5,7 @@ import Gallery from './pages/Gallery';
 import Blog from './pages/Blog';
 import BlogPost from './pages/BlogPost';
 import Contact from './pages/Contact';
+import ET360 from './pages/ET360';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route path="/blog" element={<Blog />} />
         <Route path="/blog/:slug" element={<BlogPost />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/et360" element={<ET360 />} />
       </Routes>
     </Router>
   );
