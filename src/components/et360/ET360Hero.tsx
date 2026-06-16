@@ -11,7 +11,7 @@ const ET360Hero = () => {
       />
 
       {/* Content — padding sets the banner height, no flex centering tricks */}
-      <div className="relative z-10 px-4 lg:px-8 pt-16 pb-0">
+      <div className="relative z-10 px-4 lg:px-8 pt-36 pb-0">
         {/* Live badge */}
         <div className="flex justify-center mb-10">
           <span className="inline-flex items-center gap-2 bg-yellow-400/10 border border-yellow-400/30 text-yellow-300 text-xs font-bold px-5 py-2 rounded-full tracking-wide uppercase">
