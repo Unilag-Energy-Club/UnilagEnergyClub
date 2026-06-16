@@ -63,31 +63,31 @@ const ET360Schedule = () => {
     {
       title: 'Rural Community Mini-Grid',
       description:
-        'Developing a complete bankable mini-grid package for Tudun Wada, an unserved farming community in Kaduna South — load assessment, system design, financial modeling, and carbon registration.',
+        'Tudun Wada is an unserved farming community of 11,400 people in Kaduna South. A grid line passes 800 metres away but the distribution company has no capital budget for extensions. The community spends ₦840,000 monthly on diesel, and households spend up to ₦18,000 monthly on kerosene. Teams develop a bankable mini-grid package: load assessment, financial model with viable tariff, blended finance stack, carbon registration pathway with a seven-year credit projection, and a legal framework addressing grid-arrival risk.',
       num: '01',
     },
     {
       title: 'Heavy Industry Decarbonisation',
       description:
-        'A full industrial transition package for a major manufacturing plant — energy audit, retrofit plan, financial modeling with/without carbon revenue, and ESG framework.',
+        'A manufacturing plant producing three million tonnes of structural goods per year runs on pipeline gas, suffers nine days of supply disruptions monthly, and spends 41% of operating costs on energy. A European DFI declined a €150 million green loan due to missing emissions data. Teams develop a full industrial transition package: energy audit, retrofit plan with Capex estimates, financial model with and without carbon revenue, ISSB-aligned MRV framework, and green loan instrument.',
       num: '02',
     },
     {
       title: 'Urban Transit Fleet Electrification',
       description:
-        'A complete e-bus transition package for a 432-bus municipal transit operator — fleet emissions baseline, infrastructure design, and DFI financing package.',
+        'A municipal transit operator runs 432 diesel buses carrying 63,000 daily passengers. Following subsidy removal, diesel costs surged 140%, leaving a ₦2.3 billion operating deficit. Government bailouts stop in 18 months. Teams develop a complete e-bus transition package: fleet emissions baseline, depot infrastructure design for three sites, lifecycle cost comparison, Gross Cost Contract structure, EV carbon MRV plan, and a blended DFI financing package.',
       num: '03',
     },
     {
       title: 'Generation Asset Strategic Refinancing',
       description:
-        'A formal investment advisory package for a 972 MW gas plant — emissions baseline, financial scenario models, and carbon management assessment.',
+        'A 972MW gas plant averages only 340MW due to aging infrastructure. The central clearing house owes ₦352.7 billion in legacy receivables and the current lender refuses to refinance in four months. Two paths are on the table: a $180M infrastructure fund with harsh covenants, or a European transition consortium offering lower-cost capital for partial rehabilitation plus 80MW solar. Teams develop a formal advisory package: emissions baseline, financial scenarios for both options, carbon management assessment, legal structure, and a data-backed recommendation.',
       num: '04',
     },
     {
       title: 'Regional Climate Action Blueprint & Green Bond',
       description:
-        'A unified state climate programme — costed mini-grid program, clean cooking intervention, MRV framework, and green bond issuance structure.',
+        'A regional government has 60 days to submit a Concept Note to a global climate fund. The governor has committed to electricity access for 280 communities, clean cooking for 380,000 households, and 90,000 hectares of mangrove restoration. A planned green bond was blocked by securities regulators. Teams develop a unified state climate programme: costed mini-grid electrification plan, clean cooking intervention with emissions baseline, multi-workstream MRV framework, debt service model backed by carbon revenues, green bond issuance framework, and a completed Concept Note.',
       num: '05',
     },
   ];
@@ -102,7 +102,7 @@ const ET360Schedule = () => {
   const active = schedule[activeWeek];
 
   return (
-    <section className="py-24 bg-white">
+    <section id="schedule" className="py-24 bg-white">
       <div className="container mx-auto px-4 lg:px-8 max-w-6xl">
 
         {/* Header */}

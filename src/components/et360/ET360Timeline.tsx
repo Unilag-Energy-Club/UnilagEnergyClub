@@ -59,7 +59,7 @@ const ET360Timeline = () => {
           <h2 className="text-4xl lg:text-5xl font-black text-green-950">Timeline</h2>
         </div>
 
-        {/* Desktop timeline — alternating */}
+        {/* Desktop timeline (alternating) */}
         <div className="hidden md:block relative">
           {/* Spine */}
           <div className="absolute left-1/2 top-0 bottom-0 w-px bg-green-200 -translate-x-1/2" />
@@ -95,7 +95,7 @@ const ET360Timeline = () => {
                   )}
                 </div>
 
-                {/* Dot — pinned to spine */}
+                {/* Dot (pinned to spine) */}
                 <div
                   className={`absolute left-1/2 -translate-x-1/2 mt-1 w-4 h-4 rounded-full z-10 flex-shrink-0 ${
                     phase.isHighlight
@@ -130,7 +130,7 @@ const ET360Timeline = () => {
           </div>
         </div>
 
-        {/* Mobile timeline — left-spine list */}
+        {/* Mobile timeline (left-spine list) */}
         <div className="md:hidden relative pl-8 border-l border-green-200 space-y-12">
           {phases.map((phase, i) => (
             <div key={i} className="relative" data-aos="fade-up" data-aos-delay={i * 70}>
@@ -165,7 +165,7 @@ const ET360Timeline = () => {
             <h3 className="text-xs font-bold text-yellow-400 uppercase tracking-widest">Key Dates</h3>
           </div>
           {[
-            { label: 'Bootcamp Duration', value: '19 June – 11 July 2026' },
+            { label: 'Bootcamp Duration', value: '19 June to 11 July 2026' },
             { label: 'Format', value: 'Fridays, Saturdays + one weekday/week' },
             { label: 'Total Teaching Days', value: '11 days' },
             { label: 'Grand Finale', value: '17 July 2026' },

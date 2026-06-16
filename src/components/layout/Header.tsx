@@ -76,7 +76,7 @@ const Header = ({ activePage = 'home' }: HeaderProps) => {
               </ul>
             </div>
 
-            {/* Hamburger button — mobile only */}
+            {/* Hamburger button (mobile only) */}
             <button
               className="flex lg:hidden items-center justify-center w-10 h-10 rounded-lg transition-colors duration-200"
               style={{ color: isDarkHero ? 'rgba(255,255,255,0.9)' : 'rgba(19,22,35,1)' }}
@@ -103,7 +103,7 @@ const Header = ({ activePage = 'home' }: HeaderProps) => {
           onClick={() => setMobileOpen(false)}
         />
 
-        {/* Drawer — slides in from the right */}
+        {/* Drawer (slides in from right) */}
         <div
           className={`absolute top-0 right-0 h-full w-72 bg-green-950 shadow-2xl flex flex-col transition-transform duration-300 ease-in-out ${
             mobileOpen ? 'translate-x-0' : 'translate-x-full'

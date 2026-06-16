@@ -10,13 +10,13 @@ const ET360Hero = () => {
         }}
       />
 
-      {/* Content — padding sets the banner height, no flex centering tricks */}
+      {/* Content: padding sets the banner height */}
       <div className="relative z-10 px-4 lg:px-8 pt-36 pb-0">
         {/* Live badge */}
         <div className="flex justify-center mb-10">
-          <span className="inline-flex items-center gap-2 bg-yellow-400/10 border border-yellow-400/30 text-yellow-300 text-xs font-bold px-5 py-2 rounded-full tracking-wide uppercase">
-            <span className="w-1.5 h-1.5 rounded-full bg-yellow-400 animate-pulse" />
-            Applications Open
+          <span className="inline-flex items-center gap-2 bg-white/10 border border-white/20 text-white/70 text-xs font-bold px-5 py-2 rounded-full tracking-wide uppercase">
+            <span className="w-1.5 h-1.5 rounded-full bg-white/50" />
+            Applications Closed
           </span>
         </div>
 
@@ -43,10 +43,10 @@ const ET360Hero = () => {
         {/* CTAs */}
         <div className="flex flex-col sm:flex-row gap-3 justify-center mb-14">
           <a
-            href="#registration"
+            href="#schedule"
             className="px-8 py-3.5 bg-yellow-400 text-green-950 font-bold rounded-full hover:bg-yellow-300 transition-all duration-300 text-sm shadow-lg shadow-yellow-400/20 text-center"
           >
-            Apply Now
+            View Programme
           </a>
           <a
             href="#about"
@@ -56,7 +56,7 @@ const ET360Hero = () => {
           </a>
         </div>
 
-        {/* Stats strip — flush to bottom of section */}
+        {/* Stats strip */}
         <div className="border-t border-white/10 bg-white/5">
           <div className="max-w-3xl mx-auto grid grid-cols-3 divide-x divide-white/10">
             {[

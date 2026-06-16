@@ -299,7 +299,7 @@ const Home = () => {
                   </h1>
                   <div className="lg:max-w-[90%] text-center lg:text-left" data-aos="fade-right" data-aos-delay="300">
                     <span className="text-white text-lg md:text-xl font-medium">
-                      The University of Lagos Energy Club is a student community where learning, collaboration, and curiosity come together. We bridge the gap between classroom learning and real-world practice through technical workshops, research, policy discussions, and collaborations with industry experts. Our three divisions—Technology, Finance, and Legal—allow members to grow in areas matching their interests while learning from diverse perspectives.
+                      The University of Lagos Energy Club is a student community where learning, collaboration, and curiosity come together. We bridge the gap between classroom learning and real-world practice through technical workshops, research, policy discussions, and collaborations with industry experts. Our three divisions (Technology, Finance, and Legal) allow members to grow in areas matching their interests while learning from diverse perspectives.
                     </span>
                   </div>
                   <div data-aos="fade-down" data-aos-delay="500">

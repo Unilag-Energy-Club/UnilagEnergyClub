@@ -119,7 +119,7 @@ const ET360Sponsors = () => {
             </div>
           </div>
 
-          {/* Arrow — prev */}
+          {/* Arrow prev */}
           <button
             onClick={prev}
             disabled={current === 0}
@@ -129,7 +129,7 @@ const ET360Sponsors = () => {
             <ChevronLeft className="w-5 h-5" />
           </button>
 
-          {/* Arrow — next */}
+          {/* Arrow next */}
           <button
             onClick={next}
             aria-label="Next"

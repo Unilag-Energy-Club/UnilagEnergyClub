@@ -36,10 +36,10 @@ const outcomes = [
 ];
 
 const keyDetails = [
-  { value: '19 June – 11 July', label: 'Bootcamp Dates' },
+  { value: '19 June to 11 July', label: 'Bootcamp Dates' },
   { value: 'Fridays & Saturdays', label: 'Format' },
   { value: '100 Students', label: 'Cohort Size' },
-  { value: '₦3,000', label: 'Commitment Fee' },
+  { value: 'All Faculties', label: 'Who Can Apply' },
 ];
 
 const ET360About = () => {
@@ -57,16 +57,17 @@ const ET360About = () => {
               What is <span className="text-green-600">ET360°</span>?
             </h2>
             <p className="text-gray-600 leading-relaxed mb-5">
-              ET360° is a four-week intensive bootcamp preparing carefully selected UNILAG students for
-              careers in Nigeria's energy transition economy. The programme integrates technical energy
-              systems, infrastructure finance, climate policy, and carbon markets into one connected
-              learning experience.
+              ET360° is a four-week intensive bootcamp preparing 100 carefully selected UNILAG students
+              for careers in Nigeria's energy transition economy. The programme integrates technical energy
+              systems education, infrastructure finance, climate policy, carbon markets, project
+              development, and investment readiness into one connected learning experience. Every session
+              is delivered by a practitioner. Every exercise connects to a real project deliverable.
             </p>
             <a
-              href="#registration"
+              href="#schedule"
               className="inline-block px-7 py-3 bg-green-600 text-white text-sm font-bold rounded-full hover:bg-green-700 transition-all duration-300"
             >
-              Apply for a Spot
+              View Programme Schedule
             </a>
           </div>
 
@@ -139,7 +140,7 @@ const ET360About = () => {
             </span>
             <h3 className="text-2xl lg:text-3xl font-black text-white mb-3">Programme Outcomes</h3>
             <p className="text-green-300 text-sm leading-relaxed">
-              Every participant who completes ET360° leaves with tangible, career-ready assets — not just
+              Every participant who completes ET360° leaves with tangible, career-ready assets, not just
               certificates.
             </p>
           </div>
