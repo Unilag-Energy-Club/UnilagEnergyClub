@@ -71,7 +71,7 @@ export default function HomePage() {
       formData.append('name', name.trim())
       formData.append('photo', compressed, compressed.name)
 
-      const res = await fetch('/api/generate', {
+      const res = await fetch('/et360.dp/api/generate', {
         method: 'POST',
         body: formData,
       })
