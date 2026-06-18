@@ -3,46 +3,59 @@ const Footer = () => {
     <footer className="bg-[#efefef] pb-10 mt-[12rem] relative">
       <div className="container mx-auto px-4 lg:px-20">
 
-        {/* Yellow Banner Section */}
-        <div className="relative bg-[#ebc000] rounded-[40px] min-h-[400px] p-10 lg:p-16 flex items-center overflow-hidden -translate-y-1/3 shadow-xl z-20">
+        {/* ET360 Grand Finale Banner */}
+        <div className="relative bg-green-950 rounded-[40px] min-h-[400px] p-10 lg:p-16 flex items-center overflow-hidden -translate-y-1/3 shadow-xl z-20">
+          {/* Dot grid background */}
+          <div
+            className="absolute inset-0 rounded-[40px] z-0 opacity-10"
+            style={{
+              backgroundImage: 'radial-gradient(circle at 1px 1px, #4ade80 1px, transparent 0)',
+              backgroundSize: '32px 32px',
+            }}
+          />
+
           <div className="relative z-10 max-w-2xl">
-            <h2 className="text-white text-4xl lg:text-6xl mb-6 leading-tight">
-              Join University Of <br /> Lagos Energy Club
-            </h2>
-            <p className="text-white text-lg font-medium mb-10 leading-loose opacity-95 max-w-xl">
-              The club aims to serve as a platform for discussion, innovation, and collaboration on energy, sustainability, and the environment.
+            <p className="text-[#ebc000] text-xs font-bold uppercase tracking-widest mb-4">
+              UNILAG Energy Club presents
             </p>
+            <h2 className="text-white text-4xl lg:text-6xl font-black mb-2 leading-tight">
+              ET360° <br />
+              <span className="text-[#ebc000]">Grand Finale</span>
+            </h2>
+            <p className="text-green-300 text-base font-medium mb-6 leading-relaxed max-w-lg">
+              Five capstone teams. One industry panel. 1,000+ attendees. Free and open to the public
+              on 16 July 2026 at the University of Lagos.
+            </p>
+            <div className="flex flex-wrap gap-3 mb-8">
+              {['16 July 2026', 'University of Lagos', 'Free Entry'].map((tag) => (
+                <span
+                  key={tag}
+                  className="inline-block text-xs font-semibold px-4 py-1.5 rounded-full bg-white/10 border border-white/20 text-white/80"
+                >
+                  {tag}
+                </span>
+              ))}
+            </div>
             <a
-              href="https://forms.gle/muTqzYtFmuNhdvhu5"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-3 bg-white text-[#ebc000] px-8 py-4 rounded-full font-bold text-lg hover:bg-gray-50 hover:scale-105 transition-all duration-300 shadow-md"
+              href="/et360/finale"
+              className="inline-flex items-center gap-3 bg-[#ebc000] text-green-950 px-8 py-4 rounded-full font-bold text-base hover:bg-yellow-300 hover:scale-105 transition-all duration-300 shadow-md"
             >
-              Register Now
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+              Register to Attend
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                 <line x1="5" y1="12" x2="19" y2="12"></line>
                 <polyline points="12 5 19 12 12 19"></polyline>
               </svg>
             </a>
           </div>
 
-          {/* Large Lightbulb Graphic (Right Side) */}
-          <div className="absolute right-[-2%] top-1/2 -translate-y-1/2 opacity-30 lg:opacity-100 pointer-events-none">
-            <svg width="450" height="450" viewBox="0 0 200 200" className="text-white/30 fill-white/20">
-              {/* Simplified bulb shape matching the image style */}
-              <path d="M100 20 C70 20 45 45 45 75 C45 100 60 115 65 125 L65 150 L135 150 L135 125 C140 115 155 100 155 75 C155 45 130 20 100 20Z" fill="white" fillOpacity="0.2" />
-              {/* Base of bulb */}
-              <rect x="75" y="155" width="50" height="8" rx="4" fill="white" fillOpacity="0.3" />
-              <rect x="80" y="165" width="40" height="8" rx="4" fill="white" fillOpacity="0.3" />
-              <rect x="90" y="175" width="20" height="8" rx="4" fill="white" fillOpacity="0.3" />
-              {/* Inner icons (Hardhat/Gear representation) */}
-              <circle cx="100" cy="75" r="30" stroke="white" strokeWidth="4" fill="none" />
-              <path d="M85 70 L115 70 L110 55 C110 55 100 50 90 55 Z" fill="white" />
-              {/* Rays */}
-              {[0, 45, 90, 135, 180, 225, 270, 315].map((deg) => (
-                <line key={deg} x1="100" y1="10" x2="100" y2="0" stroke="white" strokeWidth="5" strokeLinecap="round" transform={`rotate(${deg} 100 100)`} />
-              ))}
-            </svg>
+          {/* Decorative "360°" right side */}
+          <div className="absolute right-0 top-1/2 -translate-y-1/2 pointer-events-none select-none opacity-10 lg:opacity-20 pr-8">
+            <span
+              className="text-white font-black leading-none"
+              style={{ fontSize: 'clamp(8rem, 18vw, 16rem)' }}
+            >
+              360°
+            </span>
           </div>
         </div>
 

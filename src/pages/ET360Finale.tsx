@@ -24,7 +24,7 @@ const referralSources = [
 ];
 
 const sideInfo: { Icon: LucideIcon; title: string; value: string }[] = [
-  { Icon: Calendar, title: 'Date', value: '17 July 2026' },
+  { Icon: Calendar, title: 'Date', value: '16 July 2026' },
   { Icon: MapPin, title: 'Venue', value: 'University of Lagos' },
   { Icon: Users, title: 'Expected Attendance', value: '1,000+ people' },
 ];
@@ -115,7 +115,7 @@ const ET360Finale = () => {
             <div className="flex flex-wrap gap-3 mb-8">
               <span className="inline-flex items-center gap-2 bg-white/15 backdrop-blur-sm border border-white/25 text-white text-xs font-semibold px-4 py-2 rounded-full">
                 <Calendar className="w-3.5 h-3.5" strokeWidth={1.75} />
-                17 July 2026
+                16 July 2026
               </span>
               <span className="inline-flex items-center gap-2 bg-white/15 backdrop-blur-sm border border-white/25 text-white text-xs font-semibold px-4 py-2 rounded-full">
                 <MapPin className="w-3.5 h-3.5" strokeWidth={1.75} />
@@ -188,7 +188,7 @@ const ET360Finale = () => {
           {/* Key details strip */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-20" data-aos="fade-up">
             {[
-              { value: '17 July 2026', label: 'Date' },
+              { value: '16 July 2026', label: 'Date' },
               { value: 'University of Lagos', label: 'Venue' },
               { value: '1,000+', label: 'Expected Attendees' },
               { value: 'Free Entry', label: 'Admission' },
@@ -325,7 +325,7 @@ const ET360Finale = () => {
               <h3 className="text-2xl font-black text-green-950 mb-3">You're Registered!</h3>
               <p className="text-gray-500 mb-6 text-sm">
                 Thank you for registering for the ET360° Grand Finale. We look forward to seeing you on
-                17 July 2026 at the University of Lagos.
+                16 July 2026 at the University of Lagos.
               </p>
               <p className="text-xs text-gray-400">
                 Questions?{' '}

@@ -37,7 +37,7 @@ const outcomes = [
 
 const keyDetails = [
   { value: '19 June to 11 July', label: 'Bootcamp Dates' },
-  { value: 'Fridays & Saturdays', label: 'Format' },
+  { value: 'Fri, Sat + one weekday', label: 'Format' },
   { value: '100 Students', label: 'Cohort Size' },
   { value: 'All Faculties', label: 'Who Can Apply' },
 ];
@@ -64,10 +64,10 @@ const ET360About = () => {
               is delivered by a practitioner. Every exercise connects to a real project deliverable.
             </p>
             <a
-              href="#schedule"
+              href="/et360/finale"
               className="inline-block px-7 py-3 bg-green-600 text-white text-sm font-bold rounded-full hover:bg-green-700 transition-all duration-300"
             >
-              View Programme Schedule
+              Attend the Grand Finale
             </a>
           </div>
 

@@ -40,7 +40,7 @@ const phases = [
     title: 'Five Teams. One Stage.',
     description:
       'The five winning capstone teams compete before 1,000+ attendees at the ET360° Grand Finale.',
-    date: '17 July 2026',
+    date: '16 July 2026',
     isLeft: false,
     isHighlight: true,
   },
@@ -168,7 +168,7 @@ const ET360Timeline = () => {
             { label: 'Bootcamp Duration', value: '19 June to 11 July 2026' },
             { label: 'Format', value: 'Fridays, Saturdays + one weekday/week' },
             { label: 'Total Teaching Days', value: '11 days' },
-            { label: 'Grand Finale', value: '17 July 2026' },
+            { label: 'Grand Finale', value: '16 July 2026' },
           ].map(({ label, value }) => (
             <div key={label} className="border-l-2 border-green-700 pl-4">
               <div className="text-xs text-green-400 font-semibold uppercase tracking-wide mb-1">{label}</div>
