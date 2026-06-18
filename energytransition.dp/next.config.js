@@ -1,5 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  basePath: '/et360.dp',
   images: {
     remotePatterns: [
       {
