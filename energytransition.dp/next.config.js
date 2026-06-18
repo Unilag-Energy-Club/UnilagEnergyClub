@@ -1,5 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  basePath: '/et360.dp',
   images: {
     remotePatterns: [
       {
@@ -9,7 +10,6 @@ const nextConfig = {
       },
     ],
   },
-  // Sharp needs this on some deployment platforms
   experimental: {
     serverComponentsExternalPackages: ['sharp'],
   },
