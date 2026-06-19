@@ -94,19 +94,39 @@ function makeNameOverlay(name: string): Buffer {
     .replace(/>/g, '&gt;')
     .replace(/"/g, '&quot;')
 
-  // SVG text y = baseline. To center text: y ≈ (boxHeight/2) + (fontSize * 0.35)
-  const baselineY = Math.round(NAME_BOX_HEIGHT / 2 + NAME_FONT_SIZE * 0.35)
+  // Auto-fit: pick the largest font size (capped at NAME_FONT_SIZE) that keeps
+  // the name within the label box, so long names never overflow.
+  const HPAD = 24
+  const maxWidth = NAME_BOX_WIDTH - HPAD * 2
+  const CHAR_WIDTH_FACTOR = 0.62 // conservative avg glyph advance for bold sans
+  const visibleLen = Math.max(name.trim().length, 1)
+
+  let fontSize = Math.min(
+    NAME_FONT_SIZE,
+    Math.floor(maxWidth / (CHAR_WIDTH_FACTOR * visibleLen))
+  )
+  fontSize = Math.max(fontSize, 14) // readability floor
+
+  const estWidth = CHAR_WIDTH_FACTOR * fontSize * visibleLen
+  const baselineY = Math.round(NAME_BOX_HEIGHT / 2 + fontSize * 0.35)
+
+  // Hard guarantee: if even at the floor size the name is still too wide,
+  // squeeze the glyph spacing so it fits exactly within the box.
+  const fitAttr =
+    estWidth > maxWidth
+      ? ` textLength="${maxWidth}" lengthAdjust="spacingAndGlyphs"`
+      : ''
 
   return Buffer.from(
     `<svg width="${NAME_BOX_WIDTH}" height="${NAME_BOX_HEIGHT}" xmlns="http://www.w3.org/2000/svg">
        <text
          x="${NAME_BOX_WIDTH / 2}"
          y="${baselineY}"
-         font-size="${NAME_FONT_SIZE}"
+         font-size="${fontSize}"
          font-weight="700"
          font-family="DejaVu Sans, Arial, Helvetica, sans-serif"
          fill="${NAME_COLOR}"
-         text-anchor="middle"
+         text-anchor="middle"${fitAttr}
        >${safeName}</text>
      </svg>`
   )

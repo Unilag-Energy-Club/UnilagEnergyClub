@@ -6,12 +6,10 @@ interface Props {
   params: { id: string }
 }
 
-export async function generateStaticParams() {
-  // For dynamic IDs created at runtime (stored in PocketBase),
-  // we return an empty array to opt out of static generation.
-  // This page will use on-demand ISR or dynamic rendering instead.
-  return []
-}
+// Records are created at runtime in PocketBase, so this page must render
+// dynamically on every request. Without this it is statically optimized and
+// 404s on a freshly created id until a full reload triggers on-demand render.
+export const dynamic = 'force-dynamic'
 
 export default async function ResultPage({ params }: Props) {
   const pb = getPocketBase()

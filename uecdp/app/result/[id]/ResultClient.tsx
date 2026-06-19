@@ -38,7 +38,7 @@ export default function ResultClient({ name, dpUrl, recordId }: Props) {
 
   // ── Share ─────────────────────────────────────────────────────────────────
   const shareUrl = typeof window !== 'undefined'
-    ? `${window.location.origin}/result/${recordId}`
+    ? `${window.location.origin}/uecdp/result/${recordId}`
     : ''
 
   const handleShare = async () => {
