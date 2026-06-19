@@ -104,7 +104,7 @@ function makeNameOverlay(name: string): Buffer {
          y="${baselineY}"
          font-size="${NAME_FONT_SIZE}"
          font-weight="700"
-         font-family="Arial, Helvetica, sans-serif"
+         font-family="DejaVu Sans, Arial, Helvetica, sans-serif"
          fill="${NAME_COLOR}"
          text-anchor="middle"
        >${safeName}</text>

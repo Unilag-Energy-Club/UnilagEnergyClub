@@ -4,8 +4,10 @@ FROM node:20-alpine
 
 WORKDIR /app
 
-# Build deps for sharp (native image processing) on alpine/musl.
-RUN apk add --no-cache libc6-compat
+# Build deps for sharp (native image processing) on alpine/musl, plus
+# fontconfig + a real font so librsvg can render the SVG name overlay
+# (without these, SVG <text> renders blank on alpine).
+RUN apk add --no-cache libc6-compat fontconfig ttf-dejavu && fc-cache -f
 
 COPY package*.json ./
 RUN npm ci
