@@ -60,13 +60,28 @@ const ET360Finale = () => {
     setLoading(true);
     setError(null);
 
+    const fullName = `${formData.firstName.trim()} ${formData.lastName.trim()}`;
+    const email = formData.email.trim();
+
     try {
       await pb.collection('et360_finale_registrations').create({
-        full_name: `${formData.firstName.trim()} ${formData.lastName.trim()}`,
-        email: formData.email,
+        full_name: fullName,
+        email,
         phone_number: formData.phone,
         role: formData.role,
         referral_source: formData.referral_source,
+      });
+
+      // Fire-and-forget the branded confirmation email. A delivery hiccup must
+      // never block or fail the registration itself, so we swallow errors here.
+      const emailApi =
+        import.meta.env.VITE_EMAIL_API_URL || '/et360.dp/api/send-confirmation';
+      fetch(emailApi, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name: fullName, email }),
+      }).catch(() => {
+        /* non-blocking: confirmation email is best-effort */
       });
 
       setSubmitted(true);
@@ -250,49 +265,6 @@ const ET360Finale = () => {
             </div>
           </div>
 
-        </div>
-      </section>
-
-      {/* ── The Competition ── */}
-      <section className="py-24 bg-green-950">
-        <div className="container mx-auto px-4 lg:px-8 max-w-6xl" data-aos="fade-up">
-          <div className="text-center mb-14">
-            <span className="inline-block text-xs font-bold tracking-widest uppercase text-yellow-400 mb-3">
-              How It Works
-            </span>
-            <h2 className="text-4xl lg:text-5xl font-black text-white mb-4">The Competition Format</h2>
-            <p className="text-green-300 max-w-xl mx-auto text-sm">
-              100 participants. 10 cross-disciplinary teams. Five capstone scenarios. One winner.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {[
-              {
-                step: '01',
-                title: 'Four Weeks of Work',
-                desc: '100 participants are split into 10 teams of 10. Two teams are assigned to each of the five capstone scenarios and spend four weeks building real, bankable project packages.',
-              },
-              {
-                step: '02',
-                title: 'Week 4 Elimination',
-                desc: 'On Saturday 12 July, both teams on the same capstone present before a senior industry panel. Judges select the stronger team, who advances to the Grand Finale.',
-              },
-              {
-                step: '03',
-                title: 'Grand Finale',
-                desc: 'The five winning teams compete for the overall prize before 1,000+ attendees and a full industry panel. One team is crowned the ET360° 2026 champion.',
-              },
-            ].map(({ step, title, desc }) => (
-              <div key={step} className="bg-white/5 border border-white/10 rounded-2xl p-8 hover:bg-white/8 transition-all duration-300">
-                <span className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-yellow-400 text-green-950 text-sm font-black mb-5">
-                  {step}
-                </span>
-                <h4 className="text-lg font-bold text-white mb-3">{title}</h4>
-                <p className="text-green-300 text-sm leading-relaxed">{desc}</p>
-              </div>
-            ))}
-          </div>
         </div>
       </section>
 
