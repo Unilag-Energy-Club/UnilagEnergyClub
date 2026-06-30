@@ -71,7 +71,8 @@ export default function HomePage() {
       formData.append('name', name.trim())
       formData.append('photo', compressed, compressed.name)
 
-      const res = await fetch('/et360.dp/api/generate', {
+      // basePath ('/uecdp') is NOT applied to raw fetch() calls — prefix manually
+      const res = await fetch('/uecdp/api/generate', {
         method: 'POST',
         body: formData,
       })

@@ -1,6 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  basePath: '/et360.dp',
+  // Served behind the main app's reverse proxy under /uecdp
+  basePath: '/uecdp',
   images: {
     remotePatterns: [
       {
