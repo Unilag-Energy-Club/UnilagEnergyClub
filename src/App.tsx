@@ -7,6 +7,7 @@ import BlogPost from './pages/BlogPost';
 import Contact from './pages/Contact';
 import ET360 from './pages/ET360';
 import ET360Finale from './pages/ET360Finale';
+import Admin from './pages/Admin';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <Route path="/contact" element={<Contact />} />
         <Route path="/et360" element={<ET360 />} />
         <Route path="/et360/finale" element={<ET360Finale />} />
+        <Route path="/admin" element={<Admin />} />
       </Routes>
     </Router>
   );
