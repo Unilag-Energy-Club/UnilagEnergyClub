@@ -1,0 +1,29 @@
+{
+	admin off
+	auto_https off
+}
+
+:{$PORT:80} {
+	encode gzip zstd
+
+	# DP-maker (Next.js) runs as a separate Railway service.
+	# Forward everything under /uecdp to it, preserving the path
+	# (the Next app uses basePath '/uecdp', so the prefix must stay).
+	# Set UECDP_UPSTREAM to that service's host, e.g.
+	#   uecdp-production-xxxx.up.railway.app
+	# Default keeps the config valid (and the SPA up) until UECDP_UPSTREAM
+	# is set; /uecdp just 502s in the meantime.
+	@uecdp path /uecdp /uecdp/*
+	handle @uecdp {
+		reverse_proxy https://{$UECDP_UPSTREAM:uecdp.invalid} {
+			header_up Host {$UECDP_UPSTREAM:uecdp.invalid}
+		}
+	}
+
+	# Vite SPA for everything else, with client-side routing fallback.
+	handle {
+		root * /usr/share/caddy
+		try_files {path} /index.html
+		file_server
+	}
+}
