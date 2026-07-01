@@ -23,8 +23,8 @@ const tiers: Tier[] = [
     key: 'headline',
     label: 'Headline Sponsors',
     blurb: 'Powering the Grand Finale',
-    cols: 'grid-cols-1 sm:grid-cols-3',
-    tileH: 'h-32 sm:h-36 lg:h-44 xl:h-48',
+    cols: 'grid-cols-3',
+    tileH: 'h-20 sm:h-32 lg:h-40',
     sponsors: [
       { name: 'Genesis Energy', logo: `${LOGO}/genesis.png` },
       { name: 'Felicity Solar', logo: `${LOGO}/felicity-solar.png` },
@@ -62,8 +62,8 @@ const tiers: Tier[] = [
     key: 'knowledge',
     label: 'Knowledge Partners',
     blurb: 'Sharing expertise and insight',
-    cols: 'grid-cols-2 sm:grid-cols-3 lg:grid-cols-6',
-    tileH: 'h-24 sm:h-28 lg:h-32',
+    cols: 'grid-cols-3 lg:grid-cols-6',
+    tileH: 'h-16 sm:h-24 lg:h-28',
     sponsors: [
       { name: 'Carbon Limits Nigeria', logo: `${LOGO}/carbon-limits.png` },
       { name: 'FRED Program', logo: `${LOGO}/fred.png` },
