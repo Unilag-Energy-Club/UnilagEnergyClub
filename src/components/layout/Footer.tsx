@@ -23,8 +23,8 @@ const Footer = () => {
               <span className="text-[#ebc000]">Grand Finale</span>
             </h2>
             <p className="text-green-300 text-base font-medium mb-6 leading-relaxed max-w-lg">
-              Five capstone teams. One industry panel. 1,000+ attendees. Free and open to the public
-              on 16 July 2026 at the University of Lagos.
+              An honest look at the realities of Nigeria's energy transition and the opportunities ahead.
+              Free and open to the public on 16 July 2026 at the University of Lagos.
             </p>
             <div className="flex flex-wrap gap-3 mb-8">
               {['16 July 2026', 'University of Lagos', 'Free Entry'].map((tag) => (
