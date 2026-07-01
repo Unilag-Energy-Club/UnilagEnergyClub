@@ -62,8 +62,8 @@ const tiers: Tier[] = [
     key: 'knowledge',
     label: 'Knowledge Partners',
     blurb: 'Sharing expertise and insight',
-    cols: 'grid-cols-3 lg:grid-cols-6',
-    tileH: 'h-16 sm:h-24 lg:h-28',
+    cols: 'grid-cols-6',
+    tileH: 'h-12 sm:h-20 lg:h-28',
     sponsors: [
       { name: 'Carbon Limits Nigeria', logo: `${LOGO}/carbon-limits.png` },
       { name: 'FRED Program', logo: `${LOGO}/fred.png` },
@@ -77,7 +77,7 @@ const tiers: Tier[] = [
 
 function SponsorTile({ sponsor, tileH }: { sponsor: Sponsor; tileH: string }) {
   return (
-    <div className={`group flex items-center justify-center ${tileH} px-2 sm:px-4`}>
+    <div className={`group flex items-center justify-center ${tileH} px-1.5 sm:px-3`}>
       {sponsor.logo ? (
         <img
           src={sponsor.logo}
@@ -128,7 +128,7 @@ const FinaleSponsors = () => {
 
               {/* Sponsor wall — centered so short tiers don't stretch awkwardly */}
               <div
-                className={`grid ${tier.cols} gap-4 sm:gap-5 ${
+                className={`grid ${tier.cols} gap-2 sm:gap-4 lg:gap-5 ${
                   tier.sponsors.length <= 2 ? 'max-w-2xl mx-auto' : ''
                 }`}
               >

@@ -327,17 +327,6 @@ const ET360Finale = () => {
 
                 <div className="bg-white rounded-2xl p-6 border border-gray-100">
                   <div className="flex items-center gap-2 mb-3">
-                    <Info className="w-4 h-4 text-green-600" strokeWidth={1.75} aria-hidden="true" />
-                    <h3 className="text-xs font-bold text-green-950 uppercase tracking-wide">Open to Everyone</h3>
-                  </div>
-                  <p className="text-gray-500 text-sm leading-relaxed">
-                    Students, professionals, policymakers, press, and the general public are all
-                    welcome. No ticket or fee required.
-                  </p>
-                </div>
-
-                <div className="bg-white rounded-2xl p-6 border border-gray-100">
-                  <div className="flex items-center gap-2 mb-3">
                     <Phone className="w-4 h-4 text-green-600" strokeWidth={1.75} aria-hidden="true" />
                     <h3 className="text-xs font-bold text-green-950 uppercase tracking-wide">Questions?</h3>
                   </div>
