@@ -70,29 +70,29 @@ function copyFor(type: ReminderType, days: number): Copy {
   switch (type) {
     case 'dayof':
       return {
-        chip: 'Today · See you there',
-        heading: (f) => `It's today, ${f}! ☀️`,
+        chip: 'Today',
+        heading: (f) => `It's today${f ? `, ${f}` : ''}! ☀️`,
         lead: `The ET360° Grand Finale is happening today. Doors open at <strong>${EVENT.doors}</strong> — come early, settle in, and let's talk about the future of energy in Nigeria.`,
         showLogistics: true,
       }
     case 'd1':
       return {
         chip: 'Tomorrow',
-        heading: (f) => `See you tomorrow, ${f}! 🎉`,
+        heading: (f) => `See you tomorrow${f ? `, ${f}` : ''}! 🎉`,
         lead: `Just one more sleep. The Grand Finale is <strong>tomorrow</strong> — here's everything you need so you can walk straight in.`,
         showLogistics: true,
       }
     case 'd3':
       return {
         chip: '3 days to go',
-        heading: (f) => `3 days left, ${f} ⏳`,
+        heading: (f) => `3 days left${f ? `, ${f}` : ''} ⏳`,
         lead: `The Grand Finale is just <strong>3 days away</strong>. Add it to your calendar if you haven't, and tell a friend — entry is free and open to all.`,
         showLogistics: false,
       }
     case 'd7':
       return {
         chip: 'One week to go',
-        heading: (f) => `One week to go, ${f} 🗓️`,
+        heading: (f) => `One week to go${f ? `, ${f}` : ''} 🗓️`,
         lead: `We're now <strong>7 days out</strong> from the ET360° Grand Finale. A room full of professionals, students, and industry leaders — and a real conversation about where Nigeria's energy is heading.`,
         showLogistics: false,
       }
@@ -100,7 +100,7 @@ function copyFor(type: ReminderType, days: number): Copy {
     default:
       return {
         chip: `${days} days to go`,
-        heading: (f) => `${days} days to the Grand Finale, ${f}`,
+        heading: (f) => `${days} days to the Grand Finale${f ? `, ${f}` : ''}`,
         lead: `Just a friendly countdown — the ET360° Grand Finale is <strong>${days} days away</strong>. We're looking forward to hosting you.`,
         showLogistics: false,
       }
@@ -118,8 +118,8 @@ export function reminderSubject(type: ReminderType, days: number): string {
 }
 
 export function reminderHtml(type: ReminderType, fullName: string, days: number): string {
-  const name = escapeHtml((fullName || '').trim() || 'there')
-  const first = name.split(/\s+/)[0]
+  const name = escapeHtml((fullName || '').trim())
+  const first = name ? name.split(/\s+/)[0] : ''
   const c = copyFor(type, days)
 
   const detailRow = (label: string, value: string, accent = false) => `
