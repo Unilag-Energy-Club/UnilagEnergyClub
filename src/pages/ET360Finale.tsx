@@ -5,6 +5,7 @@ import {
 } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
 import Layout from '../components/layout/Layout';
+import FinaleSponsors from '../components/et360/FinaleSponsors';
 import pb from '../lib/pocketbase';
 
 // Google Calendar "add event" link for the Grand Finale (16 July 2026, 10:00–16:00 WAT).
@@ -281,6 +282,9 @@ const ET360Finale = () => {
 
         </div>
       </section>
+
+      {/* ── Sponsors ── */}
+      <FinaleSponsors />
 
       {/* ── Registration ── */}
       <section id="register" className="py-20 lg:py-28 bg-gray-50 scroll-mt-20">

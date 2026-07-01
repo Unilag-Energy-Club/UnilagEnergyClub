@@ -27,3 +27,6 @@ CONTENTFUL_SETUP.md
 
 .env
 README_PROJECT.md
+# Sponsor source materials (kept locally, not committed)
+src/*.zip
+src/*.xlsx
