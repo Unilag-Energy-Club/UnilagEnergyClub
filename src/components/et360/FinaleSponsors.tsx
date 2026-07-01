@@ -14,6 +14,8 @@ interface Tier {
   cols: string;
   /** Tile height — bigger tiers read as more prominent. */
   tileH: string;
+  /** Optional max-width wrapper so short tiers don't stretch. */
+  maxW?: string;
 }
 
 const LOGO = '/assets/media/sponsors';
@@ -24,7 +26,8 @@ const tiers: Tier[] = [
     label: 'Headline Sponsors',
     blurb: 'Powering the Grand Finale',
     cols: 'grid-cols-3',
-    tileH: 'h-20 sm:h-32 lg:h-40',
+    tileH: 'h-16 sm:h-24 lg:h-28',
+    maxW: 'max-w-4xl mx-auto',
     sponsors: [
       { name: 'Genesis Energy', logo: `${LOGO}/genesis.png` },
       { name: 'Felicity Solar', logo: `${LOGO}/felicity-solar.png` },
@@ -36,7 +39,8 @@ const tiers: Tier[] = [
     label: 'Strategic Institutional Partner',
     blurb: 'Anchoring the ET360° vision',
     cols: 'grid-cols-1',
-    tileH: 'h-36 sm:h-44 lg:h-52 xl:h-56',
+    tileH: 'h-20 sm:h-24 lg:h-32',
+    maxW: 'max-w-[240px] sm:max-w-xs mx-auto',
     sponsors: [{ name: 'NSIA', logo: `${LOGO}/nsia.png` }],
   },
   {
@@ -44,7 +48,8 @@ const tiers: Tier[] = [
     label: 'Silver Sponsors',
     blurb: '',
     cols: 'grid-cols-2',
-    tileH: 'h-28 sm:h-32 lg:h-36',
+    tileH: 'h-14 sm:h-20 lg:h-24',
+    maxW: 'max-w-md sm:max-w-lg mx-auto',
     sponsors: [
       { name: 'Anfani', logo: `${LOGO}/anfani.png` },
       { name: 'EMRC', logo: `${LOGO}/emrc.png` },
@@ -55,15 +60,17 @@ const tiers: Tier[] = [
     label: 'Bronze Sponsor',
     blurb: '',
     cols: 'grid-cols-1',
-    tileH: 'h-28 sm:h-32 lg:h-36',
+    tileH: 'h-12 sm:h-16 lg:h-20',
+    maxW: 'max-w-[180px] sm:max-w-[220px] mx-auto',
     sponsors: [{ name: 'Husk Power', logo: `${LOGO}/husk.png` }],
   },
   {
     key: 'knowledge',
     label: 'Knowledge Partners',
     blurb: 'Sharing expertise and insight',
-    cols: 'grid-cols-6',
-    tileH: 'h-12 sm:h-20 lg:h-28',
+    cols: 'grid-cols-3 sm:grid-cols-6',
+    tileH: 'h-14 sm:h-16 lg:h-20',
+    maxW: 'max-w-4xl mx-auto',
     sponsors: [
       { name: 'Carbon Limits Nigeria', logo: `${LOGO}/carbon-limits.png` },
       { name: 'FRED Program', logo: `${LOGO}/fred.png` },
@@ -83,7 +90,7 @@ function SponsorTile({ sponsor, tileH }: { sponsor: Sponsor; tileH: string }) {
           src={sponsor.logo}
           alt={`${sponsor.name} logo`}
           loading="lazy"
-          className="max-h-full max-w-full object-contain transition-transform duration-300 group-hover:scale-[1.06]"
+          className="max-h-full max-w-[82%] object-contain transition-transform duration-300 group-hover:scale-[1.06]"
         />
       ) : (
         <span className="text-[10px] leading-tight sm:text-sm lg:text-lg font-black text-green-950 text-center break-words">
@@ -128,12 +135,8 @@ const FinaleSponsors = () => {
                 <div className="h-px flex-1 bg-gray-200" />
               </div>
 
-              {/* Sponsor wall — centered so short tiers don't stretch awkwardly */}
-              <div
-                className={`grid ${tier.cols} gap-2 sm:gap-4 lg:gap-5 ${
-                  tier.sponsors.length <= 2 ? 'max-w-2xl mx-auto' : ''
-                }`}
-              >
+              {/* Sponsor wall — bare logos, per-tier max-width so nothing dominates */}
+              <div className={`grid ${tier.cols} gap-x-3 gap-y-6 sm:gap-4 lg:gap-6 ${tier.maxW || ''}`}>
                 {tier.sponsors.map((s) => (
                   <SponsorTile key={s.name} sponsor={s} tileH={tier.tileH} />
                 ))}
