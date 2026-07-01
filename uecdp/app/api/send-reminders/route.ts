@@ -76,10 +76,12 @@ export async function POST(req: NextRequest) {
     if (types.length === 0) {
       return NextResponse.json({ error: `Unknown preview type. Use one of: ${ALL_TYPES.join(', ')} or previewAll.` }, { status: 400 })
     }
+    // Optional sample name for the preview greeting; empty renders the no-name variant.
+    const sampleName = typeof body?.name === 'string' ? body.name.trim() : ''
     const sent: string[] = []
     for (const t of types) {
       const days = PREVIEW_DAYS[t]
-      const ok = await sendEmail(to, `[Preview] ${reminderSubject(t, days)}`, reminderHtml(t, 'there', days))
+      const ok = await sendEmail(to, `[Preview] ${reminderSubject(t, days)}`, reminderHtml(t, sampleName, days))
       if (ok) sent.push(t)
     }
     return NextResponse.json({ ok: true, preview: true, to, sent })
