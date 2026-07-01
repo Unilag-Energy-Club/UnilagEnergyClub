@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import {
   Calendar, MapPin, Info, Phone,
-  CheckCircle2, ArrowRight, Mail, ShieldCheck, Sparkles, CalendarPlus, Share2, Clock,
+  CheckCircle2, ArrowRight, Mail, ShieldCheck, CalendarPlus, Share2, Clock,
 } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
 import Layout from '../components/layout/Layout';
@@ -225,10 +225,6 @@ const ET360Finale = () => {
 
           {/* Header */}
           <div className="text-center mb-12 lg:mb-16" data-aos="fade-up">
-            <span className="inline-flex items-center gap-2 text-xs font-bold tracking-widest uppercase text-green-700 bg-green-100 px-4 py-1.5 rounded-full mb-5">
-              <Sparkles className="w-3.5 h-3.5" strokeWidth={2} aria-hidden="true" />
-              Reserve Your Seat
-            </span>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-green-950 mb-4">
               Register for the Grand Finale
             </h2>

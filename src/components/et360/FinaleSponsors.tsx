@@ -1,5 +1,3 @@
-import { Handshake } from 'lucide-react';
-
 // ── Sponsor data (from the club's tier spreadsheet) ─────────────────────────────
 // Logos live in /public/assets/media/sponsors. `logo: null` renders a text tile.
 interface Sponsor {
@@ -101,10 +99,6 @@ const FinaleSponsors = () => {
 
         {/* Header */}
         <div className="text-center mb-14 lg:mb-16" data-aos="fade-up">
-          <span className="inline-flex items-center gap-2 text-xs font-bold tracking-widest uppercase text-green-700 bg-green-100 px-4 py-1.5 rounded-full mb-5">
-            <Handshake className="w-3.5 h-3.5" strokeWidth={2} aria-hidden="true" />
-            Our Partners
-          </span>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-green-950 mb-4">
             Powered by Our Sponsors
           </h2>
