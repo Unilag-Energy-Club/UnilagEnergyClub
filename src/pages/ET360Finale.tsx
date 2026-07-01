@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import {
-  Calendar, MapPin, Users, Trophy, MessageSquare, Handshake, Star, Info, Phone,
+  Calendar, MapPin, Info, Phone,
   CheckCircle2, ArrowRight, Mail, ShieldCheck, Sparkles, CalendarPlus, Share2, Clock,
 } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
@@ -14,7 +14,7 @@ const ADD_TO_CALENDAR_URL =
   '&text=' + encodeURIComponent('ET360° Grand Finale — UNILAG Energy Club') +
   '&dates=20260716T090000Z/20260716T150000Z' +
   '&details=' + encodeURIComponent('The Grand Finale of the ET360° energy transition programme. Free and open to the public. #JoinTheTransition') +
-  '&location=' + encodeURIComponent('University of Lagos, Akoka, Lagos');
+  '&location=' + encodeURIComponent('Multipurpose Hall, University of Lagos, Akoka, Lagos');
 
 const roles = [
   'UNILAG Student',
@@ -37,8 +37,8 @@ const referralSources = [
 
 const sideInfo: { Icon: LucideIcon; title: string; value: string }[] = [
   { Icon: Calendar, title: 'Date', value: '16 July 2026' },
-  { Icon: MapPin, title: 'Venue', value: 'University of Lagos' },
-  { Icon: Users, title: 'Expected Attendance', value: '1,000+ people' },
+  { Icon: MapPin, title: 'Venue', value: 'Multipurpose Hall, University of Lagos' },
+  { Icon: CheckCircle2, title: 'Admission', value: 'Free · Open to all' },
 ];
 
 const emptyForm = {
@@ -125,166 +125,99 @@ const ET360Finale = () => {
     <Layout activePage="et360-finale">
 
       {/* ── Banner ── */}
-      <section className="relative w-full overflow-hidden" style={{ minHeight: '560px' }}>
+      <section className="relative w-full overflow-hidden min-h-[66vh] md:min-h-[82vh]">
         <img
           src="/assets/media/images/et360_finale.png"
           alt="ET360° Grand Finale"
           className="absolute inset-0 w-full h-full object-cover object-center"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/10 to-black/80" />
+        {/* Atmospheric wash: darkens toward the bottom so the CTA reads cleanly */}
+        <div className="absolute inset-0 bg-gradient-to-t from-green-950 via-green-950/40 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-tr from-black/30 to-transparent" />
 
-        <div className="relative z-10 h-full flex flex-col justify-end pb-14 px-4 lg:px-8" style={{ minHeight: '560px' }}>
+        <div className="relative z-10 flex min-h-[66vh] md:min-h-[82vh] flex-col justify-end pb-9 sm:pb-12 px-4 lg:px-8">
           <div className="container mx-auto max-w-6xl">
-            <p className="text-green-300 text-xs font-bold uppercase tracking-widest mb-3">
-              UNILAG Energy Club presents
-            </p>
-            <h1 className="font-black text-white leading-none mb-6">
-              <span className="block text-4xl md:text-5xl lg:text-6xl mb-1">ET360°</span>
-              <span className="block text-6xl md:text-7xl lg:text-8xl text-yellow-400">Grand Finale</span>
-            </h1>
-            <div className="flex flex-wrap gap-3 mb-8">
-              <span className="inline-flex items-center gap-2 bg-white/15 backdrop-blur-sm border border-white/25 text-white text-xs font-semibold px-4 py-2 rounded-full">
-                <Calendar className="w-3.5 h-3.5" strokeWidth={1.75} />
-                16 July 2026
-              </span>
-              <span className="inline-flex items-center gap-2 bg-white/15 backdrop-blur-sm border border-white/25 text-white text-xs font-semibold px-4 py-2 rounded-full">
-                <MapPin className="w-3.5 h-3.5" strokeWidth={1.75} />
-                University of Lagos
-              </span>
-              <span className="inline-flex items-center gap-2 bg-yellow-400/20 border border-yellow-400/40 text-yellow-300 text-xs font-semibold px-4 py-2 rounded-full">
-                <Users className="w-3.5 h-3.5" strokeWidth={1.75} />
-                Open to the Public
+            {/* Gold hairline + kicker */}
+            <div className="flex items-center gap-3 mb-4">
+              <span className="h-px w-10 bg-yellow-400" aria-hidden="true" />
+              <span className="text-yellow-400 text-[11px] sm:text-xs font-bold uppercase tracking-[0.2em]">
+                ET360° Grand Finale · 16 July 2026
               </span>
             </div>
             <a
               href="#register"
-              className="inline-flex items-center gap-2 px-8 py-3.5 bg-yellow-400 text-green-950 font-bold rounded-full hover:bg-yellow-300 transition-all duration-300 text-sm shadow-lg shadow-black/20"
+              className="group inline-flex items-center gap-2.5 px-8 py-4 bg-yellow-400 text-green-950 font-black rounded-full hover:bg-yellow-300 active:scale-[0.98] transition-all duration-300 text-sm sm:text-base shadow-xl shadow-black/40"
             >
               Register to Attend
+              <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" strokeWidth={2.5} aria-hidden="true" />
             </a>
           </div>
         </div>
       </section>
 
       {/* ── About the Event ── */}
-      <section className="py-24 bg-white">
-        <div className="container mx-auto px-4 lg:px-8 max-w-7xl">
+      <section className="py-20 lg:py-28 bg-white">
+        <div className="container mx-auto px-4 lg:px-8 max-w-6xl">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center" data-aos="fade-up">
 
-          {/* Two-column intro */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center mb-20" data-aos="fade-up">
+            {/* What is it */}
             <div>
-              <span className="inline-block text-xs font-bold tracking-widest uppercase text-green-600 mb-4">
-                The Event
-              </span>
-              <h2 className="text-4xl lg:text-5xl font-black text-green-950 mb-5 leading-tight">
-                What is the <span className="text-green-600">Grand Finale</span>?
-              </h2>
-              <p className="text-gray-600 leading-relaxed mb-4">
-                The ET360° Grand Finale is the culmination of four weeks of intensive bootcamp work. Five
-                winning capstone teams, one from each of the five real-world energy scenarios, present
-                their solutions before a senior industry panel competing for the overall programme prize.
-              </p>
-              <p className="text-gray-600 leading-relaxed">
-                This is a public event. Whether you are a student, a professional, or someone curious
-                about Nigeria's energy future, you are welcome to attend and witness the next generation
-                of energy transition leaders in action.
-              </p>
-            </div>
-
-            <div className="bg-green-950 rounded-2xl p-8 lg:p-10">
-              <span className="inline-block text-xs font-bold tracking-widest uppercase text-yellow-400 mb-5">
-                Why Attend
-              </span>
-              <ul className="space-y-4">
-                {[
-                  'Watch five cross-disciplinary teams compete with real, bankable energy project solutions',
-                  'Hear from a senior panel of industry practitioners and investors as they evaluate the work',
-                  'Network with energy professionals, policymakers, and climate finance experts',
-                  "Be part of a landmark moment for Nigeria's energy transition community",
-                ].map((item, i) => (
-                  <li key={i} className="flex items-start gap-3">
-                    <span className="flex-shrink-0 w-5 h-5 rounded-full bg-yellow-400 flex items-center justify-center mt-0.5">
-                      <svg className="w-3 h-3 text-green-950" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
-                      </svg>
-                    </span>
-                    <span className="text-green-100 text-sm leading-relaxed">{item}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-
-          {/* Key details strip */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-20" data-aos="fade-up">
-            {[
-              { value: '16 July 2026', label: 'Date' },
-              { value: 'University of Lagos', label: 'Venue' },
-              { value: '1,000+', label: 'Expected Attendees' },
-              { value: 'Free Entry', label: 'Admission' },
-            ].map(({ value, label }) => (
-              <div
-                key={label}
-                className="border border-gray-100 rounded-2xl p-6 text-center hover:border-green-200 hover:shadow-md transition-all duration-300 bg-gray-50"
-              >
-                <div className="text-lg font-black text-green-700 mb-2 leading-tight">{value}</div>
-                <div className="text-xs text-gray-400 font-medium uppercase tracking-wide">{label}</div>
+              <div className="flex items-center gap-3 mb-5">
+                <span className="h-px w-8 bg-green-600" aria-hidden="true" />
+                <span className="text-xs font-bold tracking-[0.2em] uppercase text-green-600">The Event</span>
               </div>
-            ))}
-          </div>
-
-          {/* What to expect */}
-          <div data-aos="fade-up">
-            <div className="text-center mb-12">
-              <span className="inline-block text-xs font-bold tracking-widest uppercase text-green-600 mb-3">
-                Programme
-              </span>
-              <h3 className="text-3xl lg:text-4xl font-black text-green-950">What to Expect</h3>
+              <h2 className="text-3xl sm:text-4xl lg:text-[2.75rem] font-black text-green-950 mb-6 leading-[1.1]">
+                A real conversation about <span className="text-green-600">Nigeria's energy future</span>
+              </h2>
+              <p className="text-gray-600 text-lg leading-relaxed mb-4">
+                The ET360° Grand Finale brings together professionals, students, and industry leaders for an
+                honest look at the energy transition — the realities on the ground, the opportunities opening
+                up across the sector, and the ideas shaping what comes next.
+              </p>
+              <p className="text-gray-500 leading-relaxed">
+                It's free, open to everyone, and built for anyone curious about where energy in Nigeria is
+                heading. Come listen, ask questions, and be part of the conversation.
+              </p>
+              <a
+                href="#register"
+                className="group inline-flex items-center gap-2 mt-8 px-7 py-3.5 bg-green-600 text-white font-bold rounded-full hover:bg-green-700 active:scale-[0.98] transition-all text-sm shadow-lg shadow-green-600/25"
+              >
+                Register to Attend
+                <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" strokeWidth={2.25} aria-hidden="true" />
+              </a>
             </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-              {[
-                {
-                  Icon: Trophy,
-                  title: 'Capstone Competition',
-                  desc: 'Five winning teams, one from each capstone track, present their complete project solutions in a final round before an expert panel.',
-                },
-                {
-                  Icon: MessageSquare,
-                  title: 'Industry Panel',
-                  desc: 'Senior practitioners from energy finance, climate policy, project development, and legal practice evaluate and interrogate each team.',
-                },
-                {
-                  Icon: Handshake,
-                  title: 'Networking',
-                  desc: 'Connect with energy professionals, investors, and policymakers alongside a new cohort of 100 trained energy transition practitioners.',
-                },
-                {
-                  Icon: Star,
-                  title: 'Awards Ceremony',
-                  desc: 'The overall winning team is announced before a 1,000-strong audience, and all 100 bootcamp participants receive their certificates.',
-                },
-              ].map(({ Icon, title, desc }, i) => (
-                <div
-                  key={i}
-                  className="bg-gray-50 border border-gray-100 hover:border-green-200 rounded-2xl p-7 hover:shadow-lg transition-all duration-300"
-                  data-aos="fade-up"
-                  data-aos-delay={i * 80}
-                >
-                  <div className="w-10 h-10 rounded-xl bg-green-100 flex items-center justify-center mb-4">
-                    <Icon className="w-5 h-5 text-green-700" strokeWidth={1.75} />
-                  </div>
-                  <h4 className="text-base font-bold text-green-950 mb-2">{title}</h4>
-                  <p className="text-gray-500 text-sm leading-relaxed">{desc}</p>
+
+            {/* Why come */}
+            <div className="relative bg-green-950 rounded-3xl p-8 lg:p-10 overflow-hidden">
+              <div className="absolute -top-10 -right-10 w-40 h-40 bg-yellow-400/10 rounded-full blur-3xl" aria-hidden="true" />
+              <div className="relative">
+                <div className="flex items-center gap-3 mb-7">
+                  <span className="h-px w-8 bg-yellow-400" aria-hidden="true" />
+                  <span className="text-xs font-bold tracking-[0.2em] uppercase text-yellow-400">Why You Should Come</span>
                 </div>
-              ))}
+                <ul className="space-y-5">
+                  {[
+                    'Hear directly from seasoned professionals and leaders shaping the energy transition',
+                    'Understand where the sector is heading — and the opportunities opening up for your career or business',
+                    'Connect with professionals, policymakers, investors, and people who care about the future of energy',
+                    'Leave with real insight, new contacts, and ideas you can actually use',
+                  ].map((item, i) => (
+                    <li key={i} className="flex items-start gap-3.5">
+                      <span className="flex-shrink-0 w-6 h-6 rounded-full bg-yellow-400 flex items-center justify-center mt-0.5">
+                        <svg className="w-3.5 h-3.5 text-green-950" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
+                        </svg>
+                      </span>
+                      <span className="text-green-100 leading-relaxed">{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
-          </div>
 
+          </div>
         </div>
       </section>
-
-      {/* ── Sponsors ── */}
-      <FinaleSponsors />
 
       {/* ── Registration ── */}
       <section id="register" className="py-20 lg:py-28 bg-gray-50 scroll-mt-20">
@@ -562,6 +495,9 @@ const ET360Finale = () => {
 
         </div>
       </section>
+
+      {/* ── Sponsors ── */}
+      <FinaleSponsors />
 
     </Layout>
   );
