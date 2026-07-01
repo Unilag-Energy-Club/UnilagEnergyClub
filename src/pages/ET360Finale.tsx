@@ -11,7 +11,7 @@ import pb from '../lib/pocketbase';
 // Google Calendar "add event" link for the Grand Finale (16 July 2026, 10:00–16:00 WAT).
 const ADD_TO_CALENDAR_URL =
   'https://calendar.google.com/calendar/render?action=TEMPLATE' +
-  '&text=' + encodeURIComponent('ET360° Grand Finale — UNILAG Energy Club') +
+  '&text=' + encodeURIComponent('ET360° Grand Finale · UNILAG Energy Club') +
   '&dates=20260716T090000Z/20260716T150000Z' +
   '&details=' + encodeURIComponent('The Grand Finale of the ET360° energy transition programme. Free and open to the public. #JoinTheTransition') +
   '&location=' + encodeURIComponent('Multipurpose Hall, University of Lagos, Akoka, Lagos');
@@ -169,12 +169,12 @@ const ET360Finale = () => {
               <h2 className="text-3xl sm:text-4xl lg:text-[2.75rem] font-black text-green-950 mb-6 leading-[1.1]">
                 A real conversation about <span className="text-green-600">Nigeria's energy future</span>
               </h2>
-              <p className="text-gray-600 text-lg leading-relaxed mb-4">
+              <p className="text-gray-600 text-base leading-relaxed mb-4">
                 The ET360° Grand Finale brings together professionals, students, and industry leaders for an
-                honest look at the energy transition — the realities on the ground, the opportunities opening
+                honest look at the energy transition: the realities on the ground, the opportunities opening
                 up across the sector, and the ideas shaping what comes next.
               </p>
-              <p className="text-gray-500 leading-relaxed">
+              <p className="text-gray-600 text-base leading-relaxed">
                 It's free, open to everyone, and built for anyone curious about where energy in Nigeria is
                 heading. Come listen, ask questions, and be part of the conversation.
               </p>
@@ -198,7 +198,7 @@ const ET360Finale = () => {
                 <ul className="space-y-5">
                   {[
                     'Hear directly from seasoned professionals and leaders shaping the energy transition',
-                    'Understand where the sector is heading — and the opportunities opening up for your career or business',
+                    'Understand where the sector is heading, and the opportunities opening up for your career or business',
                     'Connect with professionals, policymakers, investors, and people who care about the future of energy',
                     'Leave with real insight, new contacts, and ideas you can actually use',
                   ].map((item, i) => (
@@ -229,7 +229,7 @@ const ET360Finale = () => {
               Register for the Grand Finale
             </h2>
             <p className="text-gray-500 max-w-xl mx-auto text-base leading-relaxed">
-              Free entry, open to everyone. Takes under a minute — we'll email your
+              Free entry, open to everyone. Takes under a minute, and we'll email your
               confirmation and event details right away.
             </p>
           </div>

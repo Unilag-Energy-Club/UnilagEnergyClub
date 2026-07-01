@@ -20,13 +20,17 @@ interface Tier {
 
 const LOGO = '/assets/media/sponsors';
 
+// One shared logo size for every prominent tier — grows with screen size.
+// Knowledge Partners (packed 6-up) uses a smaller tile so it never exceeds this.
+const TILE = 'h-16 sm:h-24 lg:h-28 xl:h-32';
+
 const tiers: Tier[] = [
   {
     key: 'headline',
     label: 'Headline Sponsors',
     blurb: 'Powering the Grand Finale',
     cols: 'grid-cols-3',
-    tileH: 'h-16 sm:h-24 lg:h-28',
+    tileH: TILE,
     maxW: 'max-w-4xl mx-auto',
     sponsors: [
       { name: 'Genesis Energy', logo: `${LOGO}/genesis.png` },
@@ -39,8 +43,8 @@ const tiers: Tier[] = [
     label: 'Strategic Institutional Partner',
     blurb: 'Anchoring the ET360° vision',
     cols: 'grid-cols-1',
-    tileH: 'h-20 sm:h-24 lg:h-32',
-    maxW: 'max-w-[240px] sm:max-w-xs mx-auto',
+    tileH: TILE,
+    maxW: 'max-w-sm mx-auto',
     sponsors: [{ name: 'NSIA', logo: `${LOGO}/nsia.png` }],
   },
   {
@@ -48,8 +52,8 @@ const tiers: Tier[] = [
     label: 'Silver Sponsors',
     blurb: '',
     cols: 'grid-cols-2',
-    tileH: 'h-14 sm:h-20 lg:h-24',
-    maxW: 'max-w-md sm:max-w-lg mx-auto',
+    tileH: TILE,
+    maxW: 'max-w-2xl mx-auto',
     sponsors: [
       { name: 'Anfani', logo: `${LOGO}/anfani.png` },
       { name: 'EMRC', logo: `${LOGO}/emrc.png` },
@@ -60,8 +64,8 @@ const tiers: Tier[] = [
     label: 'Bronze Sponsor',
     blurb: '',
     cols: 'grid-cols-1',
-    tileH: 'h-12 sm:h-16 lg:h-20',
-    maxW: 'max-w-[180px] sm:max-w-[220px] mx-auto',
+    tileH: TILE,
+    maxW: 'max-w-sm mx-auto',
     sponsors: [{ name: 'Husk Power', logo: `${LOGO}/husk.png` }],
   },
   {
@@ -84,13 +88,13 @@ const tiers: Tier[] = [
 
 function SponsorTile({ sponsor, tileH }: { sponsor: Sponsor; tileH: string }) {
   return (
-    <div className={`group flex items-center justify-center ${tileH} px-1 sm:px-3 min-w-0`}>
+    <div className={`group mx-auto flex w-full items-center justify-center ${tileH} max-w-[130px] sm:max-w-[180px] lg:max-w-[220px] px-1 sm:px-3 min-w-0`}>
       {sponsor.logo ? (
         <img
           src={sponsor.logo}
           alt={`${sponsor.name} logo`}
           loading="lazy"
-          className="max-h-full max-w-[82%] object-contain transition-transform duration-300 group-hover:scale-[1.06]"
+          className="max-h-full max-w-full object-contain transition-transform duration-300 group-hover:scale-[1.06]"
         />
       ) : (
         <span className="text-[10px] leading-tight sm:text-sm lg:text-lg font-black text-green-950 text-center break-words">
