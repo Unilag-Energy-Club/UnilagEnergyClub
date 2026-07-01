@@ -22,19 +22,11 @@ const LOGO = '/assets/media/sponsors';
 
 const tiers: Tier[] = [
   {
-    key: 'strategic',
-    label: 'Strategic Institutional Partner',
-    blurb: 'Anchoring the ET360° vision',
-    cols: 'grid-cols-1',
-    tileH: 'h-40',
-    sponsors: [{ name: 'NSIA', logo: `${LOGO}/nsia.png` }],
-  },
-  {
     key: 'headline',
     label: 'Headline Sponsors',
     blurb: 'Powering the Grand Finale',
     cols: 'grid-cols-1 sm:grid-cols-3',
-    tileH: 'h-32',
+    tileH: 'h-32 sm:h-36 lg:h-44 xl:h-48',
     sponsors: [
       { name: 'Genesis Energy', logo: `${LOGO}/genesis.png` },
       { name: 'Felicity Solar', logo: `${LOGO}/felicity-solar.png` },
@@ -42,11 +34,19 @@ const tiers: Tier[] = [
     ],
   },
   {
+    key: 'strategic',
+    label: 'Strategic Institutional Partner',
+    blurb: 'Anchoring the ET360° vision',
+    cols: 'grid-cols-1',
+    tileH: 'h-36 sm:h-44 lg:h-52 xl:h-56',
+    sponsors: [{ name: 'NSIA', logo: `${LOGO}/nsia.png` }],
+  },
+  {
     key: 'silver',
     label: 'Silver Sponsors',
     blurb: '',
     cols: 'grid-cols-2',
-    tileH: 'h-28',
+    tileH: 'h-28 sm:h-32 lg:h-36',
     sponsors: [
       { name: 'Anfani', logo: `${LOGO}/anfani.png` },
       { name: 'EMRC', logo: `${LOGO}/emrc.png` },
@@ -57,7 +57,7 @@ const tiers: Tier[] = [
     label: 'Bronze Sponsor',
     blurb: '',
     cols: 'grid-cols-1',
-    tileH: 'h-28',
+    tileH: 'h-28 sm:h-32 lg:h-36',
     sponsors: [{ name: 'Husk Power', logo: `${LOGO}/husk.png` }],
   },
   {
@@ -65,7 +65,7 @@ const tiers: Tier[] = [
     label: 'Knowledge Partners',
     blurb: 'Sharing expertise and insight',
     cols: 'grid-cols-2 sm:grid-cols-3 lg:grid-cols-6',
-    tileH: 'h-24',
+    tileH: 'h-24 sm:h-28 lg:h-32',
     sponsors: [
       { name: 'Carbon Limits Nigeria', logo: `${LOGO}/carbon-limits.png` },
       { name: 'FRED Program', logo: `${LOGO}/fred.png` },
@@ -80,7 +80,7 @@ const tiers: Tier[] = [
 function SponsorTile({ sponsor, tileH }: { sponsor: Sponsor; tileH: string }) {
   return (
     <div
-      className={`group flex items-center justify-center ${tileH} bg-white rounded-2xl border border-gray-100 px-5 py-4 shadow-sm hover:shadow-md hover:border-green-200 hover:-translate-y-0.5 transition-all duration-300`}
+      className={`group flex items-center justify-center ${tileH} bg-white rounded-2xl border border-gray-100 p-5 sm:p-6 lg:p-8 shadow-sm hover:shadow-md hover:border-green-200 hover:-translate-y-0.5 transition-all duration-300`}
     >
       {sponsor.logo ? (
         <img
