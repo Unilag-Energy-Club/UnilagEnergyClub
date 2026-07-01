@@ -77,7 +77,7 @@ const tiers: Tier[] = [
 
 function SponsorTile({ sponsor, tileH }: { sponsor: Sponsor; tileH: string }) {
   return (
-    <div className={`group flex items-center justify-center ${tileH} px-1.5 sm:px-3`}>
+    <div className={`group flex items-center justify-center ${tileH} px-1 sm:px-3 min-w-0`}>
       {sponsor.logo ? (
         <img
           src={sponsor.logo}
@@ -86,7 +86,9 @@ function SponsorTile({ sponsor, tileH }: { sponsor: Sponsor; tileH: string }) {
           className="max-h-full max-w-full object-contain transition-transform duration-300 group-hover:scale-[1.06]"
         />
       ) : (
-        <span className="text-xl font-black text-green-950 text-center">{sponsor.name}</span>
+        <span className="text-[10px] leading-tight sm:text-sm lg:text-lg font-black text-green-950 text-center break-words">
+          {sponsor.name}
+        </span>
       )}
     </div>
   );
