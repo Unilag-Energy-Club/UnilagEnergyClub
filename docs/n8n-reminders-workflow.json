@@ -5,12 +5,12 @@
       "parameters": {
         "rule": {
           "interval": [
-            { "field": "cronExpression", "expression": "0 7 * * *" }
+            { "field": "cronExpression", "expression": "0 9 * * *" }
           ]
         }
       },
       "id": "a1e0b2c3-0000-4000-8000-000000000001",
-      "name": "Every day at 07:00",
+      "name": "Every day at 09:00",
       "type": "n8n-nodes-base.scheduleTrigger",
       "typeVersion": 1.2,
       "position": [0, 0]
@@ -55,7 +55,7 @@
     "executionOrder": "v1"
   },
   "meta": {
-    "note": "Runs once daily at 07:00 (n8n instance timezone — set it to Africa/Lagos). Calls the ET360 reminder endpoint, which decides whether today is a reminder day (every 3 days while >1 week out, then 7-day, 3-day, 1-day, and morning-of) and emails all registrants accordingly. The 'Header Auth account' credential must send header name EMAIL_SECRET with the same secret value as the site's EMAIL_SECERET env var. Endpoint is idempotent per calendar day — keep this as the only daily trigger."
+    "note": "Runs once daily at 09:00 (n8n instance timezone — set it to Africa/Lagos). Calls the ET360 reminder endpoint, which decides whether today is a reminder day (every 3 days while >1 week out, then 7-day, 3-day, 1-day, and morning-of at 9am) and emails all registrants accordingly. The 'Header Auth account' credential must send header name EMAIL_SECRET with the same secret value as the site's EMAIL_SECERET env var. Endpoint is idempotent per calendar day — keep this as the only daily trigger."
   },
   "tags": []
 }
