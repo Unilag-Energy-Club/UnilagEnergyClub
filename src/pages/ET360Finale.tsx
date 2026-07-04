@@ -51,12 +51,39 @@ const emptyForm = {
 };
 
 // 16px base text avoids iOS auto-zoom on focus; min-height keeps a ≥44px touch target.
-const inputClass =
-  'w-full min-h-[48px] px-4 py-3 rounded-xl border border-gray-200 bg-white text-gray-900 text-base focus:outline-none focus:ring-2 focus:ring-green-600 focus:border-transparent hover:border-gray-300 placeholder:text-gray-400 transition-all duration-200';
+const inputBase =
+  'w-full min-h-[48px] px-4 py-3 rounded-xl border bg-white text-gray-900 text-base focus:outline-none focus:ring-2 focus:border-transparent placeholder:text-gray-400 transition-all duration-200';
+const inputClass = `${inputBase} border-gray-200 hover:border-gray-300 focus:ring-green-600`;
+const inputErrorClass = `${inputBase} border-red-400 hover:border-red-500 focus:ring-red-500`;
 const labelClass = 'block text-xs font-bold text-gray-700 mb-1.5 uppercase tracking-wide';
+
+type FormErrors = Partial<Record<keyof typeof emptyForm, string>>;
+
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+// Accept +, spaces, dashes, parentheses; require at least 7 digits overall.
+const digitsOf = (s: string) => s.replace(/\D/g, '');
+
+const validateForm = (data: typeof emptyForm): FormErrors => {
+  const errors: FormErrors = {};
+  if (!data.firstName.trim()) errors.firstName = 'Please enter your first name.';
+  if (!data.lastName.trim()) errors.lastName = 'Please enter your last name.';
+
+  const email = data.email.trim();
+  if (!email) errors.email = 'Please enter your email address.';
+  else if (!EMAIL_RE.test(email)) errors.email = 'Please enter a valid email address.';
+
+  const phoneDigits = digitsOf(data.phone);
+  if (!data.phone.trim()) errors.phone = 'Please enter your phone number.';
+  else if (phoneDigits.length < 7) errors.phone = 'Please enter a valid phone number.';
+
+  if (!data.role) errors.role = 'Please select an option.';
+  if (!data.referral_source) errors.referral_source = 'Please select an option.';
+  return errors;
+};
 
 const ET360Finale = () => {
   const [formData, setFormData] = useState(emptyForm);
+  const [fieldErrors, setFieldErrors] = useState<FormErrors>({});
   const [submitted, setSubmitted] = useState(false);
   const [registeredName, setRegisteredName] = useState('');
   const [loading, setLoading] = useState(false);
@@ -67,12 +94,30 @@ const ET360Finale = () => {
   ) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
+    // Clear a field's error as soon as the user starts correcting it.
+    setFieldErrors((prev) => {
+      if (!prev[name as keyof FormErrors]) return prev;
+      const next = { ...prev };
+      delete next[name as keyof FormErrors];
+      return next;
+    });
   };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setLoading(true);
     setError(null);
+
+    // Validate before touching the network — blank/garbage submissions must not
+    // create junk registrations (the native `required` attrs are inert here).
+    const errors = validateForm(formData);
+    if (Object.keys(errors).length > 0) {
+      setFieldErrors(errors);
+      const firstInvalid = Object.keys(errors)[0];
+      document.getElementById(firstInvalid)?.focus();
+      return;
+    }
+    setFieldErrors({});
+    setLoading(true);
 
     const fullName = `${formData.firstName.trim()} ${formData.lastName.trim()}`;
     const email = formData.email.trim();
@@ -357,8 +402,14 @@ const ET360Finale = () => {
                         <input
                           id="firstName" type="text" name="firstName"
                           value={formData.firstName} onChange={handleChange} required
-                          autoComplete="given-name" className={inputClass} placeholder="John"
+                          autoComplete="given-name" placeholder="John"
+                          className={fieldErrors.firstName ? inputErrorClass : inputClass}
+                          aria-invalid={!!fieldErrors.firstName}
+                          aria-describedby={fieldErrors.firstName ? 'firstName-error' : undefined}
                         />
+                        {fieldErrors.firstName && (
+                          <p id="firstName-error" className="mt-1.5 text-xs text-red-600">{fieldErrors.firstName}</p>
+                        )}
                       </div>
                       <div>
                         <label htmlFor="lastName" className={labelClass}>
@@ -367,8 +418,14 @@ const ET360Finale = () => {
                         <input
                           id="lastName" type="text" name="lastName"
                           value={formData.lastName} onChange={handleChange} required
-                          autoComplete="family-name" className={inputClass} placeholder="Doe"
+                          autoComplete="family-name" placeholder="Doe"
+                          className={fieldErrors.lastName ? inputErrorClass : inputClass}
+                          aria-invalid={!!fieldErrors.lastName}
+                          aria-describedby={fieldErrors.lastName ? 'lastName-error' : undefined}
                         />
+                        {fieldErrors.lastName && (
+                          <p id="lastName-error" className="mt-1.5 text-xs text-red-600">{fieldErrors.lastName}</p>
+                        )}
                       </div>
                     </div>
 
@@ -380,8 +437,14 @@ const ET360Finale = () => {
                         <input
                           id="email" type="email" name="email" inputMode="email"
                           value={formData.email} onChange={handleChange} required
-                          autoComplete="email" className={inputClass} placeholder="john@example.com"
+                          autoComplete="email" placeholder="john@example.com"
+                          className={fieldErrors.email ? inputErrorClass : inputClass}
+                          aria-invalid={!!fieldErrors.email}
+                          aria-describedby={fieldErrors.email ? 'email-error' : undefined}
                         />
+                        {fieldErrors.email && (
+                          <p id="email-error" className="mt-1.5 text-xs text-red-600">{fieldErrors.email}</p>
+                        )}
                       </div>
                       <div>
                         <label htmlFor="phone" className={labelClass}>
@@ -390,8 +453,14 @@ const ET360Finale = () => {
                         <input
                           id="phone" type="tel" name="phone" inputMode="tel"
                           value={formData.phone} onChange={handleChange} required
-                          autoComplete="tel" className={inputClass} placeholder="+234 801 000 0000"
+                          autoComplete="tel" placeholder="+234 801 000 0000"
+                          className={fieldErrors.phone ? inputErrorClass : inputClass}
+                          aria-invalid={!!fieldErrors.phone}
+                          aria-describedby={fieldErrors.phone ? 'phone-error' : undefined}
                         />
+                        {fieldErrors.phone && (
+                          <p id="phone-error" className="mt-1.5 text-xs text-red-600">{fieldErrors.phone}</p>
+                        )}
                       </div>
                     </div>
                   </fieldset>
@@ -408,13 +477,19 @@ const ET360Finale = () => {
                       </label>
                       <select
                         id="role" name="role" value={formData.role}
-                        onChange={handleChange} required className={inputClass}
+                        onChange={handleChange} required
+                        className={fieldErrors.role ? inputErrorClass : inputClass}
+                        aria-invalid={!!fieldErrors.role}
+                        aria-describedby={fieldErrors.role ? 'role-error' : undefined}
                       >
                         <option value="">Select your role</option>
                         {roles.map((r) => (
                           <option key={r} value={r}>{r}</option>
                         ))}
                       </select>
+                      {fieldErrors.role && (
+                        <p id="role-error" className="mt-1.5 text-xs text-red-600">{fieldErrors.role}</p>
+                      )}
                     </div>
 
                     <div>
@@ -423,13 +498,19 @@ const ET360Finale = () => {
                       </label>
                       <select
                         id="referral_source" name="referral_source" value={formData.referral_source}
-                        onChange={handleChange} required className={inputClass}
+                        onChange={handleChange} required
+                        className={fieldErrors.referral_source ? inputErrorClass : inputClass}
+                        aria-invalid={!!fieldErrors.referral_source}
+                        aria-describedby={fieldErrors.referral_source ? 'referral_source-error' : undefined}
                       >
                         <option value="">Select an option</option>
                         {referralSources.map((s) => (
                           <option key={s} value={s}>{s}</option>
                         ))}
                       </select>
+                      {fieldErrors.referral_source && (
+                        <p id="referral_source-error" className="mt-1.5 text-xs text-red-600">{fieldErrors.referral_source}</p>
+                      )}
                     </div>
                   </fieldset>
 
