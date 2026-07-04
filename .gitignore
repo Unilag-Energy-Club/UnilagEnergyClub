@@ -30,3 +30,7 @@ README_PROJECT.md
 # Sponsor source materials (kept locally, not committed)
 src/*.zip
 src/*.xlsx
+
+# Railway config-as-code (may reference secrets)
+.railway/
+.railway-config-pull-*/
