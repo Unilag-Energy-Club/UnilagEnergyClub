@@ -18,7 +18,7 @@
     {
       "parameters": {
         "method": "POST",
-        "url": "https://www.unilagenergyclub.com/uecdp/api/send-reminders",
+        "url": "https://uec-dp.up.railway.app/uecdp/api/send-reminders",
         "authentication": "genericCredentialType",
         "genericAuthType": "httpHeaderAuth",
         "sendBody": true,
@@ -42,7 +42,7 @@
     }
   ],
   "connections": {
-    "Every day at 07:00": {
+    "Every day at 09:00": {
       "main": [
         [
           { "node": "Trigger daily reminders", "type": "main", "index": 0 }
@@ -55,7 +55,7 @@
     "executionOrder": "v1"
   },
   "meta": {
-    "note": "Runs once daily at 09:00 (n8n instance timezone — set it to Africa/Lagos). Calls the ET360 reminder endpoint, which decides whether today is a reminder day (every 3 days while >1 week out, then 7-day, 3-day, 1-day, and morning-of at 9am) and emails all registrants accordingly. The 'Header Auth account' credential must send header name EMAIL_SECRET with the same secret value as the site's EMAIL_SECERET env var. Endpoint is idempotent per calendar day — keep this as the only daily trigger."
+    "note": "Runs once daily at 09:00 (n8n instance timezone — set it to Africa/Lagos). Calls the ET360 reminder endpoint, which decides whether today is a reminder day (every 3 days while >1 week out, then 7-day, 3-day, 1-day, and morning-of at 9am) and emails all registrants accordingly. The 'Header Auth account' credential sends header EMAIL_SECRET = the same secret as the site's EMAIL_SECERET env var. IMPORTANT: the URL targets the DP service DIRECTLY (uec-dp.up.railway.app), NOT the public www domain — Cloudflare on the www path strips headers containing underscores (EMAIL_SECRET), which makes the auth silently 401. If you must use the www URL, change the auth header to a hyphenated one instead: the endpoint also accepts 'x-reminder-secret: <secret>' or 'Authorization: Bearer <secret>', both of which survive Cloudflare. Endpoint is idempotent per calendar day — keep this as the only daily trigger."
   },
   "tags": []
 }
