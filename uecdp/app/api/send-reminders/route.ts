@@ -4,6 +4,7 @@ import {
   ReminderType, reminderForDaysUntil, daysUntilEvent,
   reminderHtml, reminderSubject,
 } from '@/lib/reminderEmails'
+import { sendEmail } from '@/lib/mailer'
 
 export const runtime = 'nodejs'
 export const dynamic = 'force-dynamic'
@@ -35,26 +36,6 @@ function authorized(req: NextRequest): boolean {
 
 const isEmail = (s: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(s)
 
-/** Send one email through the shared n8n webhook (Gmail). */
-async function sendEmail(to: string, subject: string, html: string): Promise<boolean> {
-  const webhookUrl = (process.env.N8N_EMAIL_WEBHOOK || '').trim()
-  const secret = (process.env.EMAIL_SECERET || process.env.EMAIL_SECRET || '').trim()
-  if (!webhookUrl) throw new Error('N8N_EMAIL_WEBHOOK not configured')
-
-  const res = await fetch(webhookUrl, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      ...(secret ? { EMAIL_SECRET: secret } : {}),
-    },
-    body: JSON.stringify({
-      template: { to, subject, body: html, isHtml: true },
-      variables: {},
-    }),
-  })
-  return res.ok
-}
-
 export async function POST(req: NextRequest) {
   if (!authorized(req)) {
     return NextResponse.json({ error: 'Unauthorized.' }, { status: 401 })
@@ -81,7 +62,7 @@ export async function POST(req: NextRequest) {
     const sent: string[] = []
     for (const t of types) {
       const days = PREVIEW_DAYS[t]
-      const ok = await sendEmail(to, `[Preview] ${reminderSubject(t, days)}`, reminderHtml(t, sampleName, days))
+      const { ok } = await sendEmail(to, `[Preview] ${reminderSubject(t, days)}`, reminderHtml(t, sampleName, days))
       if (ok) sent.push(t)
     }
     return NextResponse.json({ ok: true, preview: true, to, sent })
@@ -118,7 +99,7 @@ export async function POST(req: NextRequest) {
     if (!email || !isEmail(email) || seen.has(email.toLowerCase())) continue
     seen.add(email.toLowerCase())
     try {
-      const ok = await sendEmail(email, subject, reminderHtml(type, r.full_name, days))
+      const { ok } = await sendEmail(email, subject, reminderHtml(type, r.full_name, days))
       ok ? sent++ : failed++
     } catch {
       failed++

@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { confirmationHtml, confirmationSubject } from '@/lib/confirmationEmail'
+import { sendEmail } from '@/lib/mailer'
 
 export const runtime = 'nodejs'
 export const dynamic = 'force-dynamic'
@@ -32,50 +33,19 @@ export async function POST(req: NextRequest) {
       )
     }
 
-    const webhookUrl = (process.env.N8N_EMAIL_WEBHOOK || '').trim()
-    // The .env var is spelled EMAIL_SECERET; also accept the corrected spelling.
-    const secret = (process.env.EMAIL_SECERET || process.env.EMAIL_SECRET || '').trim()
+    // Render the branded HTML server-side, then send via the shared mailer:
+    // n8n (Gmail) first, Resend as automatic fallback.
+    const result = await sendEmail(email, confirmationSubject(), confirmationHtml(name))
 
-    if (!webhookUrl) {
-      console.error('[send-confirmation] N8N_EMAIL_WEBHOOK is not configured')
-      return NextResponse.json(
-        { error: 'Email service is not configured.' },
-        { status: 500, headers: CORS_HEADERS }
-      )
-    }
-
-    // n8n "Process Template with Variables" node expects { template, variables }.
-    // We render the full HTML server-side and pass it through as the body.
-    const payload = {
-      template: {
-        to: email,
-        subject: confirmationSubject(),
-        body: confirmationHtml(name),
-        isHtml: true,
-      },
-      variables: {},
-    }
-
-    const res = await fetch(webhookUrl, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        // Header name configured on the n8n Header Auth credential.
-        ...(secret ? { EMAIL_SECRET: secret } : {}),
-      },
-      body: JSON.stringify(payload),
-    })
-
-    if (!res.ok) {
-      const detail = await res.text().catch(() => '')
-      console.error('[send-confirmation] webhook failed', res.status, detail.slice(0, 300))
+    if (!result.ok) {
+      console.error('[send-confirmation] all channels failed', JSON.stringify(result.attempts))
       return NextResponse.json(
         { error: 'Failed to send confirmation email.' },
         { status: 502, headers: CORS_HEADERS }
       )
     }
 
-    return NextResponse.json({ ok: true }, { headers: CORS_HEADERS })
+    return NextResponse.json({ ok: true, via: result.via }, { headers: CORS_HEADERS })
   } catch (err) {
     console.error('[send-confirmation] unexpected error', err)
     return NextResponse.json(
