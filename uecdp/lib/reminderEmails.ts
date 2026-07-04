@@ -26,11 +26,11 @@ const EVENT = {
   mapUrl: 'https://maps.google.com/?q=Multipurpose+Hall+University+of+Lagos+Akoka',
 }
 
-export type ReminderType = 'interval' | 'd7' | 'd3' | 'd1' | 'dayof'
+export type ReminderType = 'interval' | 'd7' | 'd3' | 'd2' | 'd1' | 'dayof'
 
 /**
  * Given whole days until the event, decide which reminder (if any) goes out today.
- * - milestones at 7, 3, 1, and day-of (0)
+ * - milestones at 7, 3, 2, 1, and day-of (0)
  * - otherwise a light "countdown" every 3 days while still more than a week out
  * Returns null on days with no scheduled reminder (and after the event).
  */
@@ -38,6 +38,7 @@ export function reminderForDaysUntil(days: number): ReminderType | null {
   if (days < 0) return null
   if (days === 0) return 'dayof'
   if (days === 1) return 'd1'
+  if (days === 2) return 'd2'
   if (days === 3) return 'd3'
   if (days === 7) return 'd7'
   if (days > 7 && days % 3 === 0) return 'interval'
@@ -89,6 +90,13 @@ function copyFor(type: ReminderType, days: number): Copy {
         lead: `The Grand Finale is just <strong>3 days away</strong>. Add it to your calendar if you haven't, and tell a friend — entry is free and open to all.`,
         showLogistics: false,
       }
+    case 'd2':
+      return {
+        chip: '2 days to go',
+        heading: (f) => `2 days to go${f ? `, ${f}` : ''} ⏳`,
+        lead: `Nearly there — the Grand Finale is just <strong>2 days away</strong>. Doors open at <strong>${EVENT.doors}</strong>; plan your route and come early to get a good seat.`,
+        showLogistics: true,
+      }
     case 'd7':
       return {
         chip: 'One week to go',
@@ -111,6 +119,7 @@ export function reminderSubject(type: ReminderType, days: number): string {
   switch (type) {
     case 'dayof': return `Today: ${EVENT.name} — doors ${EVENT.doors} ☀️`
     case 'd1': return `Tomorrow: ${EVENT.name} 🎉`
+    case 'd2': return `2 days to the ${EVENT.name} ⏳`
     case 'd3': return `3 days to the ${EVENT.name} ⏳`
     case 'd7': return `One week to the ${EVENT.name} 🗓️`
     default: return `${days} days to the ${EVENT.name}`

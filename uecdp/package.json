@@ -9,7 +9,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start -p ${PORT:-3000}",
-    "lint": "next lint"
+    "lint": "next lint",
+    "send-reminders": "node scripts/trigger-reminders.mjs"
   },
   "dependencies": {
     "browser-image-compression": "^2.0.2",

@@ -12,9 +12,9 @@ export const maxDuration = 60
 
 // Representative "days until" used purely for rendering preview examples.
 const PREVIEW_DAYS: Record<ReminderType, number> = {
-  interval: 12, d7: 7, d3: 3, d1: 1, dayof: 0,
+  interval: 12, d7: 7, d3: 3, d2: 2, d1: 1, dayof: 0,
 }
-const ALL_TYPES: ReminderType[] = ['interval', 'd7', 'd3', 'd1', 'dayof']
+const ALL_TYPES: ReminderType[] = ['interval', 'd7', 'd3', 'd2', 'd1', 'dayof']
 
 function authorized(req: NextRequest): boolean {
   const expected = (
