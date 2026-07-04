@@ -4,7 +4,7 @@ import {
   ReminderType, reminderForDaysUntil, daysUntilEvent,
   reminderHtml, reminderSubject,
 } from '@/lib/reminderEmails'
-import { sendEmail } from '@/lib/mailer'
+import { sendEmail, createBulkSender } from '@/lib/mailer'
 
 export const runtime = 'nodejs'
 export const dynamic = 'force-dynamic'
@@ -90,6 +90,9 @@ export async function POST(req: NextRequest) {
   }
 
   const subject = reminderSubject(type, days)
+  // Adaptive bulk sender: if a channel dies mid-blast it's put on cooldown and the
+  // rest of the batch flows through whichever source is still up.
+  const bulk = createBulkSender()
   let sent = 0
   let failed = 0
   const seen = new Set<string>()
@@ -99,12 +102,12 @@ export async function POST(req: NextRequest) {
     if (!email || !isEmail(email) || seen.has(email.toLowerCase())) continue
     seen.add(email.toLowerCase())
     try {
-      const { ok } = await sendEmail(email, subject, reminderHtml(type, r.full_name, days))
+      const { ok } = await bulk.send(email, subject, reminderHtml(type, r.full_name, days))
       ok ? sent++ : failed++
     } catch {
       failed++
     }
   }
 
-  return NextResponse.json({ ok: true, type, days, total: registrants.length, sent, failed })
+  return NextResponse.json({ ok: true, type, days, total: registrants.length, sent, failed, via: bulk.stats().via })
 }

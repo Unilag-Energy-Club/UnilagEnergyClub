@@ -5,8 +5,14 @@
 //   1. n8n primary webhook   (Gmail)
 //   2. n8n secondary webhook (Gmail, different n8n instance — resilience)
 //   3. Resend                (transactional API, verified domain)
-// A send is successful the moment any channel accepts it. Both the confirmation
-// and reminder routes go through here so failover behaves identically everywhere.
+// A send is successful the moment any channel accepts it.
+//
+// Two entry points:
+//   • sendEmail(...)        — one-off send; always tries channels in fixed order.
+//   • createBulkSender(...) — for blasting many emails (interval reminders). It
+//     remembers channel health across the batch: a channel that fails is put on a
+//     short cooldown and skipped, so a dead source isn't re-hit for every message —
+//     the batch flows through whichever channel is up, and re-probes periodically.
 // ─────────────────────────────────────────────────────────────────────────────
 
 export type MailChannel = 'n8n' | 'n8n-2' | 'resend'
@@ -17,6 +23,8 @@ export interface MailResult {
   // Per-channel outcome for logging/debugging (ok, or failed + reason).
   attempts: { channel: MailChannel; ok: boolean; detail?: string }[]
 }
+
+type SendFn = (to: string, subject: string, html: string) => Promise<boolean>
 
 const RESEND_ENDPOINT = 'https://api.resend.com/emails'
 const DEFAULT_FROM = 'UNILAG Energy Club <noreply@unilagenergyclub.com>'
@@ -86,31 +94,118 @@ async function sendViaResend(to: string, subject: string, html: string): Promise
   return true
 }
 
-/**
- * Send one email, trying each channel in priority order until one accepts it:
- * n8n primary → n8n secondary → Resend.
- * Never throws — inspect the returned MailResult (`ok`, `via`, `attempts`).
- */
-export async function sendEmail(to: string, subject: string, html: string): Promise<MailResult> {
+// Fixed priority order. Bulk sending reorders a *copy* of this by live health.
+const CHANNELS: [MailChannel, SendFn][] = [
+  ['n8n', sendViaN8n],
+  ['n8n-2', sendViaN8n2],
+  ['resend', sendViaResend],
+]
+
+/** Try each channel in the given order; first acceptance wins. Never throws. */
+async function attemptInOrder(
+  order: [MailChannel, SendFn][],
+  to: string,
+  subject: string,
+  html: string,
+  onFail?: (channel: MailChannel) => void,
+  onOk?: (channel: MailChannel) => void,
+  logTag = 'mailer',
+): Promise<MailResult> {
   const attempts: MailResult['attempts'] = []
-
-  const channels: [MailChannel, (t: string, s: string, h: string) => Promise<boolean>][] = [
-    ['n8n', sendViaN8n],
-    ['n8n-2', sendViaN8n2],
-    ['resend', sendViaResend],
-  ]
-
-  for (const [channel, fn] of channels) {
+  for (const [channel, fn] of order) {
     try {
       await fn(to, subject, html)
       attempts.push({ channel, ok: true })
+      onOk?.(channel)
       return { ok: true, via: channel, attempts }
     } catch (err) {
       const detail = err instanceof Error ? err.message : String(err)
       attempts.push({ channel, ok: false, detail })
-      console.error(`[mailer] ${channel} failed for ${to}: ${detail}`)
+      onFail?.(channel)
+      console.error(`[${logTag}] ${channel} failed for ${to}: ${detail}`)
     }
   }
-
   return { ok: false, via: null, attempts }
+}
+
+/**
+ * One-off send: n8n primary → n8n secondary → Resend, fixed order.
+ * Never throws — inspect the returned MailResult (`ok`, `via`, `attempts`).
+ */
+export async function sendEmail(to: string, subject: string, html: string): Promise<MailResult> {
+  return attemptInOrder(CHANNELS, to, subject, html)
+}
+
+export interface BulkSender {
+  send(to: string, subject: string, html: string): Promise<MailResult>
+  stats(): {
+    sent: number
+    failed: number
+    via: Record<MailChannel, number>
+    cooldowns: Partial<Record<MailChannel, number>>
+  }
+}
+
+/**
+ * Adaptive sender for bulk runs (e.g. interval reminders to all registrants).
+ *
+ * Health model: channels keep their fixed priority order (n8n → n8n-2 → Resend).
+ * On failure a channel is put on cooldown for `cooldownSends` subsequent messages
+ * and moved to the back of the line, so a dead source isn't re-hit on every email.
+ * After the cooldown it's re-probed — so when a higher-priority source recovers,
+ * traffic returns to it. If every channel is cooling down, all are still tried (we
+ * never silently drop a message).
+ */
+export function createBulkSender(opts: { cooldownSends?: number } = {}): BulkSender {
+  const cooldownSends = opts.cooldownSends ?? 12
+  let counter = 0
+  let sent = 0
+  let failed = 0
+  const via: Record<MailChannel, number> = { 'n8n': 0, 'n8n-2': 0, 'resend': 0 }
+  const skipUntil = new Map<MailChannel, number>() // channel → counter value it's skipped until
+
+  function orderFor(): [MailChannel, SendFn][] {
+    const active: [MailChannel, SendFn][] = []
+    const cooling: [MailChannel, SendFn][] = []
+    for (const ch of CHANNELS) {
+      if ((skipUntil.get(ch[0]) ?? 0) <= counter) active.push(ch)
+      else cooling.push(ch)
+    }
+    // Healthy channels first in priority order; cooling ones appended as last resort.
+    return [...active, ...cooling]
+  }
+
+  return {
+    async send(to, subject, html) {
+      counter++
+      const result = await attemptInOrder(
+        orderFor(),
+        to,
+        subject,
+        html,
+        (channel) => {
+          // Cool this channel down: skip it for the next `cooldownSends` messages.
+          skipUntil.set(channel, counter + cooldownSends)
+        },
+        (channel) => {
+          skipUntil.delete(channel)
+        },
+        'mailer:bulk',
+      )
+      if (result.ok && result.via) {
+        sent++
+        via[result.via]++
+      } else {
+        failed++
+      }
+      return result
+    },
+    stats() {
+      const cooldowns: Partial<Record<MailChannel, number>> = {}
+      skipUntil.forEach((until, c) => {
+        if (until > counter) cooldowns[c] = until - counter
+      })
+      return { sent, failed, via, cooldowns }
+    },
+  }
 }
