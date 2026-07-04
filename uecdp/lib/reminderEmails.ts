@@ -18,7 +18,7 @@ const EVENT = {
   // Local event day (Africa/Lagos, UTC+1).
   dateISO: '2026-07-16',
   dateLong: 'Thursday, 16 July 2026',
-  doors: '10:00 AM',
+  doors: '9:00 AM',
   venue: 'Multipurpose Hall, University of Lagos',
   admission: 'Free · Open to all',
   contact: 'unilagenergyclub@gmail.com',

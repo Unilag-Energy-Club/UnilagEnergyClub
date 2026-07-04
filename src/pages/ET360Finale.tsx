@@ -8,11 +8,12 @@ import Layout from '../components/layout/Layout';
 import FinaleSponsors from '../components/et360/FinaleSponsors';
 import pb from '../lib/pocketbase';
 
-// Google Calendar "add event" link for the Grand Finale (16 July 2026, 10:00–16:00 WAT).
+// Google Calendar "add event" link for the Grand Finale (16 July 2026, 9:00 AM–4:00 PM WAT).
+// Times are in UTC (Z): 9:00 AM WAT = 08:00Z, 4:00 PM WAT = 15:00Z (Nigeria is UTC+1, no DST).
 const ADD_TO_CALENDAR_URL =
   'https://calendar.google.com/calendar/render?action=TEMPLATE' +
   '&text=' + encodeURIComponent('ET360° Grand Finale · UNILAG Energy Club') +
-  '&dates=20260716T090000Z/20260716T150000Z' +
+  '&dates=20260716T080000Z/20260716T150000Z' +
   '&details=' + encodeURIComponent('The Grand Finale of the ET360° energy transition programme. Free and open to the public. #JoinTheTransition') +
   '&location=' + encodeURIComponent('Multipurpose Hall, University of Lagos, Akoka, Lagos');
 
@@ -365,7 +366,7 @@ const ET360Finale = () => {
                       <Clock className="w-4 h-4 text-yellow-400" strokeWidth={1.75} aria-hidden="true" />
                     </span>
                     <p className="text-green-200 text-xs leading-snug">
-                      Doors open <span className="text-white font-semibold">10:00 AM</span> · Arrive early to get a good seat
+                      Doors open <span className="text-white font-semibold">9:00 AM</span> · Arrive early to get a good seat
                     </p>
                   </div>
                 </div>
