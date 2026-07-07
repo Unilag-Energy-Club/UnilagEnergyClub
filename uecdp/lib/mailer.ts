@@ -136,6 +136,19 @@ export async function sendEmail(to: string, subject: string, html: string): Prom
   return attemptInOrder(CHANNELS, to, subject, html)
 }
 
+/**
+ * Channel-controlled senders for scheduled drips that must respect a fixed
+ * per-channel daily budget (e.g. 250 via Gmail + 100 via Resend). Unlike
+ * sendEmail(), these do NOT auto-fail-over — the caller decides fallback.
+ */
+export async function sendGmail(to: string, subject: string, html: string): Promise<boolean> {
+  try { await sendViaN8n(to, subject, html); return true } catch { /* try secondary */ }
+  try { await sendViaN8n2(to, subject, html); return true } catch { return false }
+}
+export async function sendResendOnly(to: string, subject: string, html: string): Promise<boolean> {
+  try { await sendViaResend(to, subject, html); return true } catch { return false }
+}
+
 export interface BulkSender {
   send(to: string, subject: string, html: string): Promise<MailResult>
   stats(): {

@@ -43,7 +43,7 @@ export function inviteSubject(): string {
 export function inviteHtml(fullName = ''): string {
   const name = escapeHtml((fullName || '').trim())
   const first = name ? name.split(/\s+/)[0] : ''
-  const greeting = first ? `Hi ${first},` : 'Hi there,'
+  const greeting = first ? `Hi <strong>${first}</strong>,` : 'Hi there,'
 
   const detailRow = (label: string, value: string, accent = false) => `
     <tr>
@@ -92,14 +92,20 @@ export function inviteHtml(fullName = ''): string {
             ${greeting}
           </p>
           <p style="margin:0 0 16px;color:${BRAND.ink};font-size:15px;line-height:1.65;">
-            We'd love for you to join us at the <strong>${EVENT.name}</strong>, a real conversation about where
-            Nigeria's energy is heading. It brings together professionals, students, policymakers and industry
-            leaders for an honest look at the energy transition: the opportunities opening up across the sector,
-            and the ideas shaping what comes next.
+            The UNILAG Energy Club is opening its doors for its first flagship event, and we'd love for you to
+            celebrate it with us.
+          </p>
+          <p style="margin:0 0 16px;color:${BRAND.ink};font-size:15px;line-height:1.65;">
+            On <strong>16 July</strong>, we're hosting the <strong>Grand Finale of Energy Transition 360 (ET360°)</strong>
+            at the Multipurpose Hall, University of Lagos.
+          </p>
+          <p style="margin:0 0 16px;color:${BRAND.ink};font-size:15px;line-height:1.65;">
+            It brings together professionals, students, policymakers, and industry leaders for an honest look at
+            where Nigeria's energy is heading and the opportunities opening up across the sector.
           </p>
           <p style="margin:0 0 22px;color:${BRAND.ink};font-size:15px;line-height:1.65;">
-            It's <strong>free and open to everyone</strong>. Come listen, ask questions, meet people who care about
-            the future of energy, and leave with real insight and new contacts. Registration takes under a minute.
+            It's <strong>free and open to everyone</strong>. Come listen, ask questions, and meet people who care
+            about the future of energy. <strong>Registration is compulsory and takes less than a minute.</strong>
           </p>
 
           <!-- Details -->

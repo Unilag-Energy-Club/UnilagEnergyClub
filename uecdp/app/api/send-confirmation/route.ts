@@ -1,6 +1,19 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { confirmationHtml, confirmationSubject } from '@/lib/confirmationEmail'
 import { sendEmail } from '@/lib/mailer'
+import { getAdminPocketBase } from '@/lib/pocketbase'
+
+// Best-effort: stamp the registration so the daily backfill knows this person's
+// confirmation already went out (and won't re-send it). Never blocks the response.
+async function markConfirmed(email: string): Promise<void> {
+  try {
+    const pb = await getAdminPocketBase()
+    const rec = await pb.collection('et360_finale_registrations').getFirstListItem(`email = "${email}"`, { sort: '-created' })
+    if (rec && !rec.confirmation_sent_at) {
+      await pb.collection('et360_finale_registrations').update(rec.id, { confirmation_sent_at: new Date().toISOString() })
+    }
+  } catch { /* field may not exist yet / lookup failed — backfill is the safety net */ }
+}
 
 export const runtime = 'nodejs'
 export const dynamic = 'force-dynamic'
@@ -45,6 +58,7 @@ export async function POST(req: NextRequest) {
       )
     }
 
+    await markConfirmed(email)
     return NextResponse.json({ ok: true, via: result.via }, { headers: CORS_HEADERS })
   } catch (err) {
     console.error('[send-confirmation] unexpected error', err)

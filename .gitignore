@@ -34,3 +34,10 @@ src/*.xlsx
 # Railway config-as-code (may reference secrets)
 .railway/
 .railway-config-pull-*/
+
+# invite queue holds recipient PII (public repo) — never commit
+uecdp/data/
+
+# Recipient PII / source data — never commit to this public repo
+UEC_MASTER_DATABASE.xlsx
+PICTURES FOR EMAIL/
