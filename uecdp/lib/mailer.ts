@@ -4,7 +4,8 @@
 // Delivery priority (each tried in order until one accepts the message):
 //   1. n8n primary webhook   (Gmail)
 //   2. n8n secondary webhook (Gmail, different n8n instance — resilience)
-//   3. Resend                (transactional API, verified domain)
+//   3. Resend                (transactional API, verified domain, 100/day free)
+//   4. Plunk                 (transactional API, ~3000/month free — last resort)
 // A send is successful the moment any channel accepts it.
 //
 // Two entry points:
@@ -15,7 +16,7 @@
 //     the batch flows through whichever channel is up, and re-probes periodically.
 // ─────────────────────────────────────────────────────────────────────────────
 
-export type MailChannel = 'n8n' | 'n8n-2' | 'resend'
+export type MailChannel = 'n8n' | 'n8n-2' | 'resend' | 'plunk'
 
 export interface MailResult {
   ok: boolean
@@ -27,7 +28,10 @@ export interface MailResult {
 type SendFn = (to: string, subject: string, html: string) => Promise<boolean>
 
 const RESEND_ENDPOINT = 'https://api.resend.com/emails'
+const PLUNK_ENDPOINT = 'https://next-api.useplunk.com/v1/send'
 const DEFAULT_FROM = 'UNILAG Energy Club <noreply@unilagenergyclub.com>'
+const DEFAULT_FROM_EMAIL = 'noreply@unilagenergyclub.com'
+const DEFAULT_FROM_NAME = 'UNILAG Energy Club'
 // Secondary n8n instance; overridable via env for future rotation.
 const DEFAULT_N8N_WEBHOOK_2 = 'https://n8n.shinzii.me/webhook/email-send-uec'
 
@@ -94,11 +98,35 @@ async function sendViaResend(to: string, subject: string, html: string): Promise
   return true
 }
 
-// Fixed priority order. Bulk sending reorders a *copy* of this by live health.
+/** Last-resort channel: Plunk transactional API (generous free tier). */
+async function sendViaPlunk(to: string, subject: string, html: string): Promise<boolean> {
+  const apiKey = (process.env.PLUNK_API_KEY || '').trim()
+  if (!apiKey) throw new Error('PLUNK_API_KEY not configured')
+  const from = (process.env.PLUNK_FROM || DEFAULT_FROM_EMAIL).trim()
+  const name = (process.env.PLUNK_FROM_NAME || DEFAULT_FROM_NAME).trim()
+
+  const res = await fetch(PLUNK_ENDPOINT, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${apiKey}`,
+    },
+    body: JSON.stringify({ to, subject, body: html, from, name, subscribed: true }),
+  })
+  if (!res.ok) {
+    const detail = await res.text().catch(() => '')
+    throw new Error(`plunk ${res.status}: ${detail.slice(0, 200)}`)
+  }
+  return true
+}
+
+// Fixed priority order: n8n primary → n8n secondary → Resend → Plunk.
+// Bulk sending reorders a *copy* of this by live health.
 const CHANNELS: [MailChannel, SendFn][] = [
   ['n8n', sendViaN8n],
   ['n8n-2', sendViaN8n2],
   ['resend', sendViaResend],
+  ['plunk', sendViaPlunk],
 ]
 
 /** Try each channel in the given order; first acceptance wins. Never throws. */
@@ -174,7 +202,7 @@ export function createBulkSender(opts: { cooldownSends?: number } = {}): BulkSen
   let counter = 0
   let sent = 0
   let failed = 0
-  const via: Record<MailChannel, number> = { 'n8n': 0, 'n8n-2': 0, 'resend': 0 }
+  const via: Record<MailChannel, number> = { 'n8n': 0, 'n8n-2': 0, 'resend': 0, 'plunk': 0 }
   const skipUntil = new Map<MailChannel, number>() // channel → counter value it's skipped until
 
   function orderFor(): [MailChannel, SendFn][] {
