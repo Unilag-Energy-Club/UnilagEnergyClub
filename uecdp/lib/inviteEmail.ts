@@ -22,7 +22,8 @@ const EVENT = {
   registerUrl: 'https://www.unilagenergyclub.com/et360/finale',
   siteUrl: 'https://www.unilagenergyclub.com',
   // Animated carousel of moments from ET360° (auto-plays in Gmail/Apple Mail).
-  gallery: 'https://www.unilagenergyclub.com/assets/media/email/finale-gallery.gif',
+  // ?v query keeps a clean CDN cache key; bump it whenever the GIF changes.
+  gallery: 'https://www.unilagenergyclub.com/assets/media/email/finale-gallery.gif?v=1',
   contact: 'unilagenergyclub@gmail.com',
   instagram: 'https://www.instagram.com/unilagenergyclub/',
   linkedin: 'https://www.linkedin.com/company/unilag-energy-club/',
