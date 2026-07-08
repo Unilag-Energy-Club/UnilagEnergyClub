@@ -17,6 +17,7 @@ interface Registration {
   phone_number: string;
   role: string;
   referral_source: string;
+  friend_name: string;
   created: string;
 }
 
@@ -130,10 +131,10 @@ const Admin = () => {
   };
 
   const exportCsv = () => {
-    const headers = ['Full Name', 'Email', 'Phone', 'Role', 'Referral Source', 'Registered'];
+    const headers = ['Full Name', 'Email', 'Phone', 'Role', 'Referral Source', 'Referred By', 'Registered'];
     const esc = (v: string) => `"${String(v ?? '').replace(/"/g, '""')}"`;
     const rows = records.map((r) =>
-      [r.full_name, r.email, r.phone_number, r.role, r.referral_source, fmtDate(r.created)]
+      [r.full_name, r.email, r.phone_number, r.role, r.referral_source, r.friend_name || '', fmtDate(r.created)]
         .map(esc)
         .join(',')
     );
@@ -299,6 +300,7 @@ const Admin = () => {
                   <th className="px-5 py-4 font-bold">Phone</th>
                   <th className="px-5 py-4 font-bold">Role</th>
                   <th className="px-5 py-4 font-bold">Heard via</th>
+                  <th className="px-5 py-4 font-bold">Referred by</th>
                   <th className="px-5 py-4 font-bold">Registered</th>
                 </tr>
               </thead>
@@ -320,6 +322,7 @@ const Admin = () => {
                       <td className="px-5 py-4 text-gray-600 whitespace-nowrap">{r.phone_number}</td>
                       <td className="px-5 py-4 text-gray-600">{r.role}</td>
                       <td className="px-5 py-4 text-gray-600">{r.referral_source}</td>
+                      <td className="px-5 py-4 text-gray-600 whitespace-nowrap">{r.friend_name || '—'}</td>
                       <td className="px-5 py-4 text-gray-500 whitespace-nowrap tabular-nums">{fmtDate(r.created)}</td>
                     </tr>
                   ))

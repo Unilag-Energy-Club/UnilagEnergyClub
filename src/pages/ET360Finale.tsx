@@ -49,7 +49,11 @@ const emptyForm = {
   phone: '',
   role: '',
   referral_source: '',
+  friend_name: '',
 };
+
+// Referral option that reveals the "friend's name" field (for referral tracking).
+const FRIEND_OPTION = 'From a friend';
 
 // 16px base text avoids iOS auto-zoom on focus; min-height keeps a ≥44px touch target.
 const inputBase =
@@ -79,6 +83,8 @@ const validateForm = (data: typeof emptyForm): FormErrors => {
 
   if (!data.role) errors.role = 'Please select an option.';
   if (!data.referral_source) errors.referral_source = 'Please select an option.';
+  if (data.referral_source === FRIEND_OPTION && !data.friend_name.trim())
+    errors.friend_name = "Please enter your friend's name.";
   return errors;
 };
 
@@ -130,6 +136,8 @@ const ET360Finale = () => {
         phone_number: formData.phone,
         role: formData.role,
         referral_source: formData.referral_source,
+        friend_name:
+          formData.referral_source === FRIEND_OPTION ? formData.friend_name.trim() : '',
       });
 
       // Fire-and-forget the branded confirmation email (served by the DP service
@@ -513,6 +521,25 @@ const ET360Finale = () => {
                         <p id="referral_source-error" className="mt-1.5 text-xs text-red-600">{fieldErrors.referral_source}</p>
                       )}
                     </div>
+
+                    {formData.referral_source === FRIEND_OPTION && (
+                      <div>
+                        <label htmlFor="friend_name" className={labelClass}>
+                          Your friend's name <span className="text-yellow-600">*</span>
+                        </label>
+                        <input
+                          id="friend_name" type="text" name="friend_name"
+                          value={formData.friend_name} onChange={handleChange}
+                          autoComplete="off" placeholder="Who told you about it?"
+                          className={fieldErrors.friend_name ? inputErrorClass : inputClass}
+                          aria-invalid={!!fieldErrors.friend_name}
+                          aria-describedby={fieldErrors.friend_name ? 'friend_name-error' : undefined}
+                        />
+                        {fieldErrors.friend_name && (
+                          <p id="friend_name-error" className="mt-1.5 text-xs text-red-600">{fieldErrors.friend_name}</p>
+                        )}
+                      </div>
+                    )}
                   </fieldset>
 
                   {/* Error */}
