@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server'
 import { getAdminPocketBase } from '@/lib/pocketbase'
 import { inviteHtml, inviteSubject } from '@/lib/inviteEmail'
 import { confirmationHtml, confirmationSubject } from '@/lib/confirmationEmail'
-import { sendGmail, sendResendOnly } from '@/lib/mailer'
+import { sendEmail, sendGmail, sendResendOnly } from '@/lib/mailer'
 
 export const runtime = 'nodejs'
 export const dynamic = 'force-dynamic'
@@ -81,8 +81,8 @@ export async function POST(req: NextRequest) {
       const email = (r.email || '').trim()
       if (!email || !isEmail(email)) continue
       const html = confirmationHtml(r.full_name)
-      let ok = await sendGmail(email, confirmationSubject(), html)
-      if (!ok) ok = await sendResendOnly(email, confirmationSubject(), html)
+      // Prioritized chain: Plunk → Resend → n8n(Gmail).
+      const { ok } = await sendEmail(email, confirmationSubject(), html)
       if (ok) {
         sent++
         await pb.collection('et360_finale_registrations').update(r.id, { confirmation_sent_at: new Date().toISOString() }).catch(() => {})

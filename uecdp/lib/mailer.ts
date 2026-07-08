@@ -2,10 +2,10 @@
 // Shared transactional mailer for the ET360° Grand Finale.
 //
 // Delivery priority (each tried in order until one accepts the message):
-//   1. n8n primary webhook   (Gmail, ~500/day)
-//   2. n8n secondary webhook (Gmail, different n8n instance — resilience)
-//   3. Plunk                 (transactional API, generous free tier — first fallback)
-//   4. Resend                (transactional API, verified domain, 100/day — last resort)
+//   1. Plunk                 (transactional API, generous allowance — primary)
+//   2. Resend                (transactional API, verified domain, 100/day)
+//   3. n8n primary webhook   (Gmail, ~500/day — fallback)
+//   4. n8n secondary webhook (Gmail, different n8n instance — last resort)
 // A send is successful the moment any channel accepts it.
 //
 // Two entry points:
@@ -120,13 +120,13 @@ async function sendViaPlunk(to: string, subject: string, html: string): Promise<
   return true
 }
 
-// Fixed priority order: n8n primary → n8n secondary → Plunk → Resend.
+// Fixed priority order: Plunk → Resend → n8n primary → n8n secondary.
 // Bulk sending reorders a *copy* of this by live health.
 const CHANNELS: [MailChannel, SendFn][] = [
-  ['n8n', sendViaN8n],
-  ['n8n-2', sendViaN8n2],
   ['plunk', sendViaPlunk],
   ['resend', sendViaResend],
+  ['n8n', sendViaN8n],
+  ['n8n-2', sendViaN8n2],
 ]
 
 /** Try each channel in the given order; first acceptance wins. Never throws. */
