@@ -73,35 +73,35 @@ function copyFor(type: ReminderType, days: number): Copy {
       return {
         chip: 'Today',
         heading: (f) => `It's today${f ? `, ${f}` : ''}! ☀️`,
-        lead: `The ET360° Grand Finale is happening today. Doors open at <strong>${EVENT.doors}</strong> — come early, settle in, and let's talk about the future of energy in Nigeria.`,
+        lead: `The ET360° Grand Finale is happening today. Doors open at <strong>${EVENT.doors}</strong>. Come early, settle in, and let's talk about the future of energy in Nigeria.`,
         showLogistics: true,
       }
     case 'd1':
       return {
         chip: 'Tomorrow',
         heading: (f) => `See you tomorrow${f ? `, ${f}` : ''}! 🎉`,
-        lead: `Just one more sleep. The Grand Finale is <strong>tomorrow</strong> — here's everything you need so you can walk straight in.`,
+        lead: `Just one more sleep. The Grand Finale is <strong>tomorrow</strong>. Here's everything you need so you can walk straight in.`,
         showLogistics: true,
       }
     case 'd3':
       return {
         chip: '3 days to go',
         heading: (f) => `3 days left${f ? `, ${f}` : ''} ⏳`,
-        lead: `The Grand Finale is just <strong>3 days away</strong>. Add it to your calendar if you haven't, and tell a friend — entry is free and open to all.`,
+        lead: `The Grand Finale is just <strong>3 days away</strong>. Add it to your calendar if you haven't, and tell a friend. Entry is free and open to all.`,
         showLogistics: false,
       }
     case 'd2':
       return {
         chip: '2 days to go',
         heading: (f) => `2 days to go${f ? `, ${f}` : ''} ⏳`,
-        lead: `Nearly there — the Grand Finale is just <strong>2 days away</strong>. Doors open at <strong>${EVENT.doors}</strong>; plan your route and come early to get a good seat.`,
+        lead: `Nearly there. The Grand Finale is just <strong>2 days away</strong>. Doors open at <strong>${EVENT.doors}</strong>; plan your route and come early to get a good seat.`,
         showLogistics: true,
       }
     case 'd7':
       return {
         chip: 'One week to go',
         heading: (f) => `One week to go${f ? `, ${f}` : ''} 🗓️`,
-        lead: `We're now <strong>7 days out</strong> from the ET360° Grand Finale. A room full of professionals, students, and industry leaders — and a real conversation about where Nigeria's energy is heading.`,
+        lead: `We're now <strong>7 days out</strong> from the ET360° Grand Finale. A room full of professionals, students, and industry leaders, and a real conversation about where Nigeria's energy is heading.`,
         showLogistics: false,
       }
     case 'interval':
@@ -109,7 +109,7 @@ function copyFor(type: ReminderType, days: number): Copy {
       return {
         chip: `${days} days to go`,
         heading: (f) => `${days} days to the Grand Finale${f ? `, ${f}` : ''}`,
-        lead: `Just a friendly countdown — the ET360° Grand Finale is <strong>${days} days away</strong>. We're looking forward to hosting you.`,
+        lead: `Just a friendly countdown: the ET360° Grand Finale is <strong>${days} days away</strong>. We're looking forward to hosting you.`,
         showLogistics: false,
       }
   }
@@ -117,7 +117,7 @@ function copyFor(type: ReminderType, days: number): Copy {
 
 export function reminderSubject(type: ReminderType, days: number): string {
   switch (type) {
-    case 'dayof': return `Today: ${EVENT.name} — doors ${EVENT.doors} ☀️`
+    case 'dayof': return `Today: ${EVENT.name}, doors ${EVENT.doors} ☀️`
     case 'd1': return `Tomorrow: ${EVENT.name} 🎉`
     case 'd2': return `2 days to the ${EVENT.name} ⏳`
     case 'd3': return `3 days to the ${EVENT.name} ⏳`
@@ -156,7 +156,7 @@ export function reminderHtml(type: ReminderType, fullName: string, days: number)
   <title>${EVENT.name}</title>
 </head>
 <body style="margin:0;padding:0;background:#f3f4f6;font-family:Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased;">
-  <div style="display:none;max-height:0;overflow:hidden;opacity:0;">${c.chip} — ${EVENT.name}, ${EVENT.dateLong}.</div>
+  <div style="display:none;max-height:0;overflow:hidden;opacity:0;">${c.chip}: ${EVENT.name}, ${EVENT.dateLong}.</div>
   <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#f3f4f6;padding:24px 12px;">
     <tr><td align="center">
       <table role="presentation" width="600" cellpadding="0" cellspacing="0" style="width:600px;max-width:600px;background:#ffffff;border-radius:16px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,.06);">

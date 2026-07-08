@@ -10,7 +10,7 @@ const BRAND = {
   ink: '#1f2937',
   muted: '#6b7280',
   line: '#e5e7eb',
-  // Logo is served by the live site (apex has no DNS — use www).
+  // Logo is served by the live site (apex has no DNS, use www).
   logo: 'https://www.unilagenergyclub.com/assets/media/logos/unilogo.png',
 }
 
@@ -33,7 +33,7 @@ function escapeHtml(s: string): string {
 }
 
 export function confirmationSubject(): string {
-  return `You're registered — ${EVENT.name}, 16 July 2026 🎉`
+  return `You're registered: ${EVENT.name}, 16 July 2026 🎉`
 }
 
 export function confirmationHtml(fullName: string): string {
@@ -89,7 +89,7 @@ export function confirmationHtml(fullName: string): string {
           <tr>
             <td style="padding:32px;">
               <p style="margin:0 0 16px;color:${BRAND.ink};font-size:15px;line-height:1.65;">
-                Hi ${name}, thank you for registering to attend the ${EVENT.name} — the grand culmination of Nigeria's most ambitious energy transition bootcamp. We can't wait to host you.
+                Hi ${name}, thank you for registering to attend the ${EVENT.name}, the grand culmination of Nigeria's most ambitious energy transition bootcamp. We can't wait to host you.
               </p>
 
               <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#f9fafb;border:1px solid ${BRAND.line};border-radius:12px;padding:8px 20px;margin:8px 0 24px;">
@@ -118,7 +118,7 @@ export function confirmationHtml(fullName: string): string {
               </table>
 
               <p style="margin:22px 0 0;color:${BRAND.muted};font-size:13px;line-height:1.6;text-align:center;">
-                Add it to your calendar and tell a friend — entry is free and open to all.
+                Add it to your calendar and tell a friend. Entry is free and open to all.
               </p>
             </td>
           </tr>
