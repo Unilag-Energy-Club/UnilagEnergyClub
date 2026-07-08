@@ -125,6 +125,12 @@ export function inviteHtml(fullName = ''): string {
           <p style="margin:14px 0 0;color:${BRAND.muted};font-size:13px;line-height:1.6;text-align:center;">
             Or visit <a href="${EVENT.siteUrl}" style="color:${BRAND.greenMid};font-weight:700;text-decoration:none;">unilagenergyclub.com</a>, and please share this with a friend.
           </p>
+
+          <table role="presentation" cellpadding="0" cellspacing="0" align="center" style="margin:16px auto 0;">
+            <tr><td align="center" style="border-radius:999px;background:#25D366;">
+              <a href="https://chat.whatsapp.com/J43sFbDAAF8FuQMjLkPkPz" style="display:inline-block;padding:12px 26px;font-size:14px;font-weight:700;color:#ffffff;text-decoration:none;border-radius:999px;">Join the WhatsApp group 🔥</a>
+            </td></tr>
+          </table>
         </td></tr>
 
         <!-- Photo carousel (animated GIF; first frame shows in clients that don't animate) -->
@@ -137,11 +143,6 @@ export function inviteHtml(fullName = ''): string {
 
         <!-- Footer with socials -->
         <tr><td style="background:${BRAND.green};padding:26px 32px;" align="center">
-          <table role="presentation" cellpadding="0" cellspacing="0" align="center" style="margin:0 auto 18px;">
-            <tr><td align="center" style="border-radius:999px;background:#25D366;">
-              <a href="https://chat.whatsapp.com/J43sFbDAAF8FuQMjLkPkPz" style="display:inline-block;padding:12px 24px;font-size:13px;font-weight:700;color:#ffffff;text-decoration:none;border-radius:999px;">Join the transition team for more updates 🔥</a>
-            </td></tr>
-          </table>
           <p style="margin:0 0 6px;color:#ffffff;font-size:14px;font-weight:700;">UNILAG Energy Club</p>
           <p style="margin:0 0 12px;color:#86efac;font-size:12px;line-height:1.6;">
             Questions? <a href="mailto:${EVENT.contact}" style="color:${BRAND.gold};text-decoration:none;">${EVENT.contact}</a>
