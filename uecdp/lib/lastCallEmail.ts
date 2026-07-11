@@ -23,7 +23,7 @@ const EVENT = {
   registerUrl: 'https://www.unilagenergyclub.com/et360/finale',
   siteUrl: 'https://www.unilagenergyclub.com',
   // Composed strip of all sponsor logos (trimmed + uniformly sized). Bump ?v when it changes.
-  sponsors: 'https://www.unilagenergyclub.com/assets/media/email/sponsors-all.png?v=1',
+  sponsors: 'https://www.unilagenergyclub.com/assets/media/email/sponsors-all.png?v=2',
   contact: 'unilagenergyclub@gmail.com',
   whatsapp: 'https://chat.whatsapp.com/J43sFbDAAF8FuQMjLkPkPz',
   instagram: 'https://www.instagram.com/unilagenergyclub/',
