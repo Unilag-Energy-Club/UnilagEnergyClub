@@ -11,7 +11,8 @@
     "start": "next start -p ${PORT:-3000}",
     "lint": "next lint",
     "send-reminders": "node scripts/trigger-reminders.mjs",
-    "send-invites": "node scripts/trigger-invites.mjs"
+    "send-invites": "node scripts/trigger-invites.mjs",
+    "send-lastcall": "node scripts/trigger-lastcall.mjs"
   },
   "dependencies": {
     "browser-image-compression": "^2.0.2",
