@@ -42,7 +42,6 @@ export async function POST(req: NextRequest) {
   try {
     const page = await pb.collection('invite_queue').getList<{ id: string; email: string; first_name: string }>(1, PER_DAY, {
       filter: 'sent = false',
-      sort: 'created',
     })
     const subject = inviteSubject()
     let gmail = 0, resend = 0, failed = 0

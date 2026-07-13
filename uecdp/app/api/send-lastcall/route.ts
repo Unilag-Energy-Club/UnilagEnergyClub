@@ -42,7 +42,6 @@ export async function POST(req: NextRequest) {
   // Next batch of invited people who haven't had the last-call yet.
   const page = await pb.collection('invite_queue').getList<{ id: string; email: string; first_name: string }>(1, LIMIT, {
     filter: 'lastcall_sent_at = ""',
-    sort: 'created',
   })
 
   const stamp = () => new Date().toISOString()
