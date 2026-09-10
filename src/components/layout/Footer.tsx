@@ -4,9 +4,9 @@ const Footer = () => {
       <div className="container mx-auto px-4 lg:px-20">
 
         {/* ET360 Grand Finale Banner */}
-        <div className="relative bg-green-950 rounded-[40px] min-h-[400px] p-10 lg:p-16 flex items-center overflow-hidden -translate-y-1/3 shadow-xl z-20">
+        {/* <div className="relative bg-green-950 rounded-[40px] min-h-[400px] p-10 lg:p-16 flex items-center overflow-hidden -translate-y-1/3 shadow-xl z-20"> */}
           {/* Dot grid background */}
-          <div
+          {/* <div
             className="absolute inset-0 rounded-[40px] z-0 opacity-10"
             style={{
               backgroundImage: 'radial-gradient(circle at 1px 1px, #4ade80 1px, transparent 0)',
@@ -46,22 +46,22 @@ const Footer = () => {
                 <polyline points="12 5 19 12 12 19"></polyline>
               </svg>
             </a>
-          </div>
+          </div> */}
 
           {/* Decorative "360°" right side */}
-          <div className="absolute right-0 top-1/2 -translate-y-1/2 pointer-events-none select-none opacity-10 lg:opacity-20 pr-8">
+          {/* <div className="absolute right-0 top-1/2 -translate-y-1/2 pointer-events-none select-none opacity-10 lg:opacity-20 pr-8">
             <span
               className="text-white font-black leading-none"
               style={{ fontSize: 'clamp(8rem, 18vw, 16rem)' }}
             >
               360°
             </span>
-          </div>
-        </div>
+          </div> */}
+        {/* </div> */}
 
         {/* Footer Navigation Section */}
         {/* Adjusted top margin to account for the banner's negative translate */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 -mt-10 pb-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 pb-12 pt-32 border-t border-gray-300">
 
           {/* Column 1: Intro */}
           <div className="space-y-6">

@@ -34,14 +34,14 @@ const navLinks: NavLink[] = [
         page: 'et360',
         description: '4-week intensive programme',
         Icon: GraduationCap,
-      },
-      {
-        href: '/et360/finale',
-        label: 'ET360 Finale',
-        page: 'et360-finale',
-        description: '17 July 2026 · Open to public',
-        Icon: Trophy,
-      },
+      }
+      // {
+      //   href: '/et360/finale',
+      //   label: 'ET360 Finale',
+      //   page: 'et360-finale',
+      //   description: '17 July 2026 · Open to public',
+      //   Icon: Trophy,
+      // },
     ],
   },
   { href: '/about', label: 'About Us', page: 'about' },
