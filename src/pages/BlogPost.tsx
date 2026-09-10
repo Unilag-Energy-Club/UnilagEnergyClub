@@ -53,11 +53,15 @@ const BlogPost = () => {
             },
             [BLOCKS.UL_LIST]: (node: any, children: any) => {
                 void node;
-                return <ul className="list-disc ml-6 mb-6 space-y-2 text-lg text-gray-700">{children}</ul>;
+                return <ul className="list-disc ml-6 mb-6 space-y-2 pl-2 text-lg text-gray-700 marker:text-primary" style={{ listStyleType: 'disc' }}>{children}</ul>;
             },
             [BLOCKS.OL_LIST]: (node: any, children: any) => {
                 void node;
-                return <ol className="list-decimal ml-6 mb-6 space-y-2 text-lg text-gray-700">{children}</ol>;
+                return <ol className="list-decimal ml-6 mb-6 space-y-2 pl-2 text-lg text-gray-700 marker:text-primary" style={{ listStyleType: 'decimal' }}>{children}</ol>;
+            },
+            [BLOCKS.LIST_ITEM]: (node: any, children: any) => {
+                void node;
+                return <li className="pl-2 leading-relaxed" style={{ listStyleType: 'inherit' }}>{children}</li>;
             },
             [BLOCKS.EMBEDDED_ASSET]: (node: any) => {
                 const { file, title } = node.data.target.fields;
