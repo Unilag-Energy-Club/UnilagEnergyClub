@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, ChevronDown, GraduationCap, Trophy } from 'lucide-react';
+import { Menu, X, ChevronDown, GraduationCap } from 'lucide-react';
 
 interface NavChild {
   href: string;
@@ -14,12 +14,15 @@ interface NavLink {
   href: string;
   label: string;
   page: string;
+  external?: boolean;
   children?: NavChild[];
 }
 
 interface HeaderProps {
   activePage?: string;
 }
+
+export const MEMBERSHIP_FORM_URL = 'https://forms.gle/MJLXqqqfcChfjNxp7';
 
 const navLinks: NavLink[] = [
   { href: '/', label: 'Home', page: 'home' },
@@ -43,6 +46,12 @@ const navLinks: NavLink[] = [
       //   Icon: Trophy,
       // },
     ],
+  },
+  {
+    href: MEMBERSHIP_FORM_URL,
+    label: 'Apply: 2026/2027',
+    page: 'apply',
+    external: true,
   },
   { href: '/about', label: 'About Us', page: 'about' },
   { href: '/gallery', label: 'Gallery', page: 'gallery' },
@@ -188,15 +197,27 @@ const Header = ({ activePage = 'home' }: HeaderProps) => {
 
                   return (
                     <li key={link.page}>
-                      <Link
-                        to={link.href}
-                        className={`text-base font-bold border-b pb-0.5 transition-all duration-300 ${
-                          active ? 'border-primary' : 'border-transparent hover:opacity-80'
-                        }`}
-                        style={{ color: textColor }}
-                      >
-                        {link.label}
-                      </Link>
+                      {link.external ? (
+                        <a
+                          href={link.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-base font-bold border-b border-transparent pb-0.5 transition-all duration-300 hover:opacity-80"
+                          style={{ color: textColor }}
+                        >
+                          {link.label}
+                        </a>
+                      ) : (
+                        <Link
+                          to={link.href}
+                          className={`text-base font-bold border-b pb-0.5 transition-all duration-300 ${
+                            active ? 'border-primary' : 'border-transparent hover:opacity-80'
+                          }`}
+                          style={{ color: textColor }}
+                        >
+                          {link.label}
+                        </Link>
+                      )}
                     </li>
                   );
                 })}
@@ -308,17 +329,29 @@ const Header = ({ activePage = 'home' }: HeaderProps) => {
                 const isActive = activePage === link.page;
                 return (
                   <li key={link.page}>
-                    <Link
-                      to={link.href}
-                      onClick={() => setMobileOpen(false)}
-                      className={`flex items-center px-3 py-3 rounded-xl text-base font-bold transition-all duration-200 ${
-                        isActive
-                          ? 'bg-white/10 text-yellow-400'
-                          : 'text-white/80 hover:bg-white/5 hover:text-white'
-                      }`}
-                    >
-                      {link.label}
-                    </Link>
+                    {link.external ? (
+                      <a
+                        href={link.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={() => setMobileOpen(false)}
+                        className="flex items-center px-3 py-3 rounded-xl text-base font-bold transition-all duration-200 text-white/80 hover:bg-white/5 hover:text-white"
+                      >
+                        {link.label}
+                      </a>
+                    ) : (
+                      <Link
+                        to={link.href}
+                        onClick={() => setMobileOpen(false)}
+                        className={`flex items-center px-3 py-3 rounded-xl text-base font-bold transition-all duration-200 ${
+                          isActive
+                            ? 'bg-white/10 text-yellow-400'
+                            : 'text-white/80 hover:bg-white/5 hover:text-white'
+                        }`}
+                      >
+                        {link.label}
+                      </Link>
+                    )}
                   </li>
                 );
               })}
